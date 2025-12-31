@@ -1,0 +1,1433 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Marc Aurèle - Philosophe et Empereur</title>
+    
+    <!-- Meta tags pour iPhone et iPad -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Marc Aurèle">
+    
+    <!-- Description et mots-clés -->
+    <meta name="description" content="Plateforme dédiée à Marc Aurèle et à la philosophie stoïcienne - Créée pour Aurelius Secundus">
+    <meta name="keywords" content="Marc Aurèle, stoïcisme, méditations, philosophie, Aurelius Secundus">
+    <meta name="author" content="Aurelius Secundus">
+    
+    <!-- Theme color -->
+    <meta name="theme-color" content="#2c3e50">
+    
+    <!-- Manifest pour PWA -->
+    <link rel="manifest" href="/manifest.json">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #8b7355;
+            --accent-color: #c9a961;
+            --text-color: #333;
+            --bg-color: #f8f6f1;
+            --white: #ffffff;
+        }
+
+        body {
+            font-family: 'Georgia', 'Times New Roman', serif;
+            line-height: 1.8;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: var(--white);
+            padding: 2rem 0;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+            font-weight: 400;
+            letter-spacing: 2px;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            font-style: italic;
+            opacity: 0.9;
+            font-weight: 300;
+        }
+
+        .user-badge {
+            margin-top: 1rem;
+            padding: 0.5rem 1.5rem;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 20px;
+            display: inline-block;
+            font-size: 0.95rem;
+            backdrop-filter: blur(10px);
+        }
+
+        nav {
+            background-color: var(--white);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            gap: 0;
+            flex-wrap: wrap;
+        }
+
+        .nav-btn {
+            padding: 1.2rem 2rem;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            color: var(--text-color);
+            transition: all 0.3s ease;
+            border-bottom: 3px solid transparent;
+            font-family: 'Georgia', serif;
+        }
+
+        .nav-btn:hover {
+            background-color: var(--bg-color);
+            color: var(--secondary-color);
+        }
+
+        .nav-btn.active {
+            color: var(--secondary-color);
+            border-bottom-color: var(--accent-color);
+            font-weight: bold;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        .section {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .section.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .content-card {
+            background: var(--white);
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+
+        h2 {
+            color: var(--primary-color);
+            font-size: 2.2rem;
+            margin-bottom: 1.5rem;
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 0.5rem;
+        }
+
+        h3 {
+            color: var(--secondary-color);
+            font-size: 1.6rem;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        h4 {
+            color: var(--secondary-color);
+            font-size: 1.3rem;
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+        }
+
+        p {
+            margin-bottom: 1.2rem;
+            text-align: justify;
+        }
+
+        .quote-box {
+            background: linear-gradient(to right, var(--bg-color), var(--white));
+            border-left: 4px solid var(--accent-color);
+            padding: 1.5rem;
+            margin: 2rem 0;
+            font-style: italic;
+            font-size: 1.1rem;
+            color: var(--secondary-color);
+        }
+
+        .timeline {
+            position: relative;
+            padding-left: 3rem;
+            margin: 2rem 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--accent-color);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 2rem;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -3.4rem;
+            top: 0.3rem;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--accent-color);
+            border: 3px solid var(--white);
+            box-shadow: 0 0 0 2px var(--accent-color);
+        }
+
+        .timeline-date {
+            font-weight: bold;
+            color: var(--secondary-color);
+            font-size: 1.1rem;
+        }
+
+        .meditation-item {
+            background: var(--bg-color);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 6px;
+            border-left: 3px solid var(--secondary-color);
+        }
+
+        .meditation-number {
+            color: var(--accent-color);
+            font-weight: bold;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .pillar-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .pillar-card {
+            background: linear-gradient(135deg, var(--white) 0%, var(--bg-color) 100%);
+            padding: 2rem;
+            border-radius: 8px;
+            border-top: 4px solid var(--accent-color);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+        }
+
+        .pillar-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+        }
+
+        .pillar-title {
+            color: var(--secondary-color);
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            font-weight: bold;
+        }
+
+        footer {
+            background-color: var(--primary-color);
+            color: var(--white);
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+        }
+
+        .book-section {
+            margin: 2.5rem 0;
+        }
+
+        .book-title {
+            background: var(--secondary-color);
+            color: var(--white);
+            padding: 1rem 1.5rem;
+            border-radius: 6px 6px 0 0;
+            font-size: 1.4rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .book-title:hover {
+            background: var(--primary-color);
+        }
+
+        .book-toggle {
+            font-size: 1.2rem;
+            transition: transform 0.3s ease;
+        }
+
+        .book-toggle.open {
+            transform: rotate(180deg);
+        }
+
+        .book-content {
+            background: var(--white);
+            border: 2px solid var(--secondary-color);
+            border-top: none;
+            padding: 2rem;
+            border-radius: 0 0 6px 6px;
+            display: none;
+        }
+
+        .book-content.open {
+            display: block;
+        }
+
+        .passage {
+            background: var(--bg-color);
+            padding: 1.2rem;
+            margin: 1rem 0;
+            border-radius: 4px;
+            border-left: 3px solid var(--accent-color);
+        }
+
+        .passage-number {
+            color: var(--accent-color);
+            font-weight: bold;
+            font-size: 0.85rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .passage-text {
+            font-style: italic;
+            line-height: 1.8;
+        }
+
+        .books-intro {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: var(--white);
+            padding: 2rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+        }
+
+        .books-intro h3 {
+            color: var(--white);
+            margin-top: 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <h1>MARC AURÈLE</h1>
+            <p class="subtitle">Empereur philosophe • 121-180 après J.-C.</p>
+            <div class="user-badge">✨ Plateforme d'Aurelius Secundus ✨</div>
+        </div>
+    </header>
+
+    <nav>
+        <div class="nav-content">
+            <button class="nav-btn active" onclick="showSection('accueil')">Accueil</button>
+            <button class="nav-btn" onclick="showSection('vie')">Sa Vie</button>
+            <button class="nav-btn" onclick="showSection('philosophie')">Philosophie</button>
+            <button class="nav-btn" onclick="showSection('meditations')">Méditations</button>
+            <button class="nav-btn" onclick="showSection('douze-livres')">Les 12 Livres</button>
+            <button class="nav-btn" onclick="showSection('heritage')">Héritage</button>
+        </div>
+    </nav>
+
+    <div class="container">
+        <!-- SECTION ACCUEIL -->
+        <div id="accueil" class="section active">
+            <div class="content-card">
+                <h2>Bienvenue Aurelius Secundus</h2>
+                <p>
+                    Marc Aurèle (121-180 apr. J.-C.) reste l'une des figures les plus fascinantes de l'histoire romaine. 
+                    Empereur puissant à la tête du plus grand empire du monde antique, il était également un philosophe 
+                    stoïcien profond dont les écrits personnels continuent d'inspirer des millions de personnes près de 
+                    deux millénaires après sa mort.
+                </p>
+                
+                <div class="quote-box">
+                    "Tu as le pouvoir sur ton esprit, pas sur les événements extérieurs. Réalise cela, et tu trouveras la force."
+                    <br><em>— Marc Aurèle, Méditations</em>
+                </div>
+
+                <p>
+                    Cette plateforme est dédiée à l'exploration de sa vie extraordinaire, de sa philosophie stoïcienne 
+                    intemporelle et de ses écrits profonds, connus sous le nom de "Pensées pour moi-même" ou "Méditations". 
+                    Ici, vous découvrirez non seulement l'empereur qui a gouverné Rome pendant l'une de ses périodes les 
+                    plus difficiles, mais aussi l'homme qui cherchait constamment à s'améliorer et à vivre selon les 
+                    principes de la sagesse, de la justice et de la vertu.
+                </p>
+
+                <h3>Que trouverez-vous ici ?</h3>
+                <div class="pillar-grid">
+                    <div class="pillar-card">
+                        <div class="pillar-title">📜 Sa Vie</div>
+                        <p>Découvrez le parcours de Marc Aurèle, de son enfance privilégiée à son règne impérial, 
+                        en passant par sa formation philosophique et les défis qu'il a affrontés.</p>
+                    </div>
+                    <div class="pillar-card">
+                        <div class="pillar-title">🏛️ Sa Philosophie</div>
+                        <p>Explorez les principes du stoïcisme tels que Marc Aurèle les a vécus et enseignés : 
+                        la maîtrise de soi, l'acceptation, la vertu et la vie selon la nature.</p>
+                    </div>
+                    <div class="pillar-card">
+                        <div class="pillar-title">📖 Ses Méditations</div>
+                        <p>Plongez dans ses écrits personnels, des réflexions profondes écrites pour lui-même, 
+                        qui sont devenues l'un des textes philosophiques les plus influents de l'histoire.</p>
+                    </div>
+                    <div class="pillar-card">
+                        <div class="pillar-title">📚 Les 12 Livres</div>
+                        <p>Explorez l'intégralité des douze livres des Méditations, avec les passages les plus 
+                        marquants et les enseignements essentiels de chaque livre.</p>
+                    </div>
+                    <div class="pillar-card">
+                        <div class="pillar-title">🌟 Son Héritage</div>
+                        <p>Comprenez l'influence durable de Marc Aurèle sur la philosophie occidentale, 
+                        la pensée moderne et la pratique du développement personnel.</p>
+                    </div>
+                </div>
+
+                <div class="quote-box">
+                    "Nés en avril, liés par la philosophie stoïcienne - Marc Aurèle le 21, Aurelius Secundus le 28. 
+                    Deux âmes séparées par presque deux millénaires, unies par la quête de sagesse et de vertu."
+                </div>
+            </div>
+        </div>
+
+        <!-- SECTION VIE -->
+        <div id="vie" class="section">
+            <div class="content-card">
+                <h2>La Vie de Marc Aurèle</h2>
+                
+                <h3>Origines et Jeunesse (121-138)</h3>
+                <p>
+                    Marcus Annius Verus naît le 26 avril 121 à Rome, dans une famille aristocratique fortunée. 
+                    Son grand-père, Marcus Annius Verus, était un homme politique respecté qui avait été consul à trois reprises. 
+                    Orphelin de père à l'âge de trois ans, le jeune Marcus est élevé par sa mère Domitia Lucilla et son grand-père.
+                </p>
+                <p>
+                    Dès son plus jeune âge, Marc Aurèle montre une inclination remarquable pour les études et la philosophie. 
+                    Il reçoit la meilleure éducation possible, étudiant sous les meilleurs maîtres de Rome. À l'âge de douze ans, 
+                    il découvre la philosophie stoïcienne et adopte un mode de vie austère qui marquera toute son existence.
+                </p>
+
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-date">121 apr. J.-C.</div>
+                        <p>Naissance à Rome le 26 avril dans une famille patricienne</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">138 apr. J.-C.</div>
+                        <p>Adoption par l'empereur Antonin le Pieux. Il devient héritier du trône impérial</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">145 apr. J.-C.</div>
+                        <p>Mariage avec Faustine la Jeune, fille d'Antonin. Ils auront au moins 13 enfants</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">161 apr. J.-C.</div>
+                        <p>Accède au trône impérial à la mort d'Antonin. Partage le pouvoir avec Lucius Verus</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">161-166 apr. J.-C.</div>
+                        <p>Guerre parthique menée principalement par Lucius Verus</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">167-180 apr. J.-C.</div>
+                        <p>Guerres marcomanes sur la frontière du Danube. Rédaction des "Méditations"</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">180 apr. J.-C.</div>
+                        <p>Mort le 17 mars, probablement de la peste, près de Vindobona (Vienne actuelle)</p>
+                    </div>
+                </div>
+
+                <h3>Le Règne d'un Philosophe (161-180)</h3>
+                <p>
+                    Le règne de Marc Aurèle, qui dure dix-neuf ans, est marqué par des défis constants. Contrairement à l'ère 
+                    de paix relative dont avaient joui ses prédécesseurs, Marc Aurèle doit faire face à des guerres incessantes, 
+                    des rébellions, des catastrophes naturelles et une terrible épidémie de peste qui décime l'empire.
+                </p>
+                <p>
+                    Malgré ces épreuves, il reste fidèle aux principes stoïciens. Il passe de nombreuses années sur le front, 
+                    aux côtés de ses soldats, dirigeant les campagnes contre les tribus germaniques et sarmates qui menacent 
+                    les frontières romaines le long du Danube. C'est pendant ces campagnes militaires, dans l'inconfort des 
+                    camps militaires, qu'il rédige ses fameuses "Méditations", réflexions personnelles qui n'étaient jamais 
+                    destinées à être publiées.
+                </p>
+
+                <div class="quote-box">
+                    "La vie d'un homme est ce que ses pensées en font."
+                    <br><em>— Marc Aurèle, Méditations, Livre IV</em>
+                </div>
+
+                <h3>L'Homme Derrière l'Empereur</h3>
+                <p>
+                    Marc Aurèle était un homme profondément humain. Son mariage avec Faustine la Jeune fut long et, selon 
+                    toutes les indications, heureux, malgré les rumeurs propagées par des historiens hostiles. Le couple 
+                    eut au moins treize enfants, bien que seuls six survécurent à l'enfance.
+                </p>
+                <p>
+                    En tant qu'empereur, il se distingua par sa clémence, sa justice et son dévouement au bien-être de ses 
+                    sujets. Il réforma le système judiciaire pour le rendre plus équitable, améliora les conditions des 
+                    esclaves et des femmes, et s'efforça de gouverner selon les principes de raison et de vertu plutôt que 
+                    par caprice ou ambition personnelle.
+                </p>
+                <p>
+                    Marc Aurèle mourut le 17 mars 180, probablement de la peste, près de Vindobona (l'actuelle Vienne). 
+                    Il avait passé les dernières années de sa vie à combattre sur les frontières, loin de Rome et du confort 
+                    impérial. Ses derniers mots, selon l'histoire, furent : "Allez vers le soleil levant; moi, je me couche."
+                </p>
+            </div>
+        </div>
+
+        <!-- SECTION PHILOSOPHIE -->
+        <div id="philosophie" class="section">
+            <div class="content-card">
+                <h2>La Philosophie Stoïcienne de Marc Aurèle</h2>
+                
+                <p>
+                    Marc Aurèle est considéré comme l'une des figures majeures du stoïcisme tardif, aux côtés d'Épictète 
+                    et de Sénèque. Sa philosophie, profondément ancrée dans la tradition stoïcienne, se caractérise par 
+                    son aspect pratique et personnel. Contrairement à beaucoup de philosophes qui enseignaient à des 
+                    disciples, les "Méditations" de Marc Aurèle sont des notes privées, des exercices spirituels qu'il 
+                    pratiquait pour lui-même.
+                </p>
+
+                <h3>Les Piliers du Stoïcisme selon Marc Aurèle</h3>
+
+                <div class="pillar-grid">
+                    <div class="pillar-card">
+                        <div class="pillar-title">La Dichotomie du Contrôle</div>
+                        <p>
+                            L'un des enseignements centraux : distinguer ce qui dépend de nous (nos pensées, jugements, 
+                            actions) de ce qui n'en dépend pas (événements extérieurs, actions d'autrui). La sagesse 
+                            consiste à concentrer nos efforts sur ce que nous pouvons contrôler.
+                        </p>
+                    </div>
+                    <div class="pillar-card">
+                        <div class="pillar-title">Vivre selon la Nature</div>
+                        <p>
+                            Pour les stoïciens, vivre selon la nature signifie vivre selon la raison, notre nature 
+                            humaine essentielle. C'est accepter l'ordre du cosmos et reconnaître notre place en son sein, 
+                            agir en harmonie avec l'ordre universel.
+                        </p>
+                    </div>
+                    <div class="pillar-card">
+                        <div class="pillar-title">La Vertu comme Seul Bien</div>
+                        <p>
+                            Marc Aurèle insiste sur le fait que la vertu (sagesse, justice, courage, tempérance) est 
+                            le seul véritable bien. La richesse, le pouvoir, même la santé sont des "indifférents" - 
+                            ils n'affectent pas réellement notre bonheur.
+                        </p>
+                    </div>
+                    <div class="pillar-card">
+                        <div class="pillar-title">L'Impermanence</div>
+                        <p>
+                            Une conscience aiguë de la nature éphémère de toutes choses. "Tout est éphémère, à la fois 
+                            celui qui se souvient et ce dont on se souvient." Cette prise de conscience doit nous 
+                            libérer de l'attachement excessif.
+                        </p>
+                    </div>
+                    <div class="pillar-card">
+                        <div class="pillar-title">L'Interconnexion Universelle</div>
+                        <p>
+                            Tous les êtres humains sont liés, parties d'un tout plus grand. "Ce qui est bon pour l'essaim 
+                            est bon pour l'abeille." Cette vision cosmopolite nous rappelle nos devoirs envers autrui.
+                        </p>
+                    </div>
+                    <div class="pillar-card">
+                        <div class="pillar-title">La Discipline de l'Esprit</div>
+                        <p>
+                            L'importance de l'examen quotidien de nos pensées et de nos jugements. Nos troubles ne 
+                            viennent pas des événements eux-mêmes, mais de nos jugements sur ces événements. Maîtriser 
+                            nos représentations mentales est la clé de la tranquillité.
+                        </p>
+                    </div>
+                </div>
+
+                <h3>Pratiques Stoïciennes Quotidiennes</h3>
+                <div class="meditation-item">
+                    <div class="meditation-number">PRATIQUE 1 : LA MÉDITATION MATINALE</div>
+                    <p>
+                        Chaque matin, Marc Aurèle recommandait de se préparer mentalement aux défis du jour. 
+                        "Dis-toi dès le matin : je rencontrerai aujourd'hui un importun, un ingrat, un insolent, 
+                        un fourbe, un envieux, un insociable." Cette préméditation des difficultés nous permet de 
+                        ne pas être pris au dépourvu et de répondre avec vertu plutôt que par réaction émotionnelle.
+                    </p>
+                </div>
+
+                <div class="meditation-item">
+                    <div class="meditation-number">PRATIQUE 2 : LA VUE D'EN HAUT</div>
+                    <p>
+                        Marc Aurèle pratiquait régulièrement ce qu'on appelle la "vue cosmique" ou "vue d'en haut". 
+                        Il s'imaginait regardant la Terre depuis l'espace, voyant l'insignifiance de nos préoccupations 
+                        quotidiennes dans l'immensité de l'univers. Cette perspective aide à relativiser nos problèmes 
+                        et à maintenir l'équanimité.
+                    </p>
+                </div>
+
+                <div class="meditation-item">
+                    <div class="meditation-number">PRATIQUE 3 : L'EXAMEN DE CONSCIENCE</div>
+                    <p>
+                        Le soir, les stoïciens pratiquaient l'examen de conscience, passant en revue les événements 
+                        du jour. Non pour se flageller, mais pour apprendre. "Qu'ai-je bien fait ? Qu'ai-je mal fait ? 
+                        Qu'ai-je omis de faire ?" Cette pratique favorise l'amélioration continue et la conscience de soi.
+                    </p>
+                </div>
+
+                <div class="quote-box">
+                    "Que la force me soit donnée de supporter ce qui ne peut être changé et le courage de changer ce 
+                    qui peut l'être, mais aussi la sagesse de distinguer l'un de l'autre."
+                    <br><em>— Principe stoïcien central</em>
+                </div>
+
+                <h3>Application Moderne du Stoïcisme</h3>
+                <p>
+                    La philosophie de Marc Aurèle reste étonnamment pertinente aujourd'hui. Dans un monde caractérisé 
+                    par l'incertitude, l'anxiété et la surcharge d'information, les principes stoïciens offrent des 
+                    outils pratiques pour gérer le stress, développer la résilience, cultiver des relations saines, 
+                    trouver un sens dans la vie quotidienne, et maintenir la perspective et l'équilibre émotionnel.
+                </p>
+            </div>
+        </div>
+
+        <!-- SECTION MÉDITATIONS -->
+        <div id="meditations" class="section">
+            <div class="content-card">
+                <h2>Les Méditations de Marc Aurèle</h2>
+                
+                <p>
+                    Les "Pensées pour moi-même" (ou "Méditations") sont l'œuvre la plus célèbre de Marc Aurèle. 
+                    Ce texte extraordinaire n'a jamais été destiné à la publication. Il s'agit de notes personnelles, 
+                    d'exercices spirituels qu'il pratiquait pour lui-même, probablement rédigés pendant les campagnes 
+                    militaires contre les tribus germaniques entre 170 et 180 apr. J.-C.
+                </p>
+
+                <div class="quote-box">
+                    "Ne te laisse pas emporter par l'imagination, mais viens en aide à ceux qui en ont besoin selon 
+                    tes moyens et leur mérite. S'ils souffrent de maux insignifiants, ne crois pas que ce soit là 
+                    une affaire grave."
+                </div>
+
+                <h3>Structure et Contenu</h3>
+                <p>
+                    L'œuvre est divisée en douze livres, chacun composé de réflexions de longueurs variables, allant 
+                    de quelques mots à plusieurs paragraphes. Le premier livre se distingue des autres : il s'agit 
+                    d'une liste de remerciements aux personnes qui ont influencé Marc Aurèle, montrant sa gratitude 
+                    et son humilité.
+                </p>
+
+                <h3>Passages Célèbres</h3>
+
+                <div class="meditation-item">
+                    <div class="meditation-number">SUR LA MAÎTRISE DE SOI</div>
+                    <p>
+                        "Tu as le pouvoir sur ton esprit, pas sur les événements extérieurs. Réalise cela, et tu 
+                        trouveras la force."
+                    </p>
+                    <p style="margin-top: 1rem;">
+                        Cette phrase résume peut-être le mieux toute la philosophie stoïcienne de Marc Aurèle. 
+                        Elle nous rappelle que notre pouvoir réside dans nos réactions, nos jugements et nos choix, 
+                        non dans le contrôle des circonstances extérieures.
+                    </p>
+                </div>
+
+                <div class="meditation-item">
+                    <div class="meditation-number">SUR L'IMPERMANENCE</div>
+                    <p>
+                        "Le temps est un fleuve, un torrent violent d'événements. À peine une chose apparaît-elle 
+                        à la vue qu'elle est emportée et qu'une autre prend sa place, et celle-ci aussi sera 
+                        emportée."
+                    </p>
+                    <p style="margin-top: 1rem;">
+                        Marc Aurèle revient constamment sur la nature éphémère de toutes choses. Cette conscience 
+                        de l'impermanence n'est pas une source de tristesse mais de libération - elle nous permet 
+                        de ne pas nous attacher excessivement aux choses passagères.
+                    </p>
+                </div>
+
+                <div class="meditation-item">
+                    <div class="meditation-number">SUR LE DEVOIR ET LA COMMUNAUTÉ</div>
+                    <p>
+                        "Ce qui n'est pas bon pour l'essaim n'est pas bon pour l'abeille."
+                    </p>
+                    <p style="margin-top: 1rem;">
+                        Cette métaphore illustre la vision stoïcienne de l'interconnexion humaine. Nous ne sommes 
+                        pas des individus isolés, mais des parties d'un tout plus grand. Notre bien-être est lié 
+                        à celui de la communauté.
+                    </p>
+                </div>
+
+                <h3>Influence et Pertinence Moderne</h3>
+                <p>
+                    Les "Méditations" ont connu une influence considérable à travers les siècles. Aujourd'hui, elles 
+                    sont lues par des millions de personnes à travers le monde - dirigeants d'entreprise, athlètes, 
+                    artistes, soldats, et individus ordinaires cherchant des conseils pour naviguer dans la complexité 
+                    de la vie moderne.
+                </p>
+
+                <div class="quote-box">
+                    "La vie est courte. Il ne reste qu'une chose à faire : vivre cette vie avec piété et justice."
+                </div>
+            </div>
+        </div>
+
+        <!-- SECTION LES 12 LIVRES -->
+        <div id="douze-livres" class="section">
+            <div class="content-card">
+                <h2>Les Douze Livres des Méditations</h2>
+                
+                <div class="books-intro">
+                    <h3>Guide de Lecture pour Aurelius Secundus</h3>
+                    <p>
+                        Les Méditations de Marc Aurèle sont composées de douze livres, écrits sans intention de publication. 
+                        Chaque livre contient des réflexions profondes sur la vie, la vertu, la nature humaine et l'univers. 
+                        Cliquez sur chaque livre pour découvrir ses passages les plus marquants et ses enseignements essentiels.
+                    </p>
+                </div>
+
+                <!-- LIVRE I -->
+                <div class="book-section">
+                    <div class="book-title" onclick="toggleBook('book1')">
+                        <span>LIVRE I : Les Dettes de Gratitude</span>
+                        <span class="book-toggle" id="toggle-book1">▼</span>
+                    </div>
+                    <div class="book-content" id="book1">
+                        <p>
+                            Le premier livre est unique dans sa structure. Marc Aurèle y énumère les qualités et les leçons 
+                            qu'il a apprises de différentes personnes qui ont influencé sa vie. C'est un exercice d'humilité 
+                            et de reconnaissance qui montre que même l'homme le plus puissant du monde reconnaît sa dette 
+                            envers les autres.
+                        </p>
+
+                        <div class="passage">
+                            <div class="passage-number">I.1 - De mon grand-père Verus</div>
+                            <div class="passage-text">
+                                "La bonté et la douceur inaltérable du caractère."
+                            </div>
+                        </div>
+
+                        <div class="passage">
+                            <div class="passage-number">I.7 - De Rusticus</div>
+                            <div class="passage-text">
+                                "L'idée de réformer mon caractère et de le discipliner ; de ne pas me laisser entraîner 
+                                vers l'ambition sophistique, ni à écrire sur des sujets théoriques, ni à prononcer de 
+                                petits discours édifiants."
+                            </div>
+                        </div>
+
+                        <div class="passage">
+                            <div class="passage-number">I.16 - De mon père adoptif (Antonin le Pieux)</div>
+                            <div class="passage-text">
+                                "La douceur, mais aussi la fermeté inébranlable dans les jugements bien pesés ; l'absence 
+                                de vanité à propos de ce qu'on appelle les honneurs ; l'amour du travail et la persévérance ; 
+                                la volonté d'écouter ceux qui avaient quelque chose à proposer pour l'intérêt commun."
+                            </div>
+                        </div>
+
+                        <div class="passage">
+                            <div class="passage-number">I.17 - Des dieux</div>
+                            <div class="passage-text">
+                                "D'avoir eu de bons grands-parents, de bons parents, une bonne sœur, de bons maîtres, 
+                                de bons familiers, des proches, des amis, presque tous bons ; de n'avoir offensé aucun 
+                                d'eux, bien que ma nature ait été telle que j'aurais pu, si l'occasion s'en était présentée, 
+                                faire quelque chose de ce genre."
+                            </div>
+                        </div>
+
+                        <h4>Enseignement clé du Livre I</h4>
+                        <p>
+                            Ce livre nous enseigne l'importance de la gratitude et de la reconnaissance. Marc Aurèle, 
+                            malgré sa position, reconnaît humblement tout ce qu'il doit aux autres. C'est un rappel que 
+                            nous sommes tous le produit de l'influence de ceux qui nous entourent, et que la reconnaissance 
+                            est une vertu fondamentale.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- LIVRE II -->
+                <div class="book-section">
+                    <div class="book-title" onclick="toggleBook('book2')">
+                        <span>LIVRE II : La Préparation Matinale</span>
+                        <span class="book-toggle" id="toggle-book2">▼</span>
+                    </div>
+                    <div class="book-content" id="book2">
+                        <p>
+                            Le deuxième livre, écrit pendant une campagne militaire, contient des réflexions sur la 
+                            préparation mentale et la nature de l'existence humaine. Marc Aurèle y développe l'idée 
+                            de commencer chaque journée avec les bonnes dispositions d'esprit.
+                        </p>
+
+                        <div class="passage">
+                            <div class="passage-number">II.1 - La méditation matinale</div>
+                            <div class="passage-text">
+                                "Dis-toi dès le matin : je rencontrerai aujourd'hui un importun, un ingrat, un insolent, 
+                                un fourbe, un envieux, un insociable. Tous ces défauts sont survenus en eux par ignorance 
+                                du bien et du mal."
+                            </div>
+                        </div>
+
+                        <div class="passage">
+                            <div class="passage-number">II.2 - Sur l'âme et le corps</div>
+                            <div class="passage-text">
+                                "Parmi les choses humaines, souviens-toi que tu es mortel, que tu as reçu une vie limitée. 
+                                Mais par tes pensées, tu peux t'élever à contempler l'éternité et le monde entier."
+                            </div>
+                        </div>
+
+                        <div class="passage">
+                            <div class="passage-number">II.5 - La brièveté de la vie</div>
+                            <div class="passage-text">
+                                "Bientôt tu seras cendre, ou squelette, et un nom, ou même plus un nom ; et le nom 
+                                n'est que bruit et écho. Les choses prisées dans la vie sont vides, pourries et 
+                                insignifiantes."
+                            </div>
+                        </div>
+
+                        <div class="passage">
+                            <div class="passage-number">II.17 - La vie humaine</div>
+                            <div class="passage-text">
+                                "La vie humaine : durée, un instant ; substance, fluide ; sensation, obscure ; 
+                                composition du corps entier, putrescible ; âme, un tourbillon ; fortune, imprévisible ; 
+                                renommée, indéterminée. En bref, tout ce qui est du corps est comme un fleuve, tout ce 
+                                qui est de l'âme, comme un rêve et une fumée."
+                            </div>
+                        </div>
+
+                        <h4>Enseignement clé du Livre II</h4>
+                        <p>
+                            Ce livre nous enseigne l'importance de la préparation mentale et de la conscience de notre 
+                            mortalité. En nous préparant mentalement aux difficultés et en gardant à l'esprit la brièveté 
+                            de la vie, nous pouvons maintenir notre équanimité face aux épreuves quotidiennes.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- LIVRE III -->
+                <div class="book-section">
+                    <div class="book-title" onclick="toggleBook('book3')">
+                        <span>LIVRE III : L'Impermanence et le Devoir</span>
+                        <span class="book-toggle" id="toggle-book3">▼</span>
+                    </div>
+                    <div class="book-content" id="book3">
+                        <p>
+                            Le troisième livre approfondit les thèmes de l'impermanence et du devoir. Marc Aurèle médite 
+                            sur la nature transitoire de la gloire et l'importance de remplir ses obligations avec intégrité.
+                        </p>
+
+                        <div class="passage">
+                            <div class="passage-number">III.1 - Sur la mémoire</div>
+                            <div class="passage-text">
+                                "Nous ne devons pas seulement considérer que notre vie se consume jour après jour et 
+                                qu'il nous en reste une part de moins en moins grande, mais nous devons aussi considérer 
+                                que, si nous vivons plus longtemps, il n'est pas certain que notre intelligence demeure 
+                                suffisante pour comprendre les choses."
+                            </div>
+                        </div>
+
+                        <div class="passage">
+                            <div class="passage-number">III.4 - La vanité de la gloire</div>
+                            <div class="passage-text">
+                                "Quelle est la valeur de l'approbation de ceux qui applaudissent, eux qui ne s'applaudissent 
+                                pas eux-mêmes ? Quel est le profit d'être loué par des langues qui s'entredéchirent ?"
+                            </div>
+                        </div>
+
+                        <div class="passage">
+                            <div class="passage-number">III.10 - Le cycle de la vie</div>
+                            <div class="passage-text">
+                                "Tout ce qui arrive, arrive justement ; tu le découvriras si tu observes soigneusement. 
+                                Je ne dis pas seulement 'selon l'ordre des choses', mais selon la justice, comme si 
+                                quelqu'un distribuait à chacun selon son mérite."
+                            </div>
+                        </div>
+
+                        <h4>Enseignement clé du Livre III</h4>
+                        <p>
+                            La vanité de chercher la gloire et l'importance de faire notre devoir sans attendre de 
+                            récompense ou de reconnaissance. Tout est impermanent, y compris notre réputation et notre 
+                            souvenir.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- LIVRE IV -->
+                <div class="book-section">
+                    <div class="book-title" onclick="toggleBook('book4')">
+                        <span>LIVRE IV : La Retraite Intérieure</span>
+                        <span class="book-toggle" id="toggle-book4">▼</span>
+                    </div>
+                    <div class="book-content" id="book4">
+                        <p>
+                            Le quatrième livre introduit le concept de "retraite intérieure" - l'idée que nous pouvons 
+                            trouver la paix en nous-mêmes, peu importe les circonstances extérieures.
+                        </p>
+
+                        <div class="passage">
+                            <div class="passage-number">IV.3 - La retraite intérieure</div>
+                            <div class="passage-text">
+                                "Les hommes recherchent des retraites pour eux-mêmes : à la campagne, au bord de la mer, 
+                                dans les montagnes. Toi aussi, tu as l'habitude de désirer ardemment de telles retraites. 
+                                Mais tout cela est de la plus grande vulgarité, puisqu'il t'est possible, à l'heure que 
+                                tu veux, de te retirer en toi-même."
+                            </div>
+                        </div>
+
+                        <div class="passage">
+                            <div class="passage-number">IV.7 - Écarter le mal</div>
+                            <div class="passage-text">
+                                "Écarte l'opinion, et tu es sauvé. Qui donc t'empêche de l'écarter ?"
+                            </div>
+                        </div>
+
+                        <div class="passage">
+                            <div class="passage-number">IV.49 - Tu as le pouvoir</div>
+                            <div class="passage-text">
+                                "Si tu es peiné par quelque chose d'extérieur, ce n'est pas la chose qui te trouble, 
+                                mais ton propre jugement à son sujet. Et il est en ton pouvoir d'effacer ce jugement 
+                                maintenant."
+                            </div>
+                        </div>
+
+                        <h4>Enseignement clé du Livre IV</h4>
+                        <p>
+                            La véritable tranquillité ne vient pas de changer les circonstances extérieures, mais de 
+                            cultiver la paix intérieure. Nous avons toujours accès à notre "citadelle intérieure", 
+                            un refuge de calme au milieu du chaos.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- LIVRE V -->
+                <div class="book-section">
+                    <div class="book-title" onclick="toggleBook('book5')">
+                        <span>LIVRE V : L'Action Vertueuse</span>
+                        <span class="book-toggle" id="toggle-book5">▼</span>
+                    </div>
+                    <div class="book-content" id="book5">
+                        <p>
+                            Le cinquième livre se concentre sur l'importance d'agir avec vertu et de se lever chaque 
+                            matin pour accomplir le travail d'un être humain.
+                        </p>
+
+                        <div class="passage">
+                            <div class="passage-number">V.1 - Se lever le matin</div>
+                            <div class="passage-text">
+                                "À l'aube, quand tu as du mal à te réveiller, aie cette pensée prête à l'esprit : 
+                                'Je me réveille pour faire le travail d'un être humain. Pourquoi serais-je mécontent 
+                                si je vais faire ce pour quoi je suis né et ce pour quoi j'ai été amené dans le monde ?'"
+                            </div>
+                        </div>
+
+                        <div class="passage">
+                            <div class="passage-number">V.16 - L'âme rationnelle</div>
+                            <div class="passage-text">
+                                "L'âme se fait une sphère de couleur vraie quand elle ne s'étend vers rien d'extérieur, 
+                                ne se replie sur rien d'intérieur, ne se contracte ni ne se dilate, mais qu'elle rayonne 
+                                d'une lumière par laquelle elle voit la vérité - la vérité de toutes choses et la vérité 
+                                en elle-même."
+                            </div>
+                        </div>
+
+                        <div class="passage">
+                            <div class="passage-number">V.20 - Vivre selon la nature</div>
+                            <div class="passage-text">
+                                "Ce qui n'est pas bon pour l'essaim n'est pas bon pour l'abeille."
+                            </div>
+                        </div>
+
+                        <h4>Enseignement clé du Livre V</h4>
+                        <p>
+                            Nous sommes nés pour agir et travailler avec les autres. Notre nature rationnelle nous 
+                            appelle à nous lever chaque jour et à accomplir notre devoir en tant qu'êtres humains et 
+                            membres de la communauté.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- LIVRE VI -->
+                <div class="book-section">
+                    <div class="book-title" onclick="toggleBook('book6')">
+                        <span>LIVRE VI : La Nature Universelle</span>
+                        <span class="book-toggle" id="toggle-book6">▼</span>
+                    </div>
+                    <div class="book-content" id="book6">
+                        <p>
+                            Le sixième livre explore notre place dans l'univers et notre connexion avec la nature 
+                            universelle. Marc Aurèle médite sur l'acceptation de ce qui arrive comme partie d'un 
+                            ordre cosmique plus grand.
+                        </p>
+
+                        <div class="passage">
+                            <div class="passage-number">VI.13 - Accepter l'inévitable</div>
+                            <div class="passage-text">
+                                "C'est folie de vouloir que les figues poussent en hiver. De même, c'est folie de 
+                                vouloir des enfants quand cela n'est plus possible."
+                            </div>
+                        </div>
+
+                        <div class="passage">
+                            <div class="passage-number">VI.30 - L'interconnexion</div>
+                            <div class="passage-text">
+                                "La pierre jetée en l'air n'a rien à perdre en retombant, ni rien à gagner en montant."
+                            </div>
+                        </div>
+
+                        <div class="passage">
+                            <div class="passage-number">VI.44 - Acceptation totale</div>
+                            <div class="passage-text">
+                                "Si tu es affligé par quelque chose d'extérieur, ce n'est pas cette chose qui te 
+                                trouble, mais ton jugement à son propos. Et il est en ton pouvoir d'effacer ce jugement 
+                                à tout moment."
+                            </div>
+                        </div>
+
+                        <h4>Enseignement clé du Livre VI</h4>
+                        <p>
+                            Accepter l'ordre naturel des choses et reconnaître que nous sommes partie intégrante d'un 
+                            tout plus grand. La résistance à la réalité crée la souffrance ; l'acceptation apporte la paix.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- LIVRE VII -->
+                <div class="book-section">
+                    <div class="book-title" onclick="toggleBook('book7')">
+                        <span>LIVRE VII : La Sagesse Pratique</span>
+                        <span class="book-toggle" id="toggle-book7">▼</span>
+                    </div>
+                    <div class="book-content" id="book7">
+                        <p>
+                            Le septième livre contient des conseils pratiques sur la façon de vivre selon les 
+                            principes stoïciens au quotidien. Marc Aurèle y traite de la gestion des émotions et 
+                            des relations avec autrui.
+                        </p>
+
+                        <div class="passage">
+                            <div class="passage-number">VII.2 - L'action parfaite</div>
+                            <div class="passage-text">
+                                "Quelle est donc l'action selon la nature de l'homme ? La bienveillance envers ses 
+                                semblables, le dédain des impressions des sens, le discernement des représentations 
+                                crédibles, la contemplation de la nature universelle et de tout ce qui se fait selon elle."
+                            </div>
+                        </div>
+
+                        <div class="passage">
+                            <div class="passage-number">VII.22 - Accepter la mort</div>
+                            <div class="passage-text">
+                                "C'est dans ta propre pensée que réside uniquement le pouvoir de te troubler. Supprime 
+                                ton jugement personnel sur ce qui te semble pénible, et tu es en parfaite sécurité."
+                            </div>
+                        </div>
+
+                        <div class="passage">
+                            <div class="passage-number">VII.54 - La bonté envers tous</div>
+                            <div class="passage-text">
+                                "Partout et à tout moment, il dépend de toi de te contenter pieusement de la conjoncture 
+                                présente, de te comporter avec justice envers les personnes présentes, et de t'appliquer 
+                                avec attention à l'impression présente pour qu'il ne s'y glisse rien de non compréhensible."
+                            </div>
+                        </div>
+
+                        <h4>Enseignement clé du Livre VII</h4>
+                        <p>
+                            Vivre selon la nature humaine signifie être bon envers les autres, maintenir notre raison 
+                            et accepter ce qui arrive avec grâce. La vertu est toujours à notre portée, peu importe 
+                            les circonstances.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- LIVRE VIII -->
+                <div class="book-section">
+                    <div class="book-title" onclick="toggleBook('book8')">
+                        <span>LIVRE VIII : La Contemplation</span>
+                        <span class="book-toggle" id="toggle-book8">▼</span>
+                    </div>
+                    <div class="book-content" id="book8">
+                        <p>
+                            Le huitième livre encourage la contemplation philosophique et l'analyse objective de la 
+                            nature des choses, nous invitant à voir au-delà des apparences.
+                        </p>
+
+                        <div class="passage">
+                            <div class="passage-number">VIII.32 - La vue d'en haut</div>
+                            <div class="passage-text">
+                                "Regarde les choses d'en haut : observe les milliers de troupeaux, les milliers de 
+                                cérémonies, toutes sortes de navigations par mer calme ou tempête, les variétés de 
+                                naissances, de vies ensemble, et de séparations."
+                            </div>
+                        </div>
+
+                        <div class="passage">
+                            <div class="passage-number">VIII.47 - La nature des choses</div>
+                            <div class="passage-text">
+                                "Pense constamment combien de médecins sont morts après avoir froncé bien souvent les 
+                                sourcils sur leurs malades ; combien d'astrologues après avoir prédit avec emphase la 
+                                mort des autres ; combien de philosophes après d'infinies discussions sur la mort ou 
+                                l'immortalité."
+                            </div>
+                        </div>
+
+                        <h4>Enseignement clé du Livre VIII</h4>
+                        <p>
+                            La perspective cosmique nous aide à voir nos préoccupations dans leur juste proportion. 
+                            Même les plus grands et les plus puissants finissent par disparaître, emportés par le 
+                            fleuve du temps.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- LIVRE IX -->
+                <div class="book-section">
+                    <div class="book-title" onclick="toggleBook('book9')">
+                        <span>LIVRE IX : L'Injustice et le Pardon</span>
+                        <span class="book-toggle" id="toggle-book9">▼</span>
+                    </div>
+                    <div class="book-content" id="book9">
+                        <p>
+                            Le neuvième livre traite de la façon de réagir à l'injustice et au mal. Marc Aurèle 
+                            explore le concept de pardon et la compréhension que ceux qui font le mal agissent par 
+                            ignorance.
+                        </p>
+
+                        <div class="passage">
+                            <div class="passage-number">IX.1 - Traiter l'injustice</div>
+                            <div class="passage-text">
+                                "Celui qui commet une injustice commet une impiété. Car la nature universelle ayant 
+                                fait les êtres raisonnables les uns pour les autres, pour qu'ils s'entraident selon 
+                                leur mérite, mais ne se nuisent en aucune façon, celui qui transgresse sa volonté 
+                                commet manifestement une impiété envers la plus vénérable des divinités."
+                            </div>
+                        </div>
+
+                        <div class="passage">
+                            <div class="passage-number">IX.42 - La meilleure revanche</div>
+                            <div class="passage-text">
+                                "La meilleure façon de se venger d'eux, c'est de ne pas leur ressembler."
+                            </div>
+                        </div>
+
+                        <h4>Enseignement clé du Livre IX</h4>
+                        <p>
+                            Face à l'injustice, la meilleure réponse n'est pas la vengeance mais le maintien de notre 
+                            propre vertu. Ne pas devenir comme ceux qui nous font du tort est la véritable victoire.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- LIVRE X -->
+                <div class="book-section">
+                    <div class="book-title" onclick="toggleBook('book10')">
+                        <span>LIVRE X : L'Âme Rationnelle</span>
+                        <span class="book-toggle" id="toggle-book10">▼</span>
+                    </div>
+                    <div class="book-content" id="book10">
+                        <p>
+                            Le dixième livre se concentre sur la nature de l'âme rationnelle et sur comment nous 
+                            devons utiliser notre raison pour naviguer dans la vie.
+                        </p>
+
+                        <div class="passage">
+                            <div class="passage-number">X.1 - L'âme et ses jugements</div>
+                            <div class="passage-text">
+                                "Ô mon âme, auras-tu enfin de la bonté, de la simplicité, de l'unité, serastu nue, 
+                                plus visible que le corps qui t'enveloppe ? Goûteras-tu enfin la disposition à aimer 
+                                et à chérir ? Seras-tu enfin comblée, sans désir, sans regret de quoi que ce soit ?"
+                            </div>
+                        </div>
+
+                        <div class="passage">
+                            <div class="passage-number">X.16 - Observer sans juger</div>
+                            <div class="passage-text">
+                                "Observe constamment que tout naît du changement, et habitue-toi à penser qu'il n'est 
+                                rien que la nature universelle aime autant que de changer les choses existantes et 
+                                d'en faire de nouvelles et semblables."
+                            </div>
+                        </div>
+
+                        <h4>Enseignement clé du Livre X</h4>
+                        <p>
+                            L'âme rationnelle est notre guide le plus fiable. En cultivant la simplicité, la bonté et 
+                            la raison, nous pouvons vivre en harmonie avec la nature universelle.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- LIVRE XI -->
+                <div class="book-section">
+                    <div class="book-title" onclick="toggleBook('book11')">
+                        <span>LIVRE XI : L'Âme Gouvernante</span>
+                        <span class="book-toggle" id="toggle-book11">▼</span>
+                    </div>
+                    <div class="book-content" id="book11">
+                        <p>
+                            Le onzième livre explore le concept de l'âme gouvernante (le "hegemonikon" en grec) - 
+                            la partie rationnelle de l'âme qui doit diriger toutes nos actions.
+                        </p>
+
+                        <div class="passage">
+                            <div class="passage-number">XI.1 - Propriétés de l'âme rationnelle</div>
+                            <div class="passage-text">
+                                "Les propriétés de l'âme rationnelle : elle se voit elle-même, elle se façonne 
+                                elle-même, elle fait d'elle-même ce qu'elle veut ; elle récolte elle-même le fruit 
+                                qu'elle porte."
+                            </div>
+                        </div>
+
+                        <div class="passage">
+                            <div class="passage-number">XI.18 - Les trois relations</div>
+                            <div class="passage-text">
+                                "Trois relations : l'une avec le corps qui nous enveloppe, l'autre avec la cause 
+                                divine d'où proviennent toutes choses pour tous, et la troisième avec ceux qui vivent 
+                                avec nous."
+                            </div>
+                        </div>
+
+                        <h4>Enseignement clé du Livre XI</h4>
+                        <p>
+                            L'âme gouvernante a le pouvoir de se façonner elle-même et de diriger notre vie. En 
+                            cultivant notre raison et en maintenant de bonnes relations avec notre corps, le divin 
+                            et nos semblables, nous vivons bien.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- LIVRE XII -->
+                <div class="book-section">
+                    <div class="book-title" onclick="toggleBook('book12')">
+                        <span>LIVRE XII : Réflexions Finales</span>
+                        <span class="book-toggle" id="toggle-book12">▼</span>
+                    </div>
+                    <div class="book-content" id="book12">
+                        <p>
+                            Le douzième et dernier livre contient les réflexions finales de Marc Aurèle, synthétisant 
+                            les thèmes des livres précédents et offrant des méditations ultimes sur la vie et la mort.
+                        </p>
+
+                        <div class="passage">
+                            <div class="passage-number">XII.1 - Tout ce que tu désires</div>
+                            <div class="passage-text">
+                                "Tout ce que tu peux désirer atteindre par un détour, tu peux l'avoir maintenant, 
+                                si tu ne te le refuses pas à toi-même. C'est-à-dire, si tu abandonnes tout le passé, 
+                                si tu confies l'avenir à la Providence, et si tu diriges le présent seulement vers 
+                                la piété et la justice."
+                            </div>
+                        </div>
+
+                        <div class="passage">
+                            <div class="passage-number">XII.3 - Ne perds pas de temps</div>
+                            <div class="passage-text">
+                                "Que reste-t-il donc ? Qu'une seule chose : une philosophie. Et celle-ci consiste 
+                                à conserver intact et sans outrage le dieu intérieur, supérieur au plaisir et à la 
+                                douleur."
+                            </div>
+                        </div>
+
+                        <div class="passage">
+                            <div class="passage-number">XII.26 - Attends la mort avec sérénité</div>
+                            <div class="passage-text">
+                                "L'homme qui fuit son maître est un fugitif. Or la loi est notre maître ; celui qui 
+                                transgresse la loi est donc un fugitif. De même celui qui s'afflige, s'irrite ou a 
+                                peur, refuse quelque chose de ce qui arrive, est arrivé, ou arrivera par ordre de 
+                                celui qui gouverne l'univers."
+                            </div>
+                        </div>
+
+                        <div class="passage">
+                            <div class="passage-number">XII.36 - Pensée finale</div>
+                            <div class="passage-text">
+                                "Ô homme, tu as été citoyen dans cette grande Cité ; que t'importe que ce soit pour 
+                                cinq ans ou pour trois ? Car ce qui est conforme aux lois est équitable pour tous. 
+                                Où est donc le mal, si ce n'est un tyran ni un juge injuste qui te renvoie de la 
+                                Cité, mais la nature elle-même qui t'y a introduit ?"
+                            </div>
+                        </div>
+
+                        <h4>Enseignement clé du Livre XII</h4>
+                        <p>
+                            Le livre final nous rappelle que le moment présent est tout ce que nous avons vraiment. 
+                            Nous devons vivre maintenant, avec vertu et en accord avec la nature, acceptant la mort 
+                            comme partie naturelle de la vie. La philosophie stoïcienne n'est pas une théorie abstraite 
+                            mais un mode de vie pratique à appliquer à chaque instant.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="quote-box" style="margin-top: 3rem;">
+                    "Les douze livres forment un voyage philosophique complet. Chacun offre des enseignements uniques, 
+                    mais ensemble, ils créent une vision cohérente de comment vivre une vie de sagesse, de vertu et 
+                    de tranquillité. Pour Aurelius Secundus, que ces mots écrits il y a près de 2000 ans continuent 
+                    d'illuminer le chemin vers une vie meilleure."
+                </div>
+            </div>
+        </div>
+
+        <!-- SECTION HÉRITAGE -->
+        <div id="heritage" class="section">
+            <div class="content-card">
+                <h2>L'Héritage de Marc Aurèle</h2>
+                
+                <p>
+                    Près de deux millénaires après sa mort, Marc Aurèle continue d'exercer une influence profonde 
+                    sur la pensée occidentale et mondiale. Son héritage est multiple : historique, philosophique, 
+                    et pratique.
+                </p>
+
+                <h3>Le Dernier des "Cinq Bons Empereurs"</h3>
+                <p>
+                    Marc Aurèle est traditionnellement considéré comme le dernier des "Cinq Bons Empereurs" de Rome, 
+                    une période de stabilité et de prospérité relative qui s'étend de 96 à 180 apr. J.-C. Avec sa 
+                    mort commence une période de déclin graduel de l'Empire romain qui mènera, trois siècles plus tard, 
+                    à la chute de Rome.
+                </p>
+
+                <h3>Influence Philosophique</h3>
+                <div class="pillar-grid">
+                    <div class="pillar-card">
+                        <div class="pillar-title">Renaissance Stoïcienne Moderne</div>
+                        <p>
+                            Au XXIe siècle, le stoïcisme connaît une renaissance remarquable, largement alimentée 
+                            par les écrits de Marc Aurèle. Des millions de personnes se tournent vers sa philosophie 
+                            pour trouver des réponses aux défis de la vie moderne.
+                        </p>
+                    </div>
+                    <div class="pillar-card">
+                        <div class="pillar-title">Thérapie Cognitive-Comportementale</div>
+                        <p>
+                            Les principes stoïciens ont directement influencé le développement de la thérapie 
+                            cognitive-comportementale (TCC). L'idée que nos pensées influencent nos émotions est 
+                            fondamentale dans les deux approches.
+                        </p>
+                    </div>
+                    <div class="pillar-card">
+                        <div class="pillar-title">Leadership et Management</div>
+                        <p>
+                            Les "Méditations" sont devenues un texte de référence pour les leaders du monde entier. 
+                            Les principes de Marc Aurèle sur le leadership, le devoir, et la gestion de soi résonnent 
+                            particulièrement dans le monde des affaires et de la politique contemporaine.
+                        </p>
+                    </div>
+                    <div class="pillar-card">
+                        <div class="pillar-title">Développement Personnel</div>
+                        <p>
+                            L'approche de Marc Aurèle sur l'amélioration de soi et l'examen de conscience quotidien 
+                            a influencé d'innombrables méthodes de développement personnel. Son accent sur la 
+                            discipline mentale et l'autoréflexion reste pertinent aujourd'hui.
+                        </p>
+                    </div>
+                </div>
+
+                <h3>Un Message pour Notre Époque</h3>
+                <p>
+                    Dans un monde caractérisé par l'incertitude, l'anxiété et la division, Marc Aurèle nous rappelle 
+                    les vérités fondamentales : nous contrôlons nos pensées et nos réactions, nous sommes tous 
+                    interconnectés, la vertu est le seul véritable bien, et tout est éphémère.
+                </p>
+                <p>
+                    Son héritage n'est pas seulement un ensemble d'idées philosophiques, mais un modèle de vie - 
+                    comment rester bon, juste et sage même dans les circonstances les plus difficiles. C'est peut-être 
+                    cela, plus que tout autre chose, qui explique pourquoi cet empereur philosophe continue de nous 
+                    inspirer presque deux mille ans après sa mort.
+                </p>
+
+                <div class="quote-box">
+                    "Pour Aurelius Secundus et tous ceux qui cherchent la sagesse : que les enseignements de Marc Aurèle 
+                    vous guident sur le chemin de la vertu, de la tranquillité et d'une vie bien vécue."
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>Marc Aurèle (121-180 apr. J.-C.) • Empereur et Philosophe Stoïcien</p>
+        <p style="margin-top: 0.5rem; font-size: 0.9rem; opacity: 0.8;">
+            "Pense souvent à la rapidité avec laquelle les choses qui existent et qui viennent à l'existence 
+            passent et disparaissent."
+        </p>
+        <p style="margin-top: 1rem; font-size: 0.85rem;">
+            ✨ Plateforme créée pour Aurelius Secundus - Né le 28 avril ✨
+        </p>
+    </footer>
+
+    <script>
+        function showSection(sectionId) {
+            // Masquer toutes les sections
+            const sections = document.querySelectorAll('.section');
+            sections.forEach(section => {
+                section.classList.remove('active');
+            });
+
+            // Désactiver tous les boutons
+            const buttons = document.querySelectorAll('.nav-btn');
+            buttons.forEach(button => {
+                button.classList.remove('active');
+            });
+
+            // Afficher la section sélectionnée
+            document.getElementById(sectionId).classList.add('active');
+
+            // Activer le bouton correspondant
+            event.target.classList.add('active');
+
+            // Faire défiler vers le haut
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function toggleBook(bookId) {
+            const bookContent = document.getElementById(bookId);
+            const toggle = document.getElementById('toggle-' + bookId);
+            
+            if (bookContent.classList.contains('open')) {
+                bookContent.classList.remove('open');
+                toggle.classList.remove('open');
+            } else {
+                bookContent.classList.add('open');
+                toggle.classList.add('open');
+            }
+        }
+    </script>
+</body>
+</html>
