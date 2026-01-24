@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Le Manuel d'Épictète - Enchiridion</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Garamond', 'Georgia', serif;
+            line-height: 1.8;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: #e0e0e0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 50px;
+            border-bottom: 2px solid #d4af37;
+            padding-bottom: 30px;
+        }
+
+        h1 {
+            font-size: 2.8em;
+            color: #d4af37;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .subtitle {
+            font-size: 1.3em;
+            color: #b8860b;
+            font-style: italic;
+            margin-bottom: 10px;
+        }
+
+        .intro {
+            background: rgba(212, 175, 55, 0.1);
+            border-left: 4px solid #d4af37;
+            padding: 20px;
+            margin: 30px 0;
+            border-radius: 8px;
+        }
+
+        .intro p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        .chapter {
+            margin: 40px 0;
+            padding: 25px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 12px;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        .chapter-title {
+            font-size: 1.5em;
+            color: #d4af37;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .chapter-number {
+            display: inline-block;
+            background: #d4af37;
+            color: #1a1a2e;
+            padding: 5px 15px;
+            border-radius: 20px;
+            margin-right: 10px;
+            font-weight: bold;
+        }
+
+        .paragraph {
+            margin-bottom: 15px;
+            text-align: justify;
+            text-indent: 30px;
+        }
+
+        .quote {
+            font-style: italic;
+            color: #b8860b;
+            border-left: 3px solid #d4af37;
+            padding-left: 20px;
+            margin: 20px 0;
+        }
+
+        .nav-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 2px solid #d4af37;
+        }
+
+        .btn {
+            background: #d4af37;
+            color: #1a1a2e;
+            padding: 12px 30px;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+
+        .btn:hover {
+            background: #b8860b;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.4);
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            padding-top: 30px;
+            border-top: 1px solid rgba(212, 175, 55, 0.3);
+            color: #888;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>LE MANUEL D'ÉPICTÈTE</h1>
+            <p class="subtitle">Enchiridion - Ἐγχειρίδιον Ἐπικτήτου</p>
+            <p style="color: #888; font-size: 0.95em; margin-top: 15px;">
+                Compilation des enseignements d'Épictète (50-130 ap. J.-C.)<br>
+                par son disciple Arrien
+            </p>
+        </header>
+
+        <div class="intro">
+            <h2 style="color: #d4af37; margin-bottom: 15px;">À propos de ce texte</h2>
+            <p>Le Manuel d'Épictète est l'un des textes fondamentaux du stoïcisme, aux côtés des <em>Méditations</em> de Marc Aurèle. Compilé par Arrien vers l'an 125, il résume l'enseignement oral d'Épictète, ancien esclave devenu l'un des plus grands philosophes stoïciens.</p>
+            
+            <p>Marc Aurèle lui-même reconnaît dans ses <em>Méditations</em> avoir découvert les enseignements d'Épictète grâce à son maître Junius Rusticus, qui lui fit lire les "Commentaires d'Épictète".</p>
+            
+            <p><strong>Principe central :</strong> La distinction fondamentale entre ce qui dépend de nous (nos pensées, opinions, désirs) et ce qui n'en dépend pas (le corps, les biens, la réputation). La liberté et le bonheur résident dans la maîtrise parfaite de ce qui dépend de nous.</p>
+        </div>
+
+        <!-- CHAPITRE I -->
+        <div class="chapter">
+            <h2 class="chapter-title">
+                <span class="chapter-number">I</span>
+                Distinction entre ce qui dépend de nous et ce qui n'en dépend pas
+            </h2>
+            
+            <p class="paragraph">
+                Parmi les choses, les unes dépendent de nous les autres n'en dépendent pas. Celles qui dépendent de nous, c'est l'opinion, le vouloir, le désir, l'aversion : en un mot tout ce qui est notre œuvre. Celles qui ne dépendent pas de nous, c'est le corps, les biens, la réputation, les dignités : en un mot tout ce qui n'est pas notre œuvre.
+            </p>
+            
+            <p class="paragraph">
+                Et les choses qui dépendent de nous sont par nature libres ; nul ne peut les empêcher, rien ne peut les entraver ; mais celles qui ne dépendent pas de nous sont impuissantes, esclaves, sujettes à empêchement, étrangères à nous.
+            </p>
+            
+            <p class="paragraph">
+                Souviens-toi donc que, si tu crois libres ces choses qui de leur nature sont esclaves, et propres à toi celles qui sont étrangères, tu seras entravé, affligé, troublé, tu accuseras dieux et hommes. Mais si tu crois tien cela seul qui est tien, et étranger ce qui en effet t'est étranger, nul ne te forcera jamais à faire une chose, nul ne t'en empêchera ; tu ne te plaindras de personne, tu n'accuseras personne ; tu ne feras pas involontairement une seule action ; personne ne te nuira, et d'ennemi, tu n'en auras point, car tu ne pourras pas même souffrir rien de nuisible.
+            </p>
+            
+            <p class="paragraph">
+                Aspirant donc à de si grandes choses, souviens-toi que ce n'est pas avec une ardeur médiocre qu'il faut t'y appliquer : parmi les objets étrangers, tu dois pour jamais dire adieu aux uns, et pour le présent ajourner les autres. Car, si tu veux avoir en même temps et les vrais biens et les dignités ou les richesses, peut-être n'obtiendras-tu même pas ces dernières pour avoir désiré les autres ; mais à coup sûr tu n'obtiendras pas les biens qui donnent seuls liberté et bonheur.
+            </p>
+            
+            <p class="paragraph">
+                Aussitôt donc, devant toute imagination pénible, exerce-toi à dire : Tu es imagination et apparence, nullement l'objet que tu parais être. — Ensuite sonde-la, et juge-la avec les règles que tu possèdes : la première et la principale, c'est de voir s'il s'agit des choses qui dépendent de nous ou de celles qui n'en dépendent pas. S'agit-il de ces dernières, sois prêt à dire : Il n'y a rien là qui me regarde, moi.
+            </p>
+        </div>
+
+        <!-- CHAPITRE V -->
+        <div class="chapter">
+            <h2 class="chapter-title">
+                <span class="chapter-number">V</span>
+                Ce qui seul peut nous troubler, ce sont nos opinions
+            </h2>
+            
+            <p class="paragraph">
+                Ce qui trouble les hommes, ce ne sont pas les choses, mais leurs opinions sur les choses. Par exemple, la mort n'est rien de terrible, car Socrate aussi l'aurait trouvée terrible ; mais notre opinion sur la mort, qui nous la fait regarder comme terrible, voilà ce qui est terrible.
+            </p>
+            
+            <p class="paragraph">
+                Lors donc que nous sommes entravés, ou troublés, ou affligés, n'accusons jamais autrui, mais nous-mêmes, c'est-à-dire nos opinions. Œuvre d'ignorant, que d'accuser les autres de ses propres maux ; l'homme qui commence à s'instruire s'accuse lui-même ; l'homme instruit, ni les autres ni soi.
+            </p>
+        </div>
+
+        <!-- CHAPITRE VIII -->
+        <div class="chapter">
+            <h2 class="chapter-title">
+                <span class="chapter-number">VIII</span>
+                Savoir céder à la nécessité, c'est être libre
+            </h2>
+            
+            <p class="paragraph">
+                Ne demande pas que ce qui arrive arrive comme tu le veux, mais veux ce qui arrive comme il arrive, et tu couleras une vie heureuse.
+            </p>
+        </div>
+
+        <!-- CHAPITRE XI -->
+        <div class="chapter">
+            <h2 class="chapter-title">
+                <span class="chapter-number">XI</span>
+                Perdre et rendre
+            </h2>
+            
+            <p class="paragraph">
+                Sur quoi que ce soit, ne dis jamais : J'ai perdu cela ; mais : Je l'ai rendu. Ton fils est mort ? tu l'as rendu. Ta femme est morte ? tu l'as rendue. — On m'a pris ma terre. — Encore une chose que tu as rendue. — Mais c'est un méchant qui me l'a prise. — Que t'importe par qui celui qui te l'a donnée te l'a redemandée ? Tant qu'il te la laisse, uses-en comme d'une chose étrangère, comme usent d'une hôtellerie ceux qui passent.
+            </p>
+        </div>
+
+        <!-- CHAPITRE XV -->
+        <div class="chapter">
+            <h2 class="chapter-title">
+                <span class="chapter-number">XV</span>
+                La vie comparée à un banquet
+            </h2>
+            
+            <p class="paragraph">
+                Souviens-toi que tu dois te conduire dans la vie comme dans un banquet. Un plat qui fait le tour de la table vient-il à toi ? étendant la main, prends-le avec décence. Passe-t-il au delà ? ne le retiens point. Il ne vient pas encore ? N'étends pas au loin ton désir, mais attends que le plat arrive de ton côté. Uses-en ainsi avec des enfants, ainsi avec une femme, ainsi avec les dignités, ainsi avec les richesses, et tu seras un jour un convive digne des dieux.
+            </p>
+            
+            <p class="paragraph">
+                Si même tu ne prends pas ce qu'on t'offre, mais le dédaignes, alors, non-seulement tu seras le convive des dieux, mais leur collègue. Ainsi faisaient et Diogène et Héraclite et ceux qui leur ressemblaient : ils étaient divins et à bon droit passaient pour tels.
+            </p>
+        </div>
+
+        <!-- CHAPITRE XVII -->
+        <div class="chapter">
+            <h2 class="chapter-title">
+                <span class="chapter-number">XVII</span>
+                La vie humaine comparée à un théâtre
+            </h2>
+            
+            <p class="paragraph">
+                Souviens-toi que tu es acteur dans une comédie, celle qui plaît au maître : s'il la veut longue, joue-la longue ; si courte, joue-la courte : s'il veut que tu joues le rôle d'un pauvre, joue-le avec grâce ; de même si c'est celui d'un boiteux, d'un magistrat, d'un plébéien. Car c'est ton fait de bien jouer le rôle qui t'est donné ; mais le choisir, c'est le fait d'un autre.
+            </p>
+        </div>
+
+        <!-- CHAPITRE XXI -->
+        <div class="chapter">
+            <h2 class="chapter-title">
+                <span class="chapter-number">XXI</span>
+                Ce que nous devons avoir sans cesse devant les yeux
+            </h2>
+            
+            <p class="paragraph">
+                Que la mort, et l'exil, et toutes les choses qui semblent terribles soient chaque jour devant tes yeux, surtout la mort ; et jamais tu ne penseras rien de bas, jamais tu ne désireras rien avec excès.
+            </p>
+        </div>
+
+        <!-- CHAPITRE XXIX -->
+        <div class="chapter">
+            <h2 class="chapter-title">
+                <span class="chapter-number">XXIX</span>
+                Comment il faut examiner une action avant de l'entreprendre
+            </h2>
+            
+            <p class="paragraph">
+                Examine d'abord les antécédents et les conséquents de chaque action ; ensuite, mets-toi à l'œuvre. Sinon, tu partiras d'abord avec ardeur, sans songer aux suites, et plus tard, quand se montreront les pas difficiles, tu te retireras honteusement.
+            </p>
+            
+            <p class="paragraph">
+                Tu veux vaincre à Olympie ? Et moi aussi, par les dieux ! car c'est une jolie chose. Mais examine ce qui précède et ce qui suit l'entreprise ; après cela mets-toi à l'œuvre. Il te faut observer la discipline, te soumettre au régime, t'abstenir de friandises, t'exercer forcément à une heure fixée, par le chaud, par le froid ; ne boire ni eau fraîche ni vin à l'aventure ; en un mot, comme à un médecin te livrer au maître d'exercices.
+            </p>
+        </div>
+
+        <!-- CHAPITRE XLIII -->
+        <div class="chapter">
+            <h2 class="chapter-title">
+                <span class="chapter-number">XLIII</span>
+                Les deux anses
+            </h2>
+            
+            <p class="paragraph">
+                Chaque chose a deux anses : par l'une elle est facile à porter ; par l'autre, impossible. Ton frère te fait-il une injustice, ne prends pas la chose par le côté de l'injustice : car c'est l'anse par où on ne saurait la porter ; mais plutôt prends-la par ce côté : c'est un frère, un homme nourri avec toi ; et tu prendras la chose par où elle est supportable.
+            </p>
+        </div>
+
+        <!-- CHAPITRE LI -->
+        <div class="chapter">
+            <h2 class="chapter-title">
+                <span class="chapter-number">LI</span>
+                Pratique et théorie
+            </h2>
+            
+            <p class="paragraph">
+                Jusques à quand tarderas-tu à te juger toi-même digne de réaliser le meilleur, et à ne plus transgresser en rien ce que te prescrit la raison ? Tu as reçu les principes que tu devais approuver, et tu les as approuvés ; quel maître attends-tu donc encore, pour rejeter sur lui le soin de te redresser, toi ? Tu n'es plus enfant, mais déjà homme fait.
+            </p>
+            
+            <p class="paragraph">
+                Déjà donc juge-toi digne de vivre comme un homme fait et qui avance dans la sagesse : que tout ce qui te paraît le meilleur soit pour toi une loi inviolable. S'offre-t-il quelque labeur ou quelque plaisir, la gloire ou l'infamie ? souviens-toi que c'est maintenant le combat, que voici les jeux Olympiques, et qu'il n'est plus permis de reculer : en un seul jour et en une seule affaire, ta sagesse naissante est perdue ou sauvée.
+            </p>
+            
+            <p class="paragraph">
+                C'est ainsi que Socrate devint parfait, ne s'attachant à rien, dans toutes les choses qui s'offraient, qu'à la raison. Et toi, bien que tu ne sois pas encore Socrate, tu dois pourtant vivre comme quelqu'un qui veut le devenir.
+            </p>
+        </div>
+
+        <!-- CHAPITRE LIII -->
+        <div class="chapter">
+            <h2 class="chapter-title">
+                <span class="chapter-number">LIII</span>
+                Sentences diverses
+            </h2>
+            
+            <p class="paragraph">En toute occasion aie présentes à l'esprit ces pensées :</p>
+            
+            <div class="quote">
+                <p>Conduis-moi, Jupiter, et toi, Destinée,<br>
+                En quelque lieu que vous ayez fixé ma place,<br>
+                Je vous suivrai sans hésitation ; si je refusais,<br>
+                Je serais coupable, et je ne vous en suivrais pas moins.</p>
+            </div>
+            
+            <div class="quote">
+                <p>« Quiconque sait céder à la nécessité,<br>
+                Nous le tenons pour sage et pour savant dans les choses divines. »</p>
+            </div>
+            
+            <div class="quote">
+                <p>« Ô Criton, s'il plaît ainsi aux dieux, qu'il en soit ainsi ! »</p>
+            </div>
+            
+            <div class="quote">
+                <p>« Anytus et Mélitus peuvent me tuer, non me nuire. »</p>
+            </div>
+        </div>
+
+        <div class="nav-buttons">
+            <a href="index.html" class="btn">← Retour à l'accueil</a>
+            <a href="meditations.html" class="btn">Méditations de Marc Aurèle →</a>
+        </div>
+
+        <footer>
+            <p>Traduction française : Jean-Marie Guyau (1875)</p>
+            <p>Plateforme dédiée à Marc Aurèle et au Stoïcisme</p>
+            <p style="margin-top: 10px; font-style: italic;">"Tout ce qui est en accord avec toi, ô Monde, est en accord avec moi." - Marc Aurèle</p>
+        </footer>
+    </div>
+</body>
+</html>
