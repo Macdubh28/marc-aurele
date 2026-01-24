@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Marc Aurèle - Les 12 Livres Complets</title>
+    <title>Plateforme d'Aurelius Secundus - Stoïcisme</title>
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="theme-color" content="#2c3e50">
     <style>
@@ -126,6 +126,51 @@
         }
         .toggle { font-size: 1.2rem; transition: transform 0.3s; }
         .toggle.open { transform: rotate(180deg); }
+        
+        /* Styles pour la section Épictète */
+        .philosopher-card {
+            background: linear-gradient(135deg, rgba(139, 115, 85, 0.1), rgba(201, 169, 97, 0.1));
+            border: 2px solid var(--accent);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .philosopher-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+        .philosopher-title {
+            font-size: 1.8rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        .philosopher-icon {
+            font-size: 2.5rem;
+        }
+        .philosopher-desc {
+            color: var(--text);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+        .read-btn {
+            display: inline-block;
+            background: var(--secondary);
+            color: var(--white);
+            padding: 0.8rem 2rem;
+            border-radius: 25px;
+            text-decoration: none;
+            transition: all 0.3s;
+            font-weight: bold;
+        }
+        .read-btn:hover {
+            background: var(--primary);
+            transform: translateX(5px);
+        }
+        
         footer {
             background: var(--primary);
             color: var(--white);
@@ -137,36 +182,67 @@
 </head>
 <body>
     <header>
-        <h1>MARC AURÈLE</h1>
-        <p class="subtitle">Empereur philosophe • 121-180 après J.-C.</p>
+        <h1>PHILOSOPHIE STOÏCIENNE</h1>
+        <p class="subtitle">Marc Aurèle • Épictète • Sagesse Antique</p>
         <div class="badge">✨ Plateforme d'Aurelius Secundus ✨</div>
     </header>
 
     <nav>
-        <button class="nav-btn active" onclick="showSection('intro')">Introduction</button>
-        <button class="nav-btn" onclick="showSection('livres')">Les 12 Livres</button>
+        <button class="nav-btn active" onclick="showSection('intro')">Accueil</button>
+        <button class="nav-btn" onclick="showSection('marc-aurele')">Marc Aurèle</button>
+        <button class="nav-btn" onclick="showSection('epictete')">Épictète</button>
     </nav>
 
     <div class="container">
+        <!-- SECTION ACCUEIL -->
         <div id="intro" class="section active">
             <div class="card">
-                <h2>Bienvenue dans les Méditations Complètes</h2>
+                <h2>Bienvenue dans la Sagesse Stoïcienne</h2>
                 <div class="quote">
-                    "Tu as le pouvoir sur ton esprit, pas sur les événements extérieurs. Réalise cela, et tu trouveras la force."
-                    <br><em>— Marc Aurèle</em>
+                    "La philosophie stoïcienne nous enseigne à distinguer ce qui dépend de nous de ce qui n'en dépend pas, et à trouver la paix intérieure dans cette acceptation."
                 </div>
                 <p>
-                    Cette version enrichie contient plus de <strong>150 passages essentiels</strong> des douze livres des Méditations. 
-                    Chaque livre présente 10-15 passages majeurs, soigneusement sélectionnés pour leur profondeur philosophique.
+                    Cette plateforme rassemble les enseignements fondamentaux du <strong>stoïcisme romain</strong>, à travers deux de ses plus grands représentants : <strong>Marc Aurèle</strong>, empereur-philosophe, et <strong>Épictète</strong>, esclave devenu maître de sagesse.
                 </p>
                 <p style="margin-top: 1rem;">
-                    <strong>Comment utiliser :</strong> Cliquez sur "Les 12 Livres", puis sur chaque livre pour le déplier. 
-                    Prenez votre temps, méditez sur chaque passage. Cette plateforme est votre compagnon stoïcien quotidien.
+                    <strong>Contenu disponible :</strong>
                 </p>
+                <ul style="margin-left: 2rem; margin-top: 0.5rem;">
+                    <li><strong>Les 12 Livres des Méditations</strong> de Marc Aurèle (150+ passages essentiels)</li>
+                    <li><strong>Le Manuel d'Épictète</strong> (Enchiridion) - Les principes fondamentaux du stoïcisme</li>
+                </ul>
+            </div>
+
+            <!-- Cartes de navigation -->
+            <div class="philosopher-card">
+                <div class="philosopher-title">
+                    <span class="philosopher-icon">👑</span>
+                    <span>Marc Aurèle (121-180 ap. J.-C.)</span>
+                </div>
+                <p class="philosopher-desc">
+                    Empereur romain et philosophe stoïcien, Marc Aurèle a écrit ses <em>Méditations</em> comme un journal personnel de réflexions philosophiques. Ces 12 livres constituent l'un des plus grands trésors de la pensée stoïcienne et de la sagesse universelle.
+                </p>
+                <a href="#" onclick="showSection('marc-aurele'); return false;" class="read-btn">
+                    Lire les Méditations →
+                </a>
+            </div>
+
+            <div class="philosopher-card">
+                <div class="philosopher-title">
+                    <span class="philosopher-icon">📜</span>
+                    <span>Épictète (50-130 ap. J.-C.)</span>
+                </div>
+                <p class="philosopher-desc">
+                    Ancien esclave devenu l'un des plus grands philosophes stoïciens, Épictète n'a jamais rien écrit lui-même. Son disciple Arrien a compilé ses enseignements dans le <em>Manuel</em> (Enchiridion), un guide pratique de vie stoïcienne qui a profondément influencé Marc Aurèle.
+                </p>
+                <a href="manuel-epictete.html" class="read-btn">
+                    Lire le Manuel →
+                </a>
             </div>
         </div>
 
-        <div id="livres" class="section">
+        <!-- SECTION MARC AURÈLE (ton contenu existant) -->
+        <div id="marc-aurele" class="section">
             <div class="card">
                 <h2>Les Douze Livres des Méditations - Version Enrichie</h2>
                 <p style="margin-bottom: 2rem;">
@@ -583,12 +659,51 @@
                 </div>
             </div>
         </div>
+
+        <!-- SECTION ÉPICTÈTE -->
+        <div id="epictete" class="section">
+            <div class="card">
+                <h2>Le Manuel d'Épictète (Enchiridion)</h2>
+                <div class="quote">
+                    "Parmi les choses, les unes dépendent de nous, les autres n'en dépendent pas."
+                    <br><em>— Épictète, Manuel, I.1</em>
+                </div>
+                
+                <p style="margin-bottom: 1.5rem;">
+                    Le Manuel d'Épictète (Enchiridion en grec) est l'un des textes fondamentaux du stoïcisme. Compilé par Arrien vers l'an 125, il résume l'enseignement oral d'Épictète, ancien esclave devenu l'un des plus grands philosophes stoïciens.
+                </p>
+
+                <div class="philosopher-card" style="margin: 2rem 0;">
+                    <h3 style="color: var(--primary); margin-bottom: 1rem;">📖 À propos du Manuel</h3>
+                    <p style="margin-bottom: 1rem;">
+                        Le mot grec <em>enchiridion</em> (ἐγχειρίδιον) signifie littéralement "ce que l'on garde sous la main" - un manuel de poche, un guide pratique pour la vie quotidienne.
+                    </p>
+                    <p style="margin-bottom: 1rem;">
+                        <strong>Influence sur Marc Aurèle :</strong> Marc Aurèle mentionne dans ses Méditations (Livre I, §7) avoir découvert les enseignements d'Épictète grâce à son maître Junius Rusticus, qui lui fit lire les "Commentaires d'Épictète". Cette lecture a profondément marqué la pensée de l'empereur-philosophe.
+                    </p>
+                    <p>
+                        <strong>Principe central :</strong> La distinction fondamentale entre ce qui dépend de nous (nos pensées, opinions, désirs, aversions) et ce qui n'en dépend pas (le corps, les biens, la réputation, les dignités). La liberté et le bonheur résident dans la maîtrise parfaite de ce qui dépend de nous.
+                    </p>
+                </div>
+
+                <div style="text-align: center; margin: 3rem 0;">
+                    <a href="manuel-epictete.html" class="read-btn" style="font-size: 1.1rem; padding: 1rem 3rem;">
+                        📜 Lire le Manuel d'Épictète →
+                    </a>
+                </div>
+
+                <div class="quote" style="margin-top: 2rem;">
+                    "Ce qui trouble les hommes, ce ne sont pas les choses, mais leurs opinions sur les choses."
+                    <br><em>— Épictète, Manuel, V</em>
+                </div>
+            </div>
+        </div>
     </div>
 
     <footer>
-        <p>Marc Aurèle (121-180 apr. J.-C.) • Empereur et Philosophe Stoïcien</p>
+        <p>Marc Aurèle • Épictète • Philosophie Stoïcienne</p>
         <p style="margin-top: 0.5rem; opacity: 0.8;">
-            Plateforme créée pour Aurelius Secundus - Version Enrichie
+            Plateforme créée pour Aurelius Secundus
         </p>
     </footer>
 
