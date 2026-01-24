@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sénèque - Lettres à Lucilius</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Garamond', 'Georgia', serif;
+            line-height: 1.8;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: #e0e0e0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 50px;
+            border-bottom: 2px solid #d4af37;
+            padding-bottom: 30px;
+        }
+
+        h1 {
+            font-size: 2.8em;
+            color: #d4af37;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .subtitle {
+            font-size: 1.3em;
+            color: #b8860b;
+            font-style: italic;
+            margin-bottom: 10px;
+        }
+
+        .intro {
+            background: rgba(212, 175, 55, 0.1);
+            border-left: 4px solid #d4af37;
+            padding: 20px;
+            margin: 30px 0;
+            border-radius: 8px;
+        }
+
+        .intro p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        .section {
+            margin: 40px 0;
+        }
+
+        .section-title {
+            font-size: 2em;
+            color: #d4af37;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #d4af37;
+            padding-bottom: 10px;
+        }
+
+        .letter {
+            margin: 30px 0;
+            padding: 25px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 12px;
+            border-left: 4px solid #d4af37;
+        }
+
+        .letter-number {
+            display: inline-block;
+            background: #d4af37;
+            color: #1a1a2e;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .letter-title {
+            font-size: 1.4em;
+            color: #d4af37;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+        .letter-text {
+            text-align: justify;
+            line-height: 1.9;
+            color: #e0e0e0;
+        }
+
+        .quote {
+            font-style: italic;
+            color: #b8860b;
+            border-left: 3px solid #d4af37;
+            padding-left: 20px;
+            margin: 20px 0;
+            font-size: 1.1em;
+        }
+
+        .highlight {
+            background: rgba(212, 175, 55, 0.2);
+            padding: 2px 6px;
+            border-radius: 3px;
+        }
+
+        .nav-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 2px solid #d4af37;
+        }
+
+        .btn {
+            background: #d4af37;
+            color: #1a1a2e;
+            padding: 12px 30px;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+
+        .btn:hover {
+            background: #b8860b;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.4);
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            padding-top: 30px;
+            border-top: 1px solid rgba(212, 175, 55, 0.3);
+            color: #888;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>SÉNÈQUE</h1>
+            <p class="subtitle">Lucius Annaeus Seneca • 4 av. J.-C. - 65 ap. J.-C.</p>
+            <p style="color: #888; font-size: 0.95em; margin-top: 15px;">
+                Philosophe stoïcien, conseiller de Néron, dramaturge
+            </p>
+        </header>
+
+        <div class="intro">
+            <h2 style="color: #d4af37; margin-bottom: 15px;">À propos de Sénèque</h2>
+            <p>Sénèque fut l'un des plus grands philosophes stoïciens de Rome. Né à Cordoue en Hispanie, il devint le précepteur puis le conseiller de l'empereur Néron. Homme politique, dramaturge et philosophe, il a laissé une œuvre considérable qui influence encore notre pensée aujourd'hui.</p>
+            
+            <p>Accusé de complot contre Néron en 65 ap. J.-C., il fut contraint au suicide. Selon Tacite, il mourut avec courage, incarnant jusqu'au bout les principes stoïciens qu'il avait enseignés toute sa vie.</p>
+            
+            <p><strong>Ses œuvres majeures :</strong> Les 124 Lettres à Lucilius constituent son chef-d'œuvre philosophique, un guide pratique de vie stoïcienne. Ses traités moraux (De la Brièveté de la vie, De la Tranquillité de l'âme, De la Colère) restent d'une actualité troublante.</p>
+        </div>
+
+        <!-- LETTRES À LUCILIUS -->
+        <div class="section">
+            <h2 class="section-title">📜 Lettres à Lucilius</h2>
+            
+            <div class="intro">
+                <p>Entre 63 et 65 ap. J.-C., Sénèque écrivit 124 lettres à son ami Lucilius, gouverneur de Sicile. Ces lettres ne sont pas de simples correspondances : ce sont des leçons de sagesse, des exercices spirituels, un manuel de vie stoïcienne.</p>
+                <p><strong>Le principe :</strong> Chaque lettre aborde un thème pratique de la vie quotidienne et se termine par une maxime à méditer.</p>
+            </div>
+
+            <div class="letter">
+                <span class="letter-number">Lettre I</span>
+                <h3 class="letter-title">Sur l'emploi du temps</h3>
+                <div class="letter-text">
+                    <p>Suis ton plan, cher Lucilius ; reprends possession de toi-même : le temps qui jusqu'ici t'était ravi, ou dérobé, ou que tu laissais perdre, recueille et ménage-le.</p>
+                    
+                    <p>Persuade-toi que la chose a lieu comme je te l'écris : <span class="highlight">il est des heures qu'on nous enlève par force, d'autres par surprise, d'autres coulent de nos mains.</span> Or la plus honteuse perte est celle qui vient de négligence ; et, si tu y prends garde, la plus grande part de la vie se passe à mal faire, une grande à ne rien faire, le tout à faire autre chose que ce qu'on devrait.</p>
+                    
+                    <p>Car c'est notre erreur de ne voir la mort que devant nous : en grande partie déjà on l'a laissée derrière ; tout l'espace franchi est à elle.</p>
+                    
+                    <div class="quote">
+                        "Cher Lucilius, tout le reste est d'emprunt, le temps seul est notre bien. C'est la seule chose, fugitive et glissante, dont la nature nous livre la propriété."
+                    </div>
+                </div>
+            </div>
+
+            <div class="letter">
+                <span class="letter-number">Lettre II</span>
+                <h3 class="letter-title">Des voyages et de la lecture</h3>
+                <div class="letter-text">
+                    <p>Ce que tu m'écris me fait bien espérer de toi. Tu ne cours pas çà et là, et ne te jettes pas dans l'agitation des déplacements. Cette mobilité est d'un esprit malade.</p>
+                    
+                    <p><span class="highlight">Fais un choix d'écrivains pour t'y arrêter et te nourrir de leur génie, si tu veux y puiser des souvenirs qui te soient fidèles.</span> C'est n'être nulle part que d'être partout. Ceux dont la vie se passe à voyager finissent par avoir des milliers d'hôtes et pas un ami.</p>
+                    
+                    <p>La multitude des livres dissipe l'esprit. Ainsi, ne pouvant lire tous ceux que tu aurais, c'est assez d'avoir ceux que tu peux lire.</p>
+                    
+                    <div class="quote">
+                        "Fais chaque jour provision de quelque arme contre la pauvreté, contre la mort, contre tous les autres fléaux."
+                    </div>
+                </div>
+            </div>
+
+            <div class="letter">
+                <span class="letter-number">Lettre VII</span>
+                <h3 class="letter-title">Fuir la foule - Cruauté des spectacles</h3>
+                <div class="letter-text">
+                    <p>Tu me demandes ce que tu dois principalement éviter ? — La foule. Tu ne peux encore t'y livrer impunément. Moi, pour mon compte, j'avouerai ma faiblesse. Jamais je ne rentre chez moi tel que j'en suis sorti.</p>
+                    
+                    <p>Il n'est pas bon de se répandre dans une nombreuse société. Là tout nous prêche le vice, ou nous l'imprime, ou à notre insu nous entache. Et plus nos liaisons s'étendent, plus le danger se multiplie.</p>
+                    
+                    <div class="quote">
+                        "Recueille-toi en toi-même, autant que possible ; fréquente ceux qui te rendront meilleur, reçois ceux que tu peux rendre tels."
+                    </div>
+                </div>
+            </div>
+
+            <div class="letter">
+                <span class="letter-number">Lettre XII</span>
+                <h3 class="letter-title">Avantages de la vieillesse - Sur la mort volontaire</h3>
+                <div class="letter-text">
+                    <p>Qu'il est doux d'avoir lassé les passions, de les avoir laissées en route ! « Mais il est triste d'avoir la mort devant les yeux ! » D'abord elle doit être autant devant les yeux du jeune homme que du vieillard : car elle ne nous appelle point par rang d'âge.</p>
+                    
+                    <p>Disposons donc chacune de nos journées comme si elle fermait la marche, comme si elle achevait et complétait notre vie.</p>
+                    
+                    <div class="quote">
+                        "Qui dit le soir : 'J'ai vécu', peut dire le matin : 'Je gagne une journée.'"
+                    </div>
+                    
+                    <p>Rendons grâce à Dieu : on ne peut retenir personne dans la vie : point de nécessités que l'homme ne puisse fouler aux pieds. <span class="highlight">De toutes parts s'ouvrent à la liberté des voies nombreuses, courtes, faciles.</span></p>
+                </div>
+            </div>
+
+            <div class="letter">
+                <span class="letter-number">Lettre XLVII</span>
+                <h3 class="letter-title">Qu'il faut traiter humainement ses esclaves</h3>
+                <div class="letter-text">
+                    <p>J'apprends avec plaisir de ceux qui viennent de chez toi que tu vis familièrement avec tes esclaves : c'est bien là la sagesse, c'est bien ton bon cœur. « Ce sont des esclaves ! » Non, des hommes. « Ce sont des esclaves ! » Non, des camarades. « Ce sont des esclaves ! » Non, d'humbles amis.</p>
+                    
+                    <p>Songe donc que celui que tu nommes ton esclave est né de la même semence que toi, jouit du même ciel, respire, vit, meurt comme toi. Tu peux le voir libre aussi bien qu'il peut te voir esclave.</p>
+                    
+                    <div class="quote">
+                        "Traite ton inférieur comme tu voudrais être traité par ton supérieur."
+                    </div>
+                </div>
+            </div>
+
+            <div class="letter">
+                <span class="letter-number">Lettre LXX</span>
+                <h3 class="letter-title">Du suicide - Quand peut-on y recourir?</h3>
+                <div class="letter-text">
+                    <p>Il est des hommes qui passent toute leur vie à préparer les choses dont ils doivent vivre, sans s'apercevoir que l'instrument qui nous permet de vivre fut d'abord mis en notre main au moment de notre naissance : le temps.</p>
+                    
+                    <p>La seule chose qui pourrait me faire aimer la vieillesse, c'est qu'elle ne laisse plus la vie très désirable. <span class="highlight">Le plus beau de tous les spectacles, c'est celui d'un grand homme aux prises avec l'adversité.</span></p>
+                    
+                    <div class="quote">
+                        "La vie n'est pas toujours à conserver : le bien n'est pas de vivre, mais de bien vivre. Aussi le sage vit-il autant qu'il doit, non autant qu'il peut."
+                    </div>
+                </div>
+            </div>
+
+            <div class="letter">
+                <span class="letter-number">Lettre XCIV</span>
+                <h3 class="letter-title">De l'utilité des préceptes - De l'ambition</h3>
+                <div class="letter-text">
+                    <p>Tu me demandes si les préceptes de la philosophie suffisent pour former l'homme de bien. Je te répondrai qu'ils ne le peuvent sans les principes généraux de la sagesse.</p>
+                    
+                    <p>L'homme livré à l'ambition ne connaît jamais de bornes. Il a dépassé son but : or le but n'a point de limites. <span class="highlight">Qui aspire aux honneurs recherche non ce qui convient, mais ce qui surpasse.</span></p>
+                    
+                    <div class="quote">
+                        "Aucun vent n'est favorable à celui qui ne sait où il va."
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- DE LA BRIÈVETÉ DE LA VIE -->
+        <div class="section">
+            <h2 class="section-title">⏳ De la Brièveté de la vie</h2>
+            
+            <div class="intro">
+                <p>Écrit vers 49 ap. J.-C. et adressé à Paulinus, ce traité est l'un des textes les plus célèbres de Sénèque. Il y développe une thèse révolutionnaire : <strong>la vie n'est pas trop courte, c'est nous qui la gaspillons.</strong></p>
+                <p>Ce texte est d'une actualité troublante. Chaque phrase résonne dans notre époque d'hyperactivité, de distractions constantes et de perte de sens.</p>
+            </div>
+
+            <div class="letter">
+                <h3 class="letter-title">La thèse centrale</h3>
+                <div class="letter-text">
+                    <p>La plupart des mortels se plaignent de l'injuste rigueur de la nature, de ce que nous naissons pour une vie si courte, de ce que la mesure de temps qui nous est donnée fuit avec tant de vitesse.</p>
+                    
+                    <p><span class="highlight">Mais ce n'est pas que nous ayons si peu de temps, c'est que nous en perdons beaucoup.</span> La vie est assez longue ; elle suffirait, et au-delà, à l'accomplissement des plus grandes entreprises, si tous les moments en étaient bien employés.</p>
+                    
+                    <div class="quote">
+                        "Ce n'est pas que la vie soit courte, c'est nous qui la rendons telle ; ce n'est pas qu'elle soit pauvre, c'est nous qui la dépensons sottement."
+                    </div>
+                </div>
+            </div>
+
+            <div class="letter">
+                <h3 class="letter-title">Comment nous perdons notre temps</h3>
+                <div class="letter-text">
+                    <p>Examinez la vie de la plupart des hommes : vous verrez qu'elle s'en va par mille fissures. Les uns, emportés par l'ambition, courent après les dignités ; d'autres, enivrés par la cupidité, s'épuisent à grossir leur fortune.</p>
+                    
+                    <p><span class="highlight">On ne trouve personne qui veuille partager son argent, mais chacun distribue sa vie à tout venant.</span> On est avare de son bien et prodigue de son temps, la seule chose en laquelle il serait beau d'être avare.</p>
+                    
+                    <p>Les uns gaspillent leur vie dans l'ivresse et l'inaction ; d'autres s'épuisent dans de vaines études ; d'autres encore vivent dans l'angoisse perpétuelle, attendant toujours que leur vie commence.</p>
+                    
+                    <div class="quote">
+                        "La vie se divise en trois temps : le présent, le passé, l'avenir. De ces trois temps, celui que nous vivons est court, celui que nous devons vivre est incertain ; celui que nous avons vécu est certain."
+                    </div>
+                </div>
+            </div>
+
+            <div class="letter">
+                <h3 class="letter-title">Les "occupés" - Critique féroce</h3>
+                <div class="letter-text">
+                    <p>Vous voyez ces hommes dont on recherche l'entretien, dont la maison est assiégée par une foule de visiteurs : <span class="highlight">ce ne sont pas des hommes vivants, mais des hommes occupés.</span></p>
+                    
+                    <p>Ils ne savent jamais s'ils ont faim, tant ils sont occupés. Ils ne savent pas s'ils ont sommeil. On doit les avertir qu'il est temps de se baigner, de dîner, de se reposer.</p>
+                    
+                    <p>Leur vie n'est pas à eux ; elle appartient à leurs affaires, à leurs clients, à leur fortune. Et quand vient la mort, ils s'écrient : « J'allais enfin commencer à vivre ! »</p>
+                    
+                    <div class="quote">
+                        "Personne ne te restituera tes années, personne ne te rendra à toi-même. La vie s'en ira par où elle a commencé et ne fera pas demi-tour."
+                    </div>
+                </div>
+            </div>
+
+            <div class="letter">
+                <h3 class="letter-title">La solution : Vivre pour soi</h3>
+                <div class="letter-text">
+                    <p>Seuls sont hommes de loisir ceux qui se consacrent à la sagesse. Seuls ils vivent ; car non seulement ils protègent bien la durée qui leur appartient, mais ils ajoutent la totalité du temps au leur.</p>
+                    
+                    <p><span class="highlight">Tous les siècles leur appartiennent.</span> Ils peuvent converser avec Socrate, débattre avec Platon, méditer avec Marc Aurèle. Aucun temps ne leur est interdit, aucune époque ne leur est fermée.</p>
+                    
+                    <p>Celui-là seul vit vraiment qui, ayant appris à se posséder lui-même, n'attend rien du dehors et sait que sa vie est à lui.</p>
+                    
+                    <div class="quote">
+                        "C'est vivre vraiment que d'être maître de soi. Celui-là possède la vie qui ne dépend de personne."
+                    </div>
+                </div>
+            </div>
+
+            <div class="letter">
+                <h3 class="letter-title">Maximes essentielles</h3>
+                <div class="letter-text">
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="margin: 15px 0; padding-left: 20px; border-left: 3px solid #d4af37;">
+                            💎 "Il vaut mieux tenir les comptes de sa vie que ceux des blés de l'État."
+                        </li>
+                        <li style="margin: 15px 0; padding-left: 20px; border-left: 3px solid #d4af37;">
+                            💎 "Apprendre à bien vivre demande toute une vie, et plus encore, apprendre à bien mourir."
+                        </li>
+                        <li style="margin: 15px 0; padding-left: 20px; border-left: 3px solid #d4af37;">
+                            💎 "Chacun se hâte de vivre et souffre du désir de l'avenir et du dégoût du présent."
+                        </li>
+                        <li style="margin: 15px 0; padding-left: 20px; border-left: 3px solid #d4af37;">
+                            💎 "La vie est longue si on sait en user."
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="nav-buttons">
+            <a href="index.html" class="btn">← Retour à l'accueil</a>
+            <a href="manuel-epictete.html" class="btn">Manuel d'Épictète →</a>
+        </div>
+
+        <footer>
+            <p>Sénèque (4 av. J.-C. - 65 ap. J.-C.)</p>
+            <p>Philosophe stoïcien, dramaturge, conseiller de Néron</p>
+            <p style="margin-top: 10px; font-style: italic;">"La vie n'est pas courte, c'est nous qui la rendons telle."</p>
+        </footer>
+    </div>
+</body>
+</html>
