@@ -2,12 +2,15 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Plateforme d'Aurelius Secundus - Stoïcisme</title>
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="theme-color" content="#2c3e50">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aurelius Secundus - Philosophie Stoïcienne</title>
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         :root {
             --primary: #2c3e50;
             --secondary: #8b7355;
@@ -16,711 +19,361 @@
             --bg: #f8f6f1;
             --white: #fff;
         }
+
         body {
             font-family: Georgia, serif;
             line-height: 1.8;
             color: var(--text);
             background: var(--bg);
         }
+
+        /* HEADER */
         header {
             background: linear-gradient(135deg, var(--primary), var(--secondary));
             color: var(--white);
-            padding: 2rem;
+            padding: 3rem 2rem;
             text-align: center;
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
-        h1 { font-size: 2.5rem; letter-spacing: 2px; margin-bottom: 0.5rem; }
-        .subtitle { font-style: italic; opacity: 0.9; }
-        .badge {
-            margin-top: 1rem;
-            padding: 0.5rem 1.5rem;
-            background: rgba(255,255,255,0.15);
-            border-radius: 20px;
-            display: inline-block;
-            backdrop-filter: blur(10px);
+
+        h1 {
+            font-size: 3rem;
+            letter-spacing: 3px;
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
         }
-        nav {
+
+        .subtitle {
+            font-style: italic;
+            opacity: 0.9;
+            font-size: 1.3rem;
+            margin-top: 1rem;
+        }
+
+        /* NAVIGATION TABS */
+        .nav-tabs {
             background: var(--white);
+            display: flex;
+            justify-content: center;
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
             position: sticky;
             top: 0;
             z-index: 100;
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
         }
-        .nav-btn {
-            padding: 1rem 1.5rem;
-            background: none;
-            border: none;
-            cursor: pointer;
-            font-size: 0.95rem;
-            transition: all 0.3s;
-            border-bottom: 3px solid transparent;
-        }
-        .nav-btn:hover { background: var(--bg); color: var(--secondary); }
-        .nav-btn.active { color: var(--secondary); border-bottom-color: var(--accent); font-weight: bold; }
-        .container { max-width: 1100px; margin: 0 auto; padding: 2rem 1.5rem; }
-        .section { display: none; animation: fadeIn 0.5s; }
-        .section.active { display: block; }
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-        .card {
-            background: var(--white);
-            padding: 2rem;
-            margin-bottom: 2rem;
-            border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-        }
-        h2 {
+
+        .nav-tab {
+            padding: 1.2rem 2rem;
+            text-decoration: none;
             color: var(--primary);
-            font-size: 2rem;
-            margin-bottom: 1.5rem;
-            border-bottom: 2px solid var(--accent);
-            padding-bottom: 0.5rem;
-        }
-        .book-section { margin: 2rem 0; }
-        .book-title {
-            background: var(--secondary);
-            color: var(--white);
-            padding: 1rem 1.5rem;
-            border-radius: 6px 6px 0 0;
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            transition: background 0.3s;
-        }
-        .book-title:hover { background: var(--primary); }
-        .book-content {
-            background: var(--white);
-            border: 2px solid var(--secondary);
-            border-top: none;
-            padding: 2rem;
-            border-radius: 0 0 6px 6px;
-            display: none;
-            max-height: 70vh;
-            overflow-y: auto;
-        }
-        .book-content.open { display: block; }
-        .passage {
-            background: var(--bg);
-            padding: 1.2rem;
-            margin: 1rem 0;
-            border-radius: 4px;
-            border-left: 3px solid var(--accent);
-        }
-        .passage-num {
-            color: var(--accent);
             font-weight: bold;
-            font-size: 0.85rem;
-            margin-bottom: 0.5rem;
+            border-bottom: 3px solid transparent;
+            transition: all 0.3s;
+            cursor: pointer;
         }
-        .passage-text { font-style: italic; }
-        .quote {
-            background: linear-gradient(to right, var(--bg), var(--white));
-            border-left: 4px solid var(--accent);
-            padding: 1.5rem;
-            margin: 1.5rem 0;
-            font-style: italic;
+
+        .nav-tab:hover {
+            background: var(--bg);
+            border-bottom-color: var(--accent);
+        }
+
+        .nav-tab.active {
+            background: var(--bg);
+            border-bottom-color: var(--accent);
             color: var(--secondary);
         }
-        .toggle { font-size: 1.2rem; transition: transform 0.3s; }
-        .toggle.open { transform: rotate(180deg); }
-        
-        /* Styles pour la section Épictète */
-        .philosopher-card {
-            background: linear-gradient(135deg, rgba(139, 115, 85, 0.1), rgba(201, 169, 97, 0.1));
-            border: 2px solid var(--accent);
-            border-radius: 12px;
+
+        /* CONTAINER */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        /* TAB CONTENT */
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.5s;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* INTRO SECTION */
+        .intro-section {
+            background: var(--white);
             padding: 2rem;
-            margin: 2rem 0;
-            transition: transform 0.3s, box-shadow 0.3s;
+            border-radius: 12px;
+            margin-bottom: 3rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            border-left: 5px solid var(--accent);
         }
-        .philosopher-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-        }
-        .philosopher-title {
-            font-size: 1.8rem;
+
+        .intro-section h2 {
             color: var(--primary);
             margin-bottom: 1rem;
-            display: flex;
-            align-items: center;
-            gap: 1rem;
+            font-size: 2rem;
         }
+
+        /* PHILOSOPHER CARDS */
+        .philosophers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .philosopher-card {
+            background: var(--white);
+            padding: 2.5rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+            border: 2px solid transparent;
+        }
+
+        .philosopher-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+            border-color: var(--accent);
+        }
+
         .philosopher-icon {
-            font-size: 2.5rem;
+            font-size: 4rem;
+            margin-bottom: 1rem;
         }
-        .philosopher-desc {
+
+        .philosopher-card h3 {
+            color: var(--primary);
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .philosopher-card p {
             color: var(--text);
-            line-height: 1.8;
             margin-bottom: 1.5rem;
+            line-height: 1.6;
         }
-        .read-btn {
+
+        .btn {
             display: inline-block;
             background: var(--secondary);
             color: var(--white);
             padding: 0.8rem 2rem;
-            border-radius: 25px;
             text-decoration: none;
-            transition: all 0.3s;
+            border-radius: 25px;
             font-weight: bold;
+            transition: all 0.3s;
         }
-        .read-btn:hover {
+
+        .btn:hover {
             background: var(--primary);
-            transform: translateX(5px);
+            transform: scale(1.05);
         }
-        
+
+        /* QUOTE */
+        .quote-highlight {
+            background: linear-gradient(to right, rgba(201, 169, 97, 0.1), transparent);
+            border-left: 4px solid var(--accent);
+            padding: 1.5rem;
+            margin: 2rem 0;
+            font-style: italic;
+            color: var(--secondary);
+            font-size: 1.2rem;
+        }
+
+        /* FOOTER */
         footer {
             background: var(--primary);
             color: var(--white);
             text-align: center;
             padding: 2rem;
-            margin-top: 3rem;
+            margin-top: 4rem;
+        }
+
+        footer p {
+            margin: 0.5rem 0;
+            opacity: 0.9;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            h1 { font-size: 2rem; }
+            .subtitle { font-size: 1rem; }
+            .nav-tabs { flex-wrap: wrap; }
+            .nav-tab { padding: 1rem 1.5rem; font-size: 0.9rem; }
+            .philosophers-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
     <header>
-        <h1>PHILOSOPHIE STOÏCIENNE</h1>
-        <p class="subtitle">Marc Aurèle • Épictète • Sagesse Antique</p>
-        <div class="badge">✨ Plateforme d'Aurelius Secundus ✨</div>
+        <h1>AURELIUS SECUNDUS</h1>
+        <p class="subtitle">Plateforme de Philosophie Stoïcienne</p>
+        <p style="margin-top: 1rem; opacity: 0.8;">Marc Aurèle • Épictète • Sénèque</p>
     </header>
 
-    <nav>
-        <button class="nav-btn active" onclick="showSection('intro')">Accueil</button>
-        <button class="nav-btn" onclick="showSection('marc-aurele')">Marc Aurèle</button>
-        <button class="nav-btn" onclick="showSection('epictete')">Épictète</button>
+    <!-- NAVIGATION TABS -->
+    <nav class="nav-tabs">
+        <a class="nav-tab active" onclick="showTab('accueil')">Accueil</a>
+        <a class="nav-tab" onclick="showTab('marc-aurele')">Marc Aurèle</a>
+        <a class="nav-tab" onclick="showTab('epictete')">Épictète</a>
+        <a class="nav-tab" onclick="showTab('seneque')">Sénèque</a>
+        <a class="nav-tab" onclick="showTab('exercices')">Exercices</a>
     </nav>
 
     <div class="container">
-        <!-- SECTION ACCUEIL -->
-        <div id="intro" class="section active">
-            <div class="card">
-                <h2>Bienvenue dans la Sagesse Stoïcienne</h2>
-                <div class="quote">
-                    "La philosophie stoïcienne nous enseigne à distinguer ce qui dépend de nous de ce qui n'en dépend pas, et à trouver la paix intérieure dans cette acceptation."
-                </div>
-                <p>
-                    Cette plateforme rassemble les enseignements fondamentaux du <strong>stoïcisme romain</strong>, à travers deux de ses plus grands représentants : <strong>Marc Aurèle</strong>, empereur-philosophe, et <strong>Épictète</strong>, esclave devenu maître de sagesse.
-                </p>
-                <p style="margin-top: 1rem;">
-                    <strong>Contenu disponible :</strong>
-                </p>
-                <ul style="margin-left: 2rem; margin-top: 0.5rem;">
-                    <li><strong>Les 12 Livres des Méditations</strong> de Marc Aurèle (150+ passages essentiels)</li>
-                    <li><strong>Le Manuel d'Épictète</strong> (Enchiridion) - Les principes fondamentaux du stoïcisme</li>
-                </ul>
+        <!-- ONGLET ACCUEIL -->
+        <div id="accueil" class="tab-content active">
+            <div class="intro-section">
+                <h2>Bienvenue sur la Plateforme Stoïcienne</h2>
+                <p>Cette plateforme est dédiée à la philosophie stoïcienne, un art de vivre intemporel qui nous apprend à cultiver la sagesse, la sérénité et la vertu face aux défis de l'existence.</p>
+                <p style="margin-top: 1rem;">Explorez les enseignements des trois plus grands maîtres stoïciens : Marc Aurèle, Épictète et Sénèque. Découvrez des exercices pratiques pour transformer votre vie quotidienne.</p>
             </div>
 
-            <!-- Cartes de navigation -->
-            <div class="philosopher-card">
-                <div class="philosopher-title">
-                    <span class="philosopher-icon">👑</span>
-                    <span>Marc Aurèle (121-180 ap. J.-C.)</span>
-                </div>
-                <p class="philosopher-desc">
-                    Empereur romain et philosophe stoïcien, Marc Aurèle a écrit ses <em>Méditations</em> comme un journal personnel de réflexions philosophiques. Ces 12 livres constituent l'un des plus grands trésors de la pensée stoïcienne et de la sagesse universelle.
-                </p>
-                <a href="#" onclick="showSection('marc-aurele'); return false;" class="read-btn">
-                    Lire les Méditations →
-                </a>
+            <div class="quote-highlight">
+                "La philosophie n'est pas une théorie, mais une activité."
+                <br><em>— Épictète</em>
             </div>
 
-            <div class="philosopher-card">
-                <div class="philosopher-title">
-                    <span class="philosopher-icon">📜</span>
-                    <span>Épictète (50-130 ap. J.-C.)</span>
-                </div>
-                <p class="philosopher-desc">
-                    Ancien esclave devenu l'un des plus grands philosophes stoïciens, Épictète n'a jamais rien écrit lui-même. Son disciple Arrien a compilé ses enseignements dans le <em>Manuel</em> (Enchiridion), un guide pratique de vie stoïcienne qui a profondément influencé Marc Aurèle.
-                </p>
-                <a href="manuel-epictete.html" class="read-btn">
-                    Lire le Manuel →
-                </a>
-            </div>
-        </div>
-
-        <!-- SECTION MARC AURÈLE (ton contenu existant) -->
-        <div id="marc-aurele" class="section">
-            <div class="card">
-                <h2>Les Douze Livres des Méditations - Version Enrichie</h2>
-                <p style="margin-bottom: 2rem;">
-                    Plus de 150 passages essentiels • Numérotation authentique • Traductions fidèles
-                </p>
-
-                <!-- LIVRE I -->
-                <div class="book-section">
-                    <div class="book-title" onclick="toggle('b1')">
-                        <span>📖 LIVRE I : Les Dettes de Gratitude</span>
-                        <span class="toggle" id="t-b1">▼</span>
-                    </div>
-                    <div class="book-content" id="b1">
-                        <div class="passage">
-                            <div class="passage-num">I.1</div>
-                            <div class="passage-text">De mon grand-père Verus : la bonté et la douceur inaltérable du caractère.</div>
-                        </div>
-                        <div class="passage">
-                            <div class="passage-num">I.2</div>
-                            <div class="passage-text">De mon père : la modestie et la virilité.</div>
-                        </div>
-                        <div class="passage">
-                            <div class="passage-num">I.3</div>
-                            <div class="passage-text">De ma mère : la piété, la générosité, l'habitude de s'abstenir non seulement de mal faire, mais même d'avoir de telles pensées.</div>
-                        </div>
-                        <div class="passage">
-                            <div class="passage-num">I.5</div>
-                            <div class="passage-text">De mon gouverneur : de supporter la peine, d'avoir peu de besoins, de travailler de mes mains, de ne pas me mêler des affaires d'autrui.</div>
-                        </div>
-                        <div class="passage">
-                            <div class="passage-num">I.7</div>
-                            <div class="passage-text">De Rusticus : l'idée de réformer mon caractère et de le discipliner ; de lire avec soin et de ne pas me contenter d'une compréhension superficielle.</div>
-                        </div>
-                        <div class="passage">
-                            <div class="passage-num">I.16</div>
-                            <div class="passage-text">De mon père adoptif Antonin : la douceur, la fermeté inébranlable dans les jugements bien pesés ; l'absence de vanité ; l'amour du travail et la persévérance.</div>
-                        </div>
-                        <div class="passage">
-                            <div class="passage-num">I.17</div>
-                            <div class="passage-text">Des dieux : d'avoir eu de bons grands-parents, de bons parents, une bonne sœur, de bons maîtres ; de n'avoir offensé aucun d'eux.</div>
-                        </div>
-                    </div>
+            <div class="philosophers-grid">
+                <div class="philosopher-card">
+                    <div class="philosopher-icon">👑</div>
+                    <h3>MARC AURÈLE</h3>
+                    <p>Empereur romain et philosophe stoïcien. Ses <em>Méditations</em> sont un guide spirituel intemporel.</p>
+                    <a href="meditations.html" class="btn">Découvrir →</a>
                 </div>
 
-                <!-- LIVRE II -->
-                <div class="book-section">
-                    <div class="book-title" onclick="toggle('b2')">
-                        <span>📖 LIVRE II : La Préparation Matinale</span>
-                        <span class="toggle" id="t-b2">▼</span>
-                    </div>
-                    <div class="book-content" id="b2">
-                        <div class="passage">
-                            <div class="passage-num">II.1</div>
-                            <div class="passage-text">Dis-toi dès le matin : je rencontrerai aujourd'hui un importun, un ingrat, un insolent, un fourbe, un envieux, un insociable. Tous ces défauts leur sont survenus par ignorance du bien et du mal.</div>
-                        </div>
-                        <div class="passage">
-                            <div class="passage-num">II.2</div>
-                            <div class="passage-text">Souviens-toi que tu es mortel, que tu as reçu une vie limitée. Mais par tes pensées, tu peux t'élever à contempler l'éternité et le monde entier.</div>
-                        </div>
-                        <div class="passage">
-                            <div class="passage-num">II.4</div>
-                            <div class="passage-text">Rappelle-toi que chacun ne vit que le moment présent, l'instant fugitif. Le reste n'est que vécu ou incertain.</div>
-                        </div>
-                        <div class="passage">
-                            <div class="passage-num">II.5</div>
-                            <div class="passage-text">Bientôt tu seras cendre, ou squelette, et un nom, ou même plus un nom. Les choses prisées dans la vie sont vides, pourries et insignifiantes.</div>
-                        </div>
-                        <div class="passage">
-                            <div class="passage-num">II.11</div>
-                            <div class="passage-text">Tout ce qui arrive, arrive justement. Si tu observes attentivement, tu le découvriras. Je ne dis pas seulement selon l'ordre naturel, mais selon la justice.</div>
-                        </div>
-                        <div class="passage">
-                            <div class="passage-num">II.14</div>
-                            <div class="passage-text">Même si tu devais vivre trois mille ans, ou trente mille, rappelle-toi que personne ne perd d'autre vie que celle qu'il vit, ni n'en vit d'autre que celle qu'il perd.</div>
-                        </div>
-                        <div class="passage">
-                            <div class="passage-num">II.17</div>
-                            <div class="passage-text">La vie humaine : durée, un instant ; substance, fluide ; sensation, obscure ; composition du corps, putrescible ; âme, un tourbillon ; fortune, imprévisible ; renommée, indéterminée.</div>
-                        </div>
-                    </div>
+                <div class="philosopher-card">
+                    <div class="philosopher-icon">📜</div>
+                    <h3>ÉPICTÈTE</h3>
+                    <p>Esclave devenu philosophe. Son <em>Manuel</em> enseigne la liberté intérieure et le contrôle de soi.</p>
+                    <a href="manuel-epictete.html" class="btn">Découvrir →</a>
                 </div>
 
-                <!-- LIVRE III -->
-                <div class="book-section">
-                    <div class="book-title" onclick="toggle('b3')">
-                        <span>📖 LIVRE III : L'Impermanence</span>
-                        <span class="toggle" id="t-b3">▼</span>
-                    </div>
-                    <div class="book-content" id="b3">
-                        <div class="passage">
-                            <div class="passage-num">III.1</div>
-                            <div class="passage-text">Notre vie se consume jour après jour. Il nous en reste une part de moins en moins grande. Même si nous vivons plus longtemps, notre intelligence ne demeurera peut-être pas suffisante.</div>
-                        </div>
-                        <div class="passage">
-                            <div class="passage-num">III.4</div>
-                            <div class="passage-text">Quelle est la valeur de l'approbation de ceux qui applaudissent, eux qui ne s'applaudissent pas eux-mêmes ? Quel est le profit d'être loué par des langues qui s'entredéchirent ?</div>
-                        </div>
-                        <div class="passage">
-                            <div class="passage-num">III.7</div>
-                            <div class="passage-text">Ne méprise pas la mort, mais accueille-la avec faveur, car elle aussi fait partie des choses que la nature veut.</div>
-                        </div>
-                        <div class="passage">
-                            <div class="passage-num">III.10</div>
-                            <div class="passage-text">Tout ce qui arrive, arrive justement. Tu le découvriras si tu observes soigneusement, comme si quelqu'un distribuait à chacun selon son mérite.</div>
-                        </div>
-                        <div class="passage">
-                            <div class="passage-num">III.11</div>
-                            <div class="passage-text">Quelle chose est ton âme ? Une exhalaison. Et tu te préoccupes de la renommée auprès de personnes dont chacune mourra bientôt, qui ne se connaissent même pas elles-mêmes ?</div>
-                        </div>
-                        <div class="passage">
-                            <div class="passage-num">III.12</div>
-                            <div class="passage-text">N'agis pas comme si tu devais vivre dix mille ans. La mort plane sur toi. Pendant que tu vis, pendant que cela est possible, deviens bon.</div>
-                        </div>
-                    </div>
+                <div class="philosopher-card">
+                    <div class="philosopher-icon">✍️</div>
+                    <h3>SÉNÈQUE</h3>
+                    <p>Conseiller de Néron. Ses <em>Lettres à Lucilius</em> sont un chef-d'œuvre de sagesse pratique.</p>
+                    <a href="seneque.html" class="btn">Découvrir →</a>
                 </div>
 
-                <!-- LIVRE IV -->
-                <div class="book-section">
-                    <div class="book-title" onclick="toggle('b4')">
-                        <span>📖 LIVRE IV : La Retraite Intérieure</span>
-                        <span class="toggle" id="t-b4">▼</span>
-                    </div>
-                    <div class="book-content" id="b4">
-                        <div class="passage">
-                            <div class="passage-num">IV.3</div>
-                            <div class="passage-text">Les hommes recherchent des retraites : à la campagne, au bord de la mer, dans les montagnes. Mais tout cela est de la plus grande vulgarité, puisqu'il t'est possible, à l'heure que tu veux, de te retirer en toi-même.</div>
-                        </div>
-                        <div class="passage">
-                            <div class="passage-num">IV.7</div>
-                            <div class="passage-text">Écarte l'opinion, et tu es sauvé. Qui donc t'empêche de l'écarter ?</div>
-                        </div>
-                        <div class="passage">
-                            <div class="passage-num">IV.18</div>
-                            <div class="passage-text">Pense souvent à la rapidité avec laquelle les choses qui existent et qui viennent à l'existence passent et disparaissent.</div>
-                        </div>
-                        <div class="passage">
-                            <div class="passage-num">IV.29</div>
-                            <div class="passage-text">Efface l'imagination. Arrête le mouvement de la marionnette. Circonscris le temps présent. Reconnais ce qui t'arrive ou arrive à un autre.</div>
-                        </div>
-                        <div class="passage">
-                            <div class="passage-num">IV.39</div>
-                            <div class="passage-text">Comment se fait-il que les dieux, qui ont tout arrangé si bien et avec tant de bienveillance, aient oublié une seule chose : que certains hommes manifestement bons meurent et cessent complètement d'exister ?</div>
-                        </div>
-                        <div class="passage">
-                            <div class="passage-num">IV.48</div>
-                            <div class="passage-text">Pense constamment combien de médecins sont morts après avoir froncé bien souvent les sourcils sur leurs malades ; combien d'astrologues ; combien de philosophes.</div>
-                        </div>
-                        <div class="passage">
-                            <div class="passage-num">IV.49</div>
-                            <div class="passage-text">Si tu es peiné par quelque chose d'extérieur, ce n'est pas la chose qui te trouble, mais ton propre jugement à son sujet. Et il est en ton pouvoir d'effacer ce jugement maintenant.</div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- LIVRE V -->
-                <div class="book-section">
-                    <div class="book-title" onclick="toggle('b5')">
-                        <span>📖 LIVRE V : L'Action Vertueuse</span>
-                        <span class="toggle" id="t-b5">▼</span>
-                    </div>
-                    <div class="book-content" id="b5">
-                        <div class="passage">
-                            <div class="passage-num">V.1</div>
-                            <div class="passage-text">À l'aube, quand tu as du mal à te réveiller, aie cette pensée prête : Je me réveille pour faire le travail d'un être humain. Pourquoi serais-je mécontent si je vais faire ce pour quoi je suis né ?</div>
-                        </div>
-                        <div class="passage">
-                            <div class="passage-num">V.8</div>
-                            <div class="passage-text">Souviens-toi que changer d'avis et suivre celui qui te corrige sont des actes tout aussi libres. Car c'est ton action, selon ton propre mouvement et jugement, et ton intelligence.</div>
-                        </div>
-                        <div class="passage">
-                            <div class="passage-num">V.16</div>
-                            <div class="passage-text">L'âme se fait une sphère vraie quand elle ne s'étend vers rien d'extérieur, ne se replie sur rien d'intérieur, mais rayonne d'une lumière par laquelle elle voit la vérité.</div>
-                        </div>
-                        <div class="passage">
-                            <div class="passage-num">V.20</div>
-                            <div class="passage-text">Ce qui n'est pas bon pour l'essaim n'est pas bon pour l'abeille.</div>
-                        </div>
-                        <div class="passage">
-                            <div class="passage-num">V.23</div>
-                            <div class="passage-text">Observe comment tout change rapidement, comment les choses naissent et disparaissent. La substance de l'univers est docile et malléable.</div>
-                        </div>
-                        <div class="passage">
-                            <div class="passage-num">V.31</div>
-                            <div class="passage-text">Aime l'art, si humble soit-il, que tu as appris, et trouve ton repos en lui. Traverse le reste de ta vie comme quelqu'un qui a confié de tout son cœur aux dieux tout ce qu'il possède.</div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- LIVRE VI -->
-                <div class="book-section">
-                    <div class="book-title" onclick="toggle('b6')">
-                        <span>📖 LIVRE VI : La Nature Universelle</span>
-                        <span class="toggle" id="t-b6">▼</span>
-                    </div>
-                    <div class="book-content" id="b6">
-                        <div class="passage">
-                            <div class="passage-num">VI.13</div>
-                            <div class="passage-text">C'est folie de vouloir que les figues poussent en hiver. De même, c'est folie de vouloir des enfants quand cela n'est plus possible.</div>
-                        </div>
-                        <div class="passage">
-                            <div class="passage-num">VI.15</div>
-                            <div class="passage-text">Certaines choses se hâtent vers l'existence, d'autres se hâtent hors de l'existence. Et de ce qui vient à l'existence, une partie est déjà éteinte.</div>
-                        </div>
-                        <div class="passage">
-                            <div class="passage-num">VI.30</div>
-                            <div class="passage-text">La pierre jetée en l'air n'a rien à perdre en retombant, ni rien à gagner en montant.</div>
-                        </div>
-                        <div class="passage">
-                            <div class="passage-num">VI.36</div>
-                            <div class="passage-text">Ne t'inquiète pas pour l'avenir. Tu y arriveras, si tu dois y arriver, portant avec toi la même raison que tu utilises maintenant pour les choses présentes.</div>
-                        </div>
-                        <div class="passage">
-                            <div class="passage-num">VI.44</div>
-                            <div class="passage-text">Si tu es affligé par quelque chose d'extérieur, ce n'est pas cette chose qui te trouble, mais ton jugement à son propos. Et il est en ton pouvoir d'effacer ce jugement à tout moment.</div>
-                        </div>
-                        <div class="passage">
-                            <div class="passage-num">VI.47</div>
-                            <div class="passage-text">Quand tu te heurtes à l'impudence de quelqu'un, demande-toi immédiatement : Est-il possible qu'il n'existe pas d'hommes impudents dans le monde ? Ce n'est pas possible.</div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- LIVRE VII -->
-                <div class="book-section">
-                    <div class="book-title" onclick="toggle('b7')">
-                        <span>📖 LIVRE VII : La Sagesse Pratique</span>
-                        <span class="toggle" id="t-b7">▼</span>
-                    </div>
-                    <div class="book-content" id="b7">
-                        <div class="passage">
-                            <div class="passage-num">VII.2</div>
-                            <div class="passage-text">Quelle est l'action selon la nature de l'homme ? La bienveillance envers ses semblables, le dédain des impressions des sens, le discernement des représentations crédibles.</div>
-                        </div>
-                        <div class="passage">
-                            <div class="passage-num">VII.22</div>
-                            <div class="passage-text">C'est dans ta propre pensée que réside uniquement le pouvoir de te troubler. Supprime ton jugement personnel sur ce qui te semble pénible, et tu es en parfaite sécurité.</div>
-                        </div>
-                        <div class="passage">
-                            <div class="passage-num">VII.29</div>
-                            <div class="passage-text">Efface l'imagination. Arrête la traction des fils. Circonscris le temps présent. Reconnais ce qui t'arrive. Divise et distingue.</div>
-                        </div>
-                        <div class="passage">
-                            <div class="passage-num">VII.54</div>
-                            <div class="passage-text">Partout et à tout moment, il dépend de toi de te contenter pieusement de la situation présente, de te comporter avec justice envers les personnes présentes.</div>
-                        </div>
-                        <div class="passage">
-                            <div class="passage-num">VII.58</div>
-                            <div class="passage-text">Les hommes sont nés les uns pour les autres. Instruis-les donc ou supporte-les.</div>
-                        </div>
-                        <div class="passage">
-                            <div class="passage-num">VII.68</div>
-                            <div class="passage-text">Quel art exerces-tu ? Celui d'être bon. Et comment y parvenir, sinon par des principes théoriques sur la nature de l'univers et sur la constitution de l'homme ?</div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- LIVRE VIII -->
-                <div class="book-section">
-                    <div class="book-title" onclick="toggle('b8')">
-                        <span>📖 LIVRE VIII : La Contemplation</span>
-                        <span class="toggle" id="t-b8">▼</span>
-                    </div>
-                    <div class="book-content" id="b8">
-                        <div class="passage">
-                            <div class="passage-num">VIII.5</div>
-                            <div class="passage-text">Chaque homme ne vit que le moment présent et perd seulement le moment présent.</div>
-                        </div>
-                        <div class="passage">
-                            <div class="passage-num">VIII.32</div>
-                            <div class="passage-text">Regarde les choses d'en haut : observe les milliers de troupeaux, les milliers de cérémonies, toutes sortes de navigations par mer calme ou tempête.</div>
-                        </div>
-                        <div class="passage">
-                            <div class="passage-num">VIII.36</div>
-                            <div class="passage-text">N'oublie pas que ton esprit directeur devient invincible quand il se replie sur lui-même et se contente de ne pas faire ce qu'il ne veut pas faire.</div>
-                        </div>
-                        <div class="passage">
-                            <div class="passage-num">VIII.47</div>
-                            <div class="passage-text">Pense constamment combien de médecins sont morts ; combien d'astrologues après avoir prédit avec emphase la mort des autres ; combien de philosophes après d'infinies discussions sur la mort.</div>
-                        </div>
-                        <div class="passage">
-                            <div class="passage-num">VIII.49</div>
-                            <div class="passage-text">Pense que tu es mort depuis longtemps et que tu as vécu ta vie jusqu'à maintenant ; et vis le reste selon la nature.</div>
-                        </div>
-                        <div class="passage">
-                            <div class="passage-num">VIII.59</div>
-                            <div class="passage-text">Les hommes existent les uns pour les autres. Instruis-les donc ou supporte-les.</div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- LIVRE IX -->
-                <div class="book-section">
-                    <div class="book-title" onclick="toggle('b9')">
-                        <span>📖 LIVRE IX : L'Injustice et le Pardon</span>
-                        <span class="toggle" id="t-b9">▼</span>
-                    </div>
-                    <div class="book-content" id="b9">
-                        <div class="passage">
-                            <div class="passage-num">IX.1</div>
-                            <div class="passage-text">Celui qui commet une injustice commet une impiété. La nature universelle a fait les êtres raisonnables les uns pour les autres, pour qu'ils s'entraident selon leur mérite.</div>
-                        </div>
-                        <div class="passage">
-                            <div class="passage-num">IX.6</div>
-                            <div class="passage-text">Celui qui pèche, pèche contre lui-même. Celui qui commet l'injustice se nuit à lui-même, en se rendant mauvais.</div>
-                        </div>
-                        <div class="passage">
-                            <div class="passage-num">IX.11</div>
-                            <div class="passage-text">Celui qui ne sait pas ce qui existe dans le monde est un étranger au monde. Celui qui ne sait pas ce qui s'y passe est un fugitif.</div>
-                        </div>
-                        <div class="passage">
-                            <div class="passage-num">IX.27</div>
-                            <div class="passage-text">Quand tu es offensé par la faute de quelqu'un, tourne-toi immédiatement vers toi et réfléchis à quelle faute semblable tu commets toi-même.</div>
-                        </div>
-                        <div class="passage">
-                            <div class="passage-num">IX.42</div>
-                            <div class="passage-text">La meilleure façon de se venger d'eux, c'est de ne pas leur ressembler.</div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- LIVRE X -->
-                <div class="book-section">
-                    <div class="book-title" onclick="toggle('b10')">
-                        <span>📖 LIVRE X : L'Âme Rationnelle</span>
-                        <span class="toggle" id="t-b10">▼</span>
-                    </div>
-                    <div class="book-content" id="b10">
-                        <div class="passage">
-                            <div class="passage-num">X.1</div>
-                            <div class="passage-text">Ô mon âme, auras-tu enfin de la bonté, de la simplicité, de l'unité ? Seras-tu nue, plus visible que le corps qui t'enveloppe ?</div>
-                        </div>
-                        <div class="passage">
-                            <div class="passage-num">X.3</div>
-                            <div class="passage-text">Regarde à l'intérieur. À l'intérieur se trouve la source du bien, et elle peut jaillir continuellement si tu continues de creuser.</div>
-                        </div>
-                        <div class="passage">
-                            <div class="passage-num">X.8</div>
-                            <div class="passage-text">N'aie pas honte d'être aidé. Tu as une tâche assignée à accomplir, comme un soldat dans l'assaut d'un mur. Et si tu es boiteux et ne peux pas escalader seul, mais peux le faire avec l'aide d'un autre ?</div>
-                        </div>
-                        <div class="passage">
-                            <div class="passage-num">X.16</div>
-                            <div class="passage-text">Observe constamment que tout naît du changement, et habitue-toi à penser qu'il n'est rien que la nature universelle aime autant que de changer les choses existantes.</div>
-                        </div>
-                        <div class="passage">
-                            <div class="passage-num">X.31</div>
-                            <div class="passage-text">Que peut te guider ? Une seule chose : la philosophie. Elle consiste à garder intact et sans outrage le dieu intérieur.</div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- LIVRE XI -->
-                <div class="book-section">
-                    <div class="book-title" onclick="toggle('b11')">
-                        <span>📖 LIVRE XI : L'Âme Gouvernante</span>
-                        <span class="toggle" id="t-b11">▼</span>
-                    </div>
-                    <div class="book-content" id="b11">
-                        <div class="passage">
-                            <div class="passage-num">XI.1</div>
-                            <div class="passage-text">Les propriétés de l'âme rationnelle : elle se voit elle-même, elle se façonne elle-même, elle fait d'elle-même ce qu'elle veut.</div>
-                        </div>
-                        <div class="passage">
-                            <div class="passage-num">XI.12</div>
-                            <div class="passage-text">Quatre déformations du principe directeur contre lesquelles tu dois constamment te garder : efface-les dès que tu les découvres.</div>
-                        </div>
-                        <div class="passage">
-                            <div class="passage-num">XI.18</div>
-                            <div class="passage-text">Trois relations : l'une avec le corps qui nous enveloppe, l'autre avec la cause divine, et la troisième avec ceux qui vivent avec nous.</div>
-                        </div>
-                        <div class="passage">
-                            <div class="passage-num">XI.37</div>
-                            <div class="passage-text">Ne vis pas comme si tu devais vivre dix mille ans. La mort plane sur toi. Pendant que tu vis, tant que cela est en ton pouvoir, deviens bon.</div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- LIVRE XII -->
-                <div class="book-section">
-                    <div class="book-title" onclick="toggle('b12')">
-                        <span>📖 LIVRE XII : Réflexions Finales</span>
-                        <span class="toggle" id="t-b12">▼</span>
-                    </div>
-                    <div class="book-content" id="b12">
-                        <div class="passage">
-                            <div class="passage-num">XII.1</div>
-                            <div class="passage-text">Tout ce que tu peux désirer atteindre par un détour, tu peux l'avoir maintenant, si tu ne te le refuses pas à toi-même. C'est-à-dire, si tu abandonnes tout le passé et confies l'avenir à la Providence.</div>
-                        </div>
-                        <div class="passage">
-                            <div class="passage-num">XII.3</div>
-                            <div class="passage-text">Que reste-t-il donc ? Qu'une seule chose : une philosophie. Celle-ci consiste à conserver intact le dieu intérieur.</div>
-                        </div>
-                        <div class="passage">
-                            <div class="passage-num">XII.16</div>
-                            <div class="passage-text">Souviens-toi que changer d'avis et suivre celui qui te corrige, c'est être tout aussi libre. Car c'est ton action propre.</div>
-                        </div>
-                        <div class="passage">
-                            <div class="passage-num">XII.22</div>
-                            <div class="passage-text">Tout ce que tu rencontres dans la vie, c'est dans les comedies, les pâturages, les bergeries que tu l'as déjà vu. Rien de nouveau sous le soleil.</div>
-                        </div>
-                        <div class="passage">
-                            <div class="passage-num">XII.26</div>
-                            <div class="passage-text">Celui qui s'afflige, s'irrite ou a peur, refuse quelque chose de ce qui arrive par ordre de celui qui gouverne l'univers.</div>
-                        </div>
-                        <div class="passage">
-                            <div class="passage-num">XII.36</div>
-                            <div class="passage-text">Ô homme, tu as été citoyen dans cette grande Cité. Que t'importe que ce soit pour cinq ans ou pour trois ? Car ce qui est conforme aux lois est équitable pour tous.</div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="quote" style="margin-top: 3rem;">
-                    "Pour Aurelius Secundus : que ces 12 livres, écrits il y a près de 2000 ans par un empereur philosophe, continuent de guider vos pas sur le chemin de la sagesse stoïcienne. Méditez-les quotidiennement, pratiquez leurs enseignements, et laissez-les transformer votre vie."
-                    <br><br><em>— Version enrichie • Plus de 150 passages essentiels</em>
+                <div class="philosopher-card">
+                    <div class="philosopher-icon">⚡</div>
+                    <h3>EXERCICES STOÏCIENS</h3>
+                    <p>Pratiques quotidiennes inspirées des trois maîtres pour cultiver la sagesse au quotidien.</p>
+                    <a href="exercices-stoiciens.html" class="btn">Pratiquer →</a>
                 </div>
             </div>
         </div>
 
-        <!-- SECTION ÉPICTÈTE -->
-        <div id="epictete" class="section">
-            <div class="card">
-                <h2>Le Manuel d'Épictète (Enchiridion)</h2>
-                <div class="quote">
-                    "Parmi les choses, les unes dépendent de nous, les autres n'en dépendent pas."
-                    <br><em>— Épictète, Manuel, I.1</em>
-                </div>
-                
-                <p style="margin-bottom: 1.5rem;">
-                    Le Manuel d'Épictète (Enchiridion en grec) est l'un des textes fondamentaux du stoïcisme. Compilé par Arrien vers l'an 125, il résume l'enseignement oral d'Épictète, ancien esclave devenu l'un des plus grands philosophes stoïciens.
-                </p>
+        <!-- ONGLET MARC AURÈLE -->
+        <div id="marc-aurele" class="tab-content">
+            <div class="intro-section">
+                <h2>👑 Marc Aurèle (121-180 ap. J.-C.)</h2>
+                <p>Empereur romain de 161 à 180, Marc Aurèle est l'un des plus grands philosophes stoïciens. Ses <em>Méditations</em>, écrites en grec pendant ses campagnes militaires, constituent un journal intime philosophique d'une profondeur extraordinaire.</p>
+            </div>
 
-                <div class="philosopher-card" style="margin: 2rem 0;">
-                    <h3 style="color: var(--primary); margin-bottom: 1rem;">📖 À propos du Manuel</h3>
-                    <p style="margin-bottom: 1rem;">
-                        Le mot grec <em>enchiridion</em> (ἐγχειρίδιον) signifie littéralement "ce que l'on garde sous la main" - un manuel de poche, un guide pratique pour la vie quotidienne.
-                    </p>
-                    <p style="margin-bottom: 1rem;">
-                        <strong>Influence sur Marc Aurèle :</strong> Marc Aurèle mentionne dans ses Méditations (Livre I, §7) avoir découvert les enseignements d'Épictète grâce à son maître Junius Rusticus, qui lui fit lire les "Commentaires d'Épictète". Cette lecture a profondément marqué la pensée de l'empereur-philosophe.
-                    </p>
-                    <p>
-                        <strong>Principe central :</strong> La distinction fondamentale entre ce qui dépend de nous (nos pensées, opinions, désirs, aversions) et ce qui n'en dépend pas (le corps, les biens, la réputation, les dignités). La liberté et le bonheur résident dans la maîtrise parfaite de ce qui dépend de nous.
-                    </p>
-                </div>
+            <div class="quote-highlight">
+                "Tu as le pouvoir de te retirer en toi-même quand tu le veux. Aucune retraite n'est plus paisible ni moins encombrée que celle que l'homme trouve dans son âme."
+                <br><em>— Marc Aurèle, Méditations IV.3</em>
+            </div>
 
-                <div style="text-align: center; margin: 3rem 0;">
-                    <a href="manuel-epictete.html" class="read-btn" style="font-size: 1.1rem; padding: 1rem 3rem;">
-                        📜 Lire le Manuel d'Épictète →
-                    </a>
-                </div>
+            <div class="philosopher-card" style="max-width: 600px; margin: 2rem auto;">
+                <h3>Les Méditations</h3>
+                <p>12 Livres de réflexions personnelles sur la vie, la mort, la vertu et l'acceptation du destin. Plus de 150 passages essentiels pour guider votre vie.</p>
+                <a href="meditations.html" class="btn">Lire les Méditations →</a>
+            </div>
+        </div>
 
-                <div class="quote" style="margin-top: 2rem;">
-                    "Ce qui trouble les hommes, ce ne sont pas les choses, mais leurs opinions sur les choses."
-                    <br><em>— Épictète, Manuel, V</em>
-                </div>
+        <!-- ONGLET ÉPICTÈTE -->
+        <div id="epictete" class="tab-content">
+            <div class="intro-section">
+                <h2>📜 Épictète (50-125 ap. J.-C.)</h2>
+                <p>Né esclave en Phrygie, Épictète fut affranchi et devint l'un des plus grands maîtres stoïciens. Son enseignement, retranscrit par son élève Arrien, se concentre sur la distinction fondamentale entre ce qui dépend de nous et ce qui n'en dépend pas.</p>
+            </div>
+
+            <div class="quote-highlight">
+                "Parmi les choses, les unes dépendent de nous, les autres n'en dépendent pas. De nous dépendent la pensée, l'impulsion, le désir, l'aversion ; en un mot, tout ce qui est notre œuvre propre."
+                <br><em>— Épictète, Manuel, I</em>
+            </div>
+
+            <div class="philosopher-card" style="max-width: 600px; margin: 2rem auto;">
+                <h3>Le Manuel d'Épictète</h3>
+                <p>Guide pratique de vie stoïcienne en 53 chapitres. L'essence de la philosophie d'Épictète condensée pour une application quotidienne.</p>
+                <a href="manuel-epictete.html" class="btn">Lire le Manuel →</a>
+            </div>
+        </div>
+
+        <!-- ONGLET SÉNÈQUE -->
+        <div id="seneque" class="tab-content">
+            <div class="intro-section">
+                <h2>✍️ Sénèque (4 av. J.-C. - 65 ap. J.-C.)</h2>
+                <p>Philosophe, dramaturge et conseiller de l'empereur Néron, Sénèque a laissé une œuvre considérable. Ses <em>Lettres à Lucilius</em> et son traité <em>De la Brièveté de la vie</em> restent d'une actualité troublante.</p>
+            </div>
+
+            <div class="quote-highlight">
+                "Ce n'est pas parce que les choses sont difficiles que nous n'osons pas, c'est parce que nous n'osons pas qu'elles sont difficiles."
+                <br><em>— Sénèque</em>
+            </div>
+
+            <div class="philosopher-card" style="max-width: 600px; margin: 2rem auto;">
+                <h3>Lettres à Lucilius & De la Brièveté de la vie</h3>
+                <p>124 lettres de sagesse pratique adressées à son ami Lucilius, et un traité sur l'art de ne pas gaspiller sa vie.</p>
+                <a href="seneque.html" class="btn">Découvrir Sénèque →</a>
+            </div>
+        </div>
+
+        <!-- ONGLET EXERCICES -->
+        <div id="exercices" class="tab-content">
+            <div class="intro-section">
+                <h2>⚡ Exercices Stoïciens Quotidiens</h2>
+                <p>Le stoïcisme n'est pas une théorie abstraite, mais un <strong>art de vivre</strong> qui se pratique quotidiennement. Ces exercices, inspirés de Marc Aurèle, Épictète et Sénèque, vous permettront de cultiver la sagesse dans votre vie quotidienne.</p>
+            </div>
+
+            <div class="quote-highlight">
+                "La philosophie ne promet pas de nous procurer des biens extérieurs. Elle se propose de nous assurer le bien véritable, celui qui naît de nous-mêmes."
+                <br><em>— Sénèque</em>
+            </div>
+
+            <div class="philosopher-card" style="max-width: 600px; margin: 2rem auto;">
+                <h3>8 Exercices Pratiques</h3>
+                <p>Préparation matinale, dichotomie du contrôle, examen du soir, méditation sur la mort, et bien plus encore. Avec plan d'action quotidien complet.</p>
+                <a href="exercices-stoiciens.html" class="btn">Commencer à pratiquer →</a>
             </div>
         </div>
     </div>
 
     <footer>
-        <p>Marc Aurèle • Épictète • Philosophie Stoïcienne</p>
-        <p style="margin-top: 0.5rem; opacity: 0.8;">
-            Plateforme créée pour Aurelius Secundus
-        </p>
+        <p><strong>AURELIUS SECUNDUS</strong></p>
+        <p>Plateforme de Philosophie Stoïcienne</p>
+        <p style="margin-top: 1rem; font-style: italic;">"La vie est longue si on sait en user." — Sénèque</p>
     </footer>
 
     <script>
-        function showSection(id) {
-            document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
-            document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
-            document.getElementById(id).classList.add('active');
-            event.target.classList.add('active');
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
+        function showTab(tabName) {
+            // Cacher tous les contenus
+            const contents = document.querySelectorAll('.tab-content');
+            contents.forEach(content => content.classList.remove('active'));
 
-        function toggle(id) {
-            const content = document.getElementById(id);
-            const toggleIcon = document.getElementById('t-' + id);
-            content.classList.toggle('open');
-            toggleIcon.classList.toggle('open');
+            // Désactiver tous les onglets
+            const tabs = document.querySelectorAll('.nav-tab');
+            tabs.forEach(tab => tab.classList.remove('active'));
+
+            // Afficher le contenu sélectionné
+            document.getElementById(tabName).classList.add('active');
+
+            // Activer l'onglet cliqué
+            event.target.classList.add('active');
+
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
     </script>
 </body>
