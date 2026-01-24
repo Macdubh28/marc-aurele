@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercices Stoïciens Quotidiens</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Garamond', 'Georgia', serif;
+            line-height: 1.8;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: #e0e0e0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 50px;
+            border-bottom: 2px solid #d4af37;
+            padding-bottom: 30px;
+        }
+
+        h1 {
+            font-size: 2.8em;
+            color: #d4af37;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .subtitle {
+            font-size: 1.3em;
+            color: #b8860b;
+            font-style: italic;
+            margin-bottom: 10px;
+        }
+
+        .intro {
+            background: rgba(212, 175, 55, 0.1);
+            border-left: 4px solid #d4af37;
+            padding: 20px;
+            margin: 30px 0;
+            border-radius: 8px;
+        }
+
+        .intro p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        .exercise-card {
+            margin: 30px 0;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 12px;
+            border: 2px solid rgba(212, 175, 55, 0.3);
+            transition: all 0.3s;
+        }
+
+        .exercise-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(212, 175, 55, 0.2);
+            border-color: #d4af37;
+        }
+
+        .exercise-icon {
+            font-size: 2.5em;
+            margin-bottom: 15px;
+        }
+
+        .exercise-title {
+            font-size: 1.8em;
+            color: #d4af37;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+        .exercise-subtitle {
+            color: #b8860b;
+            font-style: italic;
+            margin-bottom: 20px;
+            font-size: 1.1em;
+        }
+
+        .exercise-content {
+            text-align: justify;
+            line-height: 1.9;
+        }
+
+        .exercise-content p {
+            margin-bottom: 15px;
+        }
+
+        .practice-box {
+            background: rgba(212, 175, 55, 0.15);
+            border-left: 4px solid #d4af37;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 6px;
+        }
+
+        .practice-title {
+            color: #d4af37;
+            font-weight: bold;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+
+        .steps {
+            list-style: none;
+            padding: 0;
+        }
+
+        .steps li {
+            padding: 10px 0 10px 35px;
+            position: relative;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        .steps li:last-child {
+            border-bottom: none;
+        }
+
+        .steps li:before {
+            content: "→";
+            position: absolute;
+            left: 10px;
+            color: #d4af37;
+            font-weight: bold;
+        }
+
+        .quote {
+            font-style: italic;
+            color: #b8860b;
+            border-left: 3px solid #d4af37;
+            padding-left: 20px;
+            margin: 20px 0;
+            font-size: 1.05em;
+        }
+
+        .time-badge {
+            display: inline-block;
+            background: rgba(212, 175, 55, 0.3);
+            color: #d4af37;
+            padding: 5px 15px;
+            border-radius: 15px;
+            font-size: 0.9em;
+            margin: 10px 5px;
+            font-weight: bold;
+        }
+
+        .section-divider {
+            height: 2px;
+            background: linear-gradient(to right, transparent, #d4af37, transparent);
+            margin: 50px 0;
+        }
+
+        .nav-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 2px solid #d4af37;
+        }
+
+        .btn {
+            background: #d4af37;
+            color: #1a1a2e;
+            padding: 12px 30px;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+
+        .btn:hover {
+            background: #b8860b;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.4);
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            padding-top: 30px;
+            border-top: 1px solid rgba(212, 175, 55, 0.3);
+            color: #888;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>⚡ EXERCICES STOÏCIENS</h1>
+            <p class="subtitle">Pratiques quotidiennes pour cultiver la sagesse</p>
+            <p style="color: #888; font-size: 0.95em; margin-top: 15px;">
+                Inspirées de Marc Aurèle, Épictète et Sénèque
+            </p>
+        </header>
+
+        <div class="intro">
+            <h2 style="color: #d4af37; margin-bottom: 15px;">La philosophie comme pratique</h2>
+            <p>Le stoïcisme n'est pas une théorie abstraite à contempler, mais un <strong>art de vivre</strong> à pratiquer quotidiennement. Les stoïciens appelaient cela des <em>"exercices spirituels"</em> (askēsis en grec).</p>
+            
+            <p>Marc Aurèle écrivait ses <em>Méditations</em> comme exercice quotidien. Épictète enseignait des pratiques concrètes. Sénèque recommandait l'examen de conscience chaque soir.</p>
+            
+            <p><strong>Ces exercices ne demandent pas des heures,</strong> mais quelques minutes d'attention sincère. Ils transformeront progressivement ta vision du monde et ta manière de vivre.</p>
+        </div>
+
+        <!-- EXERCICE 1 -->
+        <div class="exercise-card">
+            <div class="exercise-icon">🌅</div>
+            <h2 class="exercise-title">1. La Préparation Matinale</h2>
+            <p class="exercise-subtitle">"Praemeditatio Malorum" - Marc Aurèle, Méditations II.1</p>
+            <span class="time-badge">⏱️ 5 minutes</span>
+            <span class="time-badge">🕐 Au réveil</span>
+            
+            <div class="exercise-content">
+                <p>Chaque matin, avant de commencer ta journée, prépare ton esprit aux défis qui t'attendent. Cette pratique te rendra invulnérable aux surprises désagréables.</p>
+                
+                <div class="practice-box">
+                    <div class="practice-title">📋 Comment pratiquer :</div>
+                    <ul class="steps">
+                        <li>Assieds-toi calmement, prends 3 respirations profondes</li>
+                        <li>Dis-toi : "Aujourd'hui je rencontrerai des gens ingrats, arrogants, malhonnêtes"</li>
+                        <li>Rappelle-toi : "Ils agissent ainsi par ignorance du bien et du mal"</li>
+                        <li>Affirme : "Rien de ce qui m'arrive ne peut me nuire si je ne le permets pas"</li>
+                        <li>Visualise ta journée avec sérénité, quoi qu'il arrive</li>
+                    </ul>
+                </div>
+                
+                <div class="quote">
+                    "Dis-toi dès le matin : je rencontrerai aujourd'hui un importun, un ingrat, un insolent, un fourbe, un envieux, un insociable. Tous ces défauts leur sont survenus par ignorance du bien et du mal." - Marc Aurèle
+                </div>
+            </div>
+        </div>
+
+        <!-- EXERCICE 2 -->
+        <div class="exercise-card">
+            <div class="exercise-icon">⚖️</div>
+            <h2 class="exercise-title">2. La Dichotomie du Contrôle</h2>
+            <p class="exercise-subtitle">Exercice central d'Épictète</p>
+            <span class="time-badge">⏱️ Tout au long de la journée</span>
+            
+            <div class="exercise-content">
+                <p>Face à chaque situation, pose-toi cette question fondamentale : <strong>"Est-ce que cela dépend de moi ?"</strong></p>
+                
+                <div class="practice-box">
+                    <div class="practice-title">📋 Les deux catégories :</div>
+                    <p><strong style="color: #d4af37;">✅ Ce qui dépend de moi :</strong></p>
+                    <ul class="steps">
+                        <li>Mes pensées et jugements</li>
+                        <li>Mes désirs et aversions</li>
+                        <li>Mes actions et intentions</li>
+                        <li>Mon attitude face aux événements</li>
+                    </ul>
+                    
+                    <p style="margin-top: 20px;"><strong style="color: #b8860b;">❌ Ce qui ne dépend PAS de moi :</strong></p>
+                    <ul class="steps">
+                        <li>Le corps, la santé, la mort</li>
+                        <li>Les biens matériels, la richesse</li>
+                        <li>La réputation, l'opinion des autres</li>
+                        <li>Les événements extérieurs</li>
+                    </ul>
+                </div>
+                
+                <div class="practice-box">
+                    <div class="practice-title">💡 Application pratique :</div>
+                    <p><strong>Situation :</strong> Quelqu'un te critique injustement au travail</p>
+                    <p><strong>Question :</strong> Son opinion dépend-elle de moi ? → NON</p>
+                    <p><strong>Conclusion :</strong> "Il n'y a rien là qui me regarde. Je ne contrôle que ma réaction."</p>
+                    <p><strong>Action :</strong> Reste serein, concentre-toi sur ton travail, améliore ce qui peut l'être</p>
+                </div>
+                
+                <div class="quote">
+                    "Parmi les choses, les unes dépendent de nous, les autres n'en dépendent pas. S'agit-il de ces dernières, sois prêt à dire : Il n'y a rien là qui me regarde, moi." - Épictète
+                </div>
+            </div>
+        </div>
+
+        <!-- EXERCICE 3 -->
+        <div class="exercise-card">
+            <div class="exercise-icon">🌙</div>
+            <h2 class="exercise-title">3. L'Examen du Soir</h2>
+            <p class="exercise-subtitle">Recommandé par Sénèque et Marc Aurèle</p>
+            <span class="time-badge">⏱️ 10 minutes</span>
+            <span class="time-badge">🕘 Avant de dormir</span>
+            
+            <div class="exercise-content">
+                <p>Chaque soir, passe en revue ta journée comme un juge bienveillant mais honnête. Cet exercice te permettra de progresser continuellement.</p>
+                
+                <div class="practice-box">
+                    <div class="practice-title">📋 Les trois questions de Sénèque :</div>
+                    <ul class="steps">
+                        <li><strong>Qu'ai-je mal fait aujourd'hui ?</strong> (Sans te juger durement, observe tes erreurs)</li>
+                        <li><strong>Qu'ai-je bien fait ?</strong> (Reconnais tes progrès, même petits)</li>
+                        <li><strong>Qu'ai-je omis de faire ?</strong> (Quelles occasions de vertu ai-je manquées ?)</li>
+                    </ul>
+                </div>
+                
+                <div class="practice-box">
+                    <div class="practice-title">💡 Exemple concret :</div>
+                    <p><strong>Mal fait :</strong> "J'ai réagi avec colère quand ma collègue m'a interrompu. J'aurais pu rester calme."</p>
+                    <p><strong>Bien fait :</strong> "J'ai aidé un collègue sans attendre qu'on me le demande."</p>
+                    <p><strong>Omis :</strong> "J'aurais pu méditer 10 minutes ce matin au lieu de consulter mes réseaux sociaux."</p>
+                </div>
+                
+                <div class="quote">
+                    "Le sage sonde chaque journée. Il se demande à lui-même : Qu'ai-je guéri de mes défauts ? À quel vice ai-je résisté ? En quoi suis-je devenu meilleur ?" - Sénèque
+                </div>
+            </div>
+        </div>
+
+        <div class="section-divider"></div>
+
+        <!-- EXERCICE 4 -->
+        <div class="exercise-card">
+            <div class="exercise-icon">💀</div>
+            <h2 class="exercise-title">4. La Méditation sur la Mort</h2>
+            <p class="exercise-subtitle">"Memento Mori" - Souviens-toi que tu mourras</p>
+            <span class="time-badge">⏱️ 5 minutes</span>
+            <span class="time-badge">🕐 1-2 fois par semaine</span>
+            
+            <div class="exercise-content">
+                <p>Contrairement aux apparences, méditer sur la mort n'est pas morbide : c'est le secret pour apprécier pleinement la vie et ne plus la gaspiller.</p>
+                
+                <div class="practice-box">
+                    <div class="practice-title">📋 Comment pratiquer :</div>
+                    <ul class="steps">
+                        <li>Ferme les yeux et respire calmement</li>
+                        <li>Visualise ta dernière journée sur terre</li>
+                        <li>Demande-toi : "Si je mourais demain, de quoi serais-je fier ? Qu'est-ce que je regretterais ?"</li>
+                        <li>Observe ce qui est vraiment important vs ce qui est futile</li>
+                        <li>Ouvre les yeux avec reconnaissance pour être encore vivant</li>
+                    </ul>
+                </div>
+                
+                <div class="practice-box">
+                    <div class="practice-title">💡 Questions à te poser :</div>
+                    <p>• Est-ce que je perdrais mon temps sur les réseaux sociaux si je savais qu'il me reste 6 mois ?</p>
+                    <p>• Est-ce que je me disputerais pour des broutilles avec ceux que j'aime ?</p>
+                    <p>• Est-ce que j'oserais enfin faire ce qui compte vraiment pour moi ?</p>
+                </div>
+                
+                <div class="quote">
+                    "Que la mort et l'exil et toutes les choses qui semblent terribles soient chaque jour devant tes yeux, surtout la mort ; et jamais tu ne penseras rien de bas, jamais tu ne désireras rien avec excès." - Épictète
+                </div>
+            </div>
+        </div>
+
+        <!-- EXERCICE 5 -->
+        <div class="exercise-card">
+            <div class="exercise-icon">🔄</div>
+            <h2 class="exercise-title">5. La Vue d'en Haut</h2>
+            <p class="exercise-subtitle">"View from Above" - Marc Aurèle</p>
+            <span class="time-badge">⏱️ 3-5 minutes</span>
+            <span class="time-badge">🕐 Quand tu es stressé</span>
+            
+            <div class="exercise-content">
+                <p>Quand tu es submergé par un problème, prends de la hauteur. Cet exercice te permet de relativiser instantanément.</p>
+                
+                <div class="practice-box">
+                    <div class="practice-title">📋 La technique du zoom arrière :</div>
+                    <ul class="steps">
+                        <li><strong>Zoom 1 :</strong> Visualise ta ville vue du ciel - tu n'es qu'un point minuscule</li>
+                        <li><strong>Zoom 2 :</strong> Vois ton pays, ton continent - tu disparais complètement</li>
+                        <li><strong>Zoom 3 :</strong> Vois la Terre depuis l'espace - une bille bleue dans l'immensité</li>
+                        <li><strong>Zoom 4 :</strong> Vois le système solaire, la galaxie - la Terre est invisible</li>
+                        <li><strong>Conclusion :</strong> Ton problème, aussi grave soit-il, est infiniment petit dans l'univers</li>
+                    </ul>
+                </div>
+                
+                <div class="quote">
+                    "Regarde les choses d'en haut : observe les milliers de troupeaux, les milliers de cérémonies, toutes sortes de navigations par mer calme ou tempête, toute la variété des êtres qui naissent, vivent ensemble, et disparaissent." - Marc Aurèle VIII.32
+                </div>
+            </div>
+        </div>
+
+        <!-- EXERCICE 6 -->
+        <div class="exercise-card">
+            <div class="exercise-icon">💎</div>
+            <h2 class="exercise-title">6. L'Amor Fati</h2>
+            <p class="exercise-subtitle">Aimer son destin - Acceptation radicale</p>
+            <span class="time-badge">⏱️ Tout au long de la journée</span>
+            
+            <div class="exercise-content">
+                <p><em>Amor Fati</em> signifie "amour du destin". C'est l'art de non seulement accepter ce qui arrive, mais de l'aimer, de le vouloir.</p>
+                
+                <div class="practice-box">
+                    <div class="practice-title">📋 Comment pratiquer :</div>
+                    <ul class="steps">
+                        <li>Face à un événement désagréable, respire profondément</li>
+                        <li>Au lieu de dire "Pourquoi moi ?", dis "C'est exactement ce dont j'avais besoin"</li>
+                        <li>Cherche l'opportunité cachée dans cet obstacle</li>
+                        <li>Remercie l'univers pour cette leçon</li>
+                        <li>Agis avec courage face à la situation</li>
+                    </ul>
+                </div>
+                
+                <div class="practice-box">
+                    <div class="practice-title">💡 Exemples pratiques :</div>
+                    <p><strong>Embouteillage :</strong> "Parfait, j'ai du temps pour réfléchir et me recentrer."</p>
+                    <p><strong>Critique au travail :</strong> "Excellente opportunité de progresser et d'améliorer mon travail."</p>
+                    <p><strong>Échec d'un projet :</strong> "La vie me montre une meilleure voie. Qu'est-ce que j'apprends ?"</p>
+                </div>
+                
+                <div class="quote">
+                    "Ne demande pas que ce qui arrive arrive comme tu le veux, mais veux ce qui arrive comme il arrive, et tu couleras une vie heureuse." - Épictète
+                </div>
+            </div>
+        </div>
+
+        <!-- EXERCICE 7 -->
+        <div class="exercise-card">
+            <div class="exercise-icon">🏛️</div>
+            <h2 class="exercise-title">7. La Retraite Intérieure</h2>
+            <p class="exercise-subtitle">Se retirer en soi-même - Marc Aurèle IV.3</p>
+            <span class="time-badge">⏱️ 5-10 minutes</span>
+            <span class="time-badge">🕐 Quand nécessaire</span>
+            
+            <div class="exercise-content">
+                <p>Tu n'as pas besoin d'une maison à la campagne pour trouver la paix. Tu peux te retirer en toi-même, à tout moment, où que tu sois.</p>
+                
+                <div class="practice-box">
+                    <div class="practice-title">📋 Comment pratiquer :</div>
+                    <ul class="steps">
+                        <li>Trouve un endroit calme (même les toilettes au bureau!)</li>
+                        <li>Ferme les yeux, ralentis ta respiration</li>
+                        <li>Dis-toi : "Je me retire dans ma citadelle intérieure"</li>
+                        <li>Observe tes pensées sans jugement, comme des nuages qui passent</li>
+                        <li>Reviens au calme de ton centre, à ton essence immuable</li>
+                        <li>Ouvre les yeux, rafraîchi et centré</li>
+                    </ul>
+                </div>
+                
+                <div class="quote">
+                    "Les hommes recherchent des retraites : à la campagne, au bord de la mer, dans les montagnes. Mais tout cela est de la plus grande vulgarité, puisqu'il t'est possible, à l'heure que tu veux, de te retirer en toi-même." - Marc Aurèle
+                </div>
+            </div>
+        </div>
+
+        <!-- EXERCICE 8 -->
+        <div class="exercise-card">
+            <div class="exercise-icon">⏳</div>
+            <h2 class="exercise-title">8. Vivre le Moment Présent</h2>
+            <p class="exercise-subtitle">L'instant présent est tout ce que tu as</p>
+            <span class="time-badge">⏱️ Tout au long de la journée</span>
+            
+            <div class="exercise-content">
+                <p>Le passé n'existe plus. Le futur n'existe pas encore. Seul le présent est réel. C'est la seule chose que tu possèdes vraiment.</p>
+                
+                <div class="practice-box">
+                    <div class="practice-title">📋 Exercices de présence :</div>
+                    <ul class="steps">
+                        <li><strong>En marchant :</strong> Sens chaque pas, le contact du sol, le mouvement de ton corps</li>
+                        <li><strong>En mangeant :</strong> Goûte vraiment chaque bouchée, sans distraction</li>
+                        <li><strong>En parlant :</strong> Écoute pleinement, sans préparer ta réponse</li>
+                        <li><strong>En travaillant :</strong> Une tâche à la fois, pleine attention</li>
+                    </ul>
+                </div>
+                
+                <div class="practice-box">
+                    <div class="practice-title">💡 Quand ton esprit divague :</div>
+                    <p>• Ramène-le gentiment au présent</p>
+                    <p>• Demande-toi : "Que puis-je faire maintenant ?"</p>
+                    <p>• Concentre-toi sur ta respiration - elle est toujours présente</p>
+                </div>
+                
+                <div class="quote">
+                    "Ne te laisse pas troubler par la vision globale de ta vie. Ne pense pas aux nombreuses et diverses épreuves qui t'attendent probablement ; mais à chaque présent demande-toi : Qu'y a-t-il d'insupportable et d'intolérable là-dedans ?" - Marc Aurèle VIII.36
+                </div>
+            </div>
+        </div>
+
+        <div class="section-divider"></div>
+
+        <!-- PLAN D'ACTION -->
+        <div class="exercise-card" style="background: rgba(212, 175, 55, 0.1);">
+            <div class="exercise-icon">📅</div>
+            <h2 class="exercise-title">Ton Plan d'Action Stoïcien</h2>
+            <p class="exercise-subtitle">Comment intégrer ces exercices dans ta vie</p>
+            
+            <div class="exercise-content">
+                <div class="practice-box">
+                    <div class="practice-title">🌅 ROUTINE MATINALE (10 min)</div>
+                    <ul class="steps">
+                        <li>Préparation Matinale (5 min)</li>
+                        <li>Lecture d'une page de Marc Aurèle ou Épictète (5 min)</li>
+                    </ul>
+                </div>
+                
+                <div class="practice-box">
+                    <div class="practice-title">☀️ PENDANT LA JOURNÉE</div>
+                    <ul class="steps">
+                        <li>Dichotomie du Contrôle - À chaque contrariété</li>
+                        <li>Amor Fati - Face aux obstacles</li>
+                        <li>Présence - Autant que possible</li>
+                        <li>Vue d'en Haut - Quand stressé</li>
+                        <li>Retraite Intérieure - Si besoin</li>
+                    </ul>
+                </div>
+                
+                <div class="practice-box">
+                    <div class="practice-title">🌙 ROUTINE DU SOIR (10 min)</div>
+                    <ul class="steps">
+                        <li>Examen du Soir (10 min)</li>
+                        <li>Gratitude pour la journée vécue</li>
+                    </ul>
+                </div>
+                
+                <div class="practice-box">
+                    <div class="practice-title">🗓️ HEBDOMADAIRE</div>
+                    <ul class="steps">
+                        <li>Méditation sur la Mort (1-2 fois/semaine)</li>
+                        <li>Relecture de tes notes stoïciennes</li>
+                    </ul>
+                </div>
+                
+                <div class="quote">
+                    "La philosophie n'est pas une théorie, mais une activité." - Épictète
+                </div>
+            </div>
+        </div>
+
+        <div class="nav-buttons">
+            <a href="index.html" class="btn">← Retour à l'accueil</a>
+            <a href="seneque.html" class="btn">Sénèque →</a>
+        </div>
+
+        <footer>
+            <p>Exercices Stoïciens • Plateforme d'Aurelius Secundus</p>
+            <p style="margin-top: 10px; font-style: italic;">"Ce n'est pas la théorie qui manque, mais la pratique." - Sénèque</p>
+        </footer>
+    </div>
+</body>
+</html>
