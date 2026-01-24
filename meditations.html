@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Les Méditations - Marc Aurèle</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', 'Times New Roman', serif;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            color: #e0e0e0;
+            line-height: 1.8;
+        }
+
+        header {
+            background-color: rgba(0, 0, 0, 0.3);
+            padding: 20px 0;
+            text-align: center;
+            border-bottom: 2px solid #8b7355;
+        }
+
+        header h1 {
+            color: #d4af37;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        nav {
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 15px 0;
+            text-align: center;
+            border-bottom: 1px solid #8b7355;
+        }
+
+        nav a {
+            color: #d4af37;
+            text-decoration: none;
+            margin: 0 20px;
+            font-size: 1.1em;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #ffd700;
+            border-bottom: 2px solid #ffd700;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .intro {
+            background-color: rgba(139, 115, 85, 0.1);
+            border-left: 4px solid #d4af37;
+            padding: 30px;
+            margin-bottom: 40px;
+            border-radius: 5px;
+        }
+
+        .intro h2 {
+            color: #d4af37;
+            margin-bottom: 15px;
+            font-size: 2em;
+        }
+
+        .intro p {
+            font-size: 1.1em;
+            color: #c0c0c0;
+        }
+
+        .book {
+            background-color: rgba(0, 0, 0, 0.3);
+            margin-bottom: 40px;
+            padding: 30px;
+            border-radius: 8px;
+            border: 1px solid #8b7355;
+        }
+
+        .book h3 {
+            color: #d4af37;
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #8b7355;
+            padding-bottom: 10px;
+        }
+
+        .passage {
+            margin-bottom: 25px;
+            padding: 20px;
+            background-color: rgba(139, 115, 85, 0.05);
+            border-left: 3px solid #8b7355;
+            border-radius: 4px;
+        }
+
+        .passage-number {
+            color: #d4af37;
+            font-weight: bold;
+            font-size: 0.9em;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .passage-text {
+            font-style: italic;
+            color: #e0e0e0;
+            line-height: 1.9;
+        }
+
+        .back-button {
+            display: inline-block;
+            background-color: #8b7355;
+            color: #fff;
+            padding: 12px 30px;
+            text-decoration: none;
+            border-radius: 25px;
+            margin: 30px 0;
+            transition: background-color 0.3s;
+        }
+
+        .back-button:hover {
+            background-color: #d4af37;
+        }
+
+        footer {
+            background-color: rgba(0, 0, 0, 0.5);
+            color: #888;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 60px;
+            border-top: 1px solid #8b7355;
+        }
+
+        .quote-highlight {
+            background-color: rgba(212, 175, 55, 0.1);
+            padding: 20px;
+            margin: 20px 0;
+            border-left: 4px solid #d4af37;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Marc Aurèle • Épictète • Sénèque</h1>
+    </header>
+
+    <nav>
+        <a href="index.html">Accueil</a>
+        <a href="index.html#marc-aurele">Marc Aurèle</a>
+        <a href="manuel-epictete.html">Épictète</a>
+        <a href="seneque.html">Sénèque</a>
+        <a href="exercices-stoiciens.html">Exercices</a>
+    </nav>
+
+    <div class="container">
+        <div class="intro">
+            <h2>📖 Les Méditations de Marc Aurèle</h2>
+            <p>Les <em>Pensées pour moi-même</em> (ou <em>Méditations</em>) sont l'œuvre majeure de Marc Aurèle, empereur-philosophe. Rédigées en grec entre 170 et 180 ap. J.-C., ces réflexions intimes constituent un témoignage unique de la philosophie stoïcienne appliquée au quotidien.</p>
+            <p style="margin-top: 15px;">Ces douze livres offrent un guide pratique pour vivre selon la raison, la vertu et l'harmonie avec la nature. Ils demeurent une source d'inspiration intemporelle pour quiconque cherche la sagesse et la sérénité.</p>
+        </div>
+
+        <!-- LIVRE I -->
+        <div class="book" id="livre1">
+            <h3>Livre I - Reconnaissance et gratitude</h3>
+            <p style="color: #c0c0c0; margin-bottom: 20px;">Marc Aurèle exprime sa gratitude envers ceux qui l'ont formé et influencé, reconnaissant les vertus qu'il a apprises de sa famille, de ses maîtres et de ses proches.</p>
+            
+            <div class="passage">
+                <span class="passage-number">I, 1</span>
+                <p class="passage-text">De mon grand-père Verus : la bonté et la sérénité d'humeur.</p>
+            </div>
+
+            <div class="passage">
+                <span class="passage-number">I, 2</span>
+                <p class="passage-text">De la réputation et du souvenir qu'on a gardés de mon père : la modestie et la virilité.</p>
+            </div>
+
+            <div class="passage">
+                <span class="passage-number">I, 3</span>
+                <p class="passage-text">De ma mère : la piété, la générosité, l'habitude de s'abstenir non seulement de mal faire, mais même d'en concevoir la pensée ; en outre, la simplicité du régime, bien éloignée du train de vie des riches.</p>
+            </div>
+
+            <div class="passage">
+                <span class="passage-number">I, 7</span>
+                <p class="passage-text">De Rusticus : avoir conçu le besoin de redresser et de soigner mon caractère ; ne pas me laisser entraîner à l'émulation sophistique, ni composer des traités de théorie ou débiter de petits discours d'exhortation pour faire montre de mon activité ou de ma bienfaisance.</p>
+            </div>
+
+            <div class="passage">
+                <span class="passage-number">I, 14</span>
+                <p class="passage-text">De mon frère Sévère : l'amour de la famille, de la vérité, de la justice ; avoir connu, grâce à lui, Thraseás, Helvidius, Caton, Dion, Brutus ; m'être fait l'idée d'un État avec une loi égale pour tous, régi selon l'égalité des droits et l'égalité de parole, et d'une royauté qui honore avant tout la liberté des sujets.</p>
+            </div>
+
+            <div class="passage">
+                <span class="passage-number">I, 17</span>
+                <p class="passage-text">Des dieux : avoir eu de bons grands-parents, de bons parents, une bonne sœur, de bons maîtres, de bons familiers, de bons parents, de bons amis, presque tous ; n'avoir manqué à l'égard d'aucun d'eux, bien que j'aie eu une disposition telle que, l'occasion s'en présentant, j'aurais pu commettre quelque faute de ce genre ; mais c'est un bienfait des dieux qu'aucune circonstance ne se soit trouvée propre à me démasquer.</p>
+            </div>
+        </div>
+
+        <!-- LIVRE II -->
+        <div class="book" id="livre2">
+            <h3>Livre II - Préparation au jour</h3>
+            <p style="color: #c0c0c0; margin-bottom: 20px;">Marc Aurèle médite sur la nature humaine, l'importance de remplir son devoir et la brièveté de la vie.</p>
+
+            <div class="passage">
+                <span class="passage-number">II, 1</span>
+                <p class="passage-text">Dis-toi, dès l'aurore : je rencontrerai un indiscret, un ingrat, un insolent, un fourbe, un envieux, un égoïste. Tous ces défauts sont arrivés à ces gens-là par leur ignorance des biens et des maux. Mais moi qui ai reconnu que la nature du bien est le beau, et que celle du mal est le laid, et que la nature du coupable lui-même est d'être mon parent, non par la communauté du sang ou d'une même semence, mais par celle de l'intelligence et d'une même parcelle de la divinité, je ne puis être lésé par aucun d'eux.</p>
+            </div>
+
+            <div class="passage">
+                <span class="passage-number">II, 2</span>
+                <p class="passage-text">Quelle que soit la chose que tu fais, demande-toi : ne vais-je pas me repentir de l'avoir faite ? Encore peu de temps et je serai mort, et tout aura disparu. Que chercher de plus, si l'action présente est celle d'un être intelligent et sociable, soumis à la même loi que Dieu ?</p>
+            </div>
+
+            <div class="passage">
+                <span class="passage-number">II, 4</span>
+                <p class="passage-text">Ne perds pas le temps restant de ta vie dans des imaginations qui se rapportent à autrui, quand tu ne les rapportes pas à quelque utilité commune.</p>
+            </div>
+
+            <div class="passage">
+                <span class="passage-number">II, 5</span>
+                <p class="passage-text">L'action humaine n'arrive à rien, à moins de se proposer une fin. Or, quelle fin peut légitimement se proposer un être sociable ? Celle d'agir selon les exigences de la cité dont il fait partie.</p>
+            </div>
+
+            <div class="passage">
+                <span class="passage-number">II, 11</span>
+                <p class="passage-text">En voici assez sur ces vaines spéculations : pourtant, tu as le pouvoir de les déraciner et de calmer les troubles de ta pensée. Va droit ton chemin, si tu le peux ; sinon, franchement, fais la meilleure diversion possible ; et, si tu échoues même en cela, ne te tourmente pas.</p>
+            </div>
+
+            <div class="passage">
+                <span class="passage-number">II, 17</span>
+                <p class="passage-text">La vie humaine : durée, un point ; substance, un flux perpétuel ; sensation, obscure ; le composé du corps dans son entier, promptement corruptible ; l'âme, un tourbillon ; la fortune, difficile à conjecturer ; la renommée, chose indéterminée. En un mot, tout ce qui est du corps est un fleuve ; ce qui est de l'âme, songe et fumée ; la vie est une guerre, un séjour sur une terre étrangère ; la renommée posthume, c'est l'oubli.</p>
+            </div>
+        </div>
+
+        <!-- LIVRE III -->
+        <div class="book" id="livre3">
+            <h3>Livre III - La discipline de l'action</h3>
+            <p style="color: #c0c0c0; margin-bottom: 20px;">Réflexions sur l'importance d'agir avec intention, de vivre le moment présent et de maintenir la cohérence entre pensées et actions.</p>
+
+            <div class="passage">
+                <span class="passage-number">III, 1</span>
+                <p class="passage-text">Il ne faut pas seulement considérer que la vie se consume chaque jour et qu'il en reste une part toujours moindre, mais il faut encore faire cette réflexion : si l'on vit plus longtemps, il est incertain que l'intelligence garde désormais la même force pour la compréhension des choses et pour la spéculation qui tend à la connaissance des choses divines et humaines.</p>
+            </div>
+
+            <div class="passage">
+                <span class="passage-number">III, 4</span>
+                <p class="passage-text">Ne gaspille pas le reste de ta vie en imaginations au sujet d'autrui, quand ce n'est pas en référence à quelque utilité commune. Car, en effet, voici une tâche dont tu te prives, je veux dire celle qui consiste à imaginer ce qu'un tel fait, pourquoi il le fait, ce qu'il dit, ce qu'il pense, ce qu'il machine.</p>
+            </div>
+
+            <div class="passage">
+                <span class="passage-number">III, 5</span>
+                <p class="passage-text">Comment se servent de leurs inclinations les dieux et les démons ? Comment se servent de leurs inclinations les êtres humains ? Ces derniers, en effet, ne sont que des accidents par rapport aux dieux.</p>
+            </div>
+
+            <div class="passage">
+                <span class="passage-number">III, 10</span>
+                <p class="passage-text">Tout est éphémère, et le souvenir et l'objet du souvenir.</p>
+            </div>
+
+            <div class="passage">
+                <span class="passage-number">III, 11</span>
+                <p class="passage-text">Médite sans cesse sur le fait que tout ce qui se produit, se produit en vertu d'un changement ; habitue-toi à penser que la nature universelle n'aime rien tant que de changer ce qui existe pour en faire d'autres choses semblables.</p>
+            </div>
+
+            <div class="passage">
+                <span class="passage-number">III, 12</span>
+                <p class="passage-text">Tout être raisonnable agit contre la raison quand il est mécontent de ce qui lui arrive, puisque tout arrive conformément à la nature universelle.</p>
+            </div>
+        </div>
+
+        <!-- LIVRE IV -->
+        <div class="book" id="livre4">
+            <h3>Livre IV - La retraite intérieure</h3>
+            <p style="color: #c0c0c0; margin-bottom: 20px;">Marc Aurèle explore la notion de refuge intérieur, la maîtrise de soi et la contemplation de la raison universelle.</p>
+
+            <div class="passage">
+                <span class="passage-number">IV, 3</span>
+                <p class="passage-text">Les hommes sont nés les uns pour les autres. Instruis-les donc ou supporte-les.</p>
+            </div>
+
+            <div class="quote-highlight">
+                <strong>IV, 3 (suite) - La retraite intérieure</strong><br><br>
+                Nulle part l'homme ne trouve de plus tranquille et de plus calme retraite que dans son âme, surtout s'il possède, au-dedans de lui-même, ces notions sur lesquelles il suffit de se pencher pour acquérir aussitôt une quiétude absolue, et par quiétude, je n'entends rien d'autre qu'un ordre parfait.
+            </div>
+
+            <div class="passage">
+                <span class="passage-number">IV, 4</span>
+                <p class="passage-text">Supprime ton jugement, le « on m'a fait tort » est supprimé. Supprime le « on m'a fait tort », le tort est supprimé.</p>
+            </div>
+
+            <div class="passage">
+                <span class="passage-number">IV, 7</span>
+                <p class="passage-text">Efface l'imagination. Arrête l'agitation de la marionnette. Circonscris le moment présent. Reconnais ce qui t'arrive à toi ou à autrui. Divise et distribue l'objet en sa cause et sa matière. Pense à ta dernière heure. La faute commise par cet homme, laisse-la où elle est née.</p>
+            </div>
+
+            <div class="passage">
+                <span class="passage-number">IV, 23</span>
+                <p class="passage-text">Tout est en suspens : opinion, désir, aversion. Tout cela ne regarde que toi.</p>
+            </div>
+
+            <div class="passage">
+                <span class="passage-number">IV, 26</span>
+                <p class="passage-text">Quelle est la fonction de ma faculté directrice en ce moment ? C'est là la grande question. Que renferme-t-elle présentement ? Ignorance ? Indifférence ? Folie ? Tout ce qu'on voudra d'infâme et d'ignoble ?</p>
+            </div>
+
+            <div class="passage">
+                <span class="passage-number">IV, 49</span>
+                <p class="passage-text">Si tu es affligé par quelque chose d'extérieur, ce n'est pas cette chose qui te trouble, mais le jugement que tu portes sur elle. Or, effacer ce jugement, tu en as le pouvoir immédiat.</p>
+            </div>
+        </div>
+
+        <!-- LIVRE V -->
+        <div class="book" id="livre5">
+            <h3>Livre V - Le devoir et la nature</h3>
+            <p style="color: #c0c0c0; margin-bottom: 20px;">Méditations sur l'acceptation de son destin, l'importance du réveil matinal pour accomplir son œuvre, et l'interdépendance de tous les êtres.</p>
+
+            <div class="passage">
+                <span class="passage-number">V, 1</span>
+                <p class="passage-text">À l'aube, quand tu as de la peine à te réveiller, aie cette pensée à ta disposition : c'est pour faire œuvre d'homme que je me réveille. Vais-je encore me dépiter de partir faire ce pour quoi je suis né et ce pour quoi j'ai été amené dans le monde ? Ou bien est-ce pour cela que j'ai été constitué : pour rester au lit bien au chaud sous mes couvertures ? — « Mais c'est plus agréable. » — Es-tu donc né pour l'agrément ? En général, n'es-tu fait que pour la passivité ou aussi pour l'activité ? Ne vois-tu pas les petites plantes, les petits oiseaux, les fourmis, les araignées, les abeilles faire chacun leur ouvrage et, pour leur part, contribuer à l'ordre du monde ? Et toi, tu ne veux pas faire œuvre d'homme ? Tu ne cours pas vers ce qui est conforme à ta nature ?</p>
+            </div>
+
+            <div class="passage">
+                <span class="passage-number">V, 2</span>
+                <p class="passage-text">Comme si tu allais vivre dix mille ans ! La destinée fatale plane sur ta tête. Tant que tu vis, tant qu'il est possible, deviens homme de bien.</p>
+            </div>
+
+            <div class="passage">
+                <span class="passage-number">V, 8</span>
+                <p class="passage-text">De même que la nature universelle a transformé tout ce qui est et en a fait d'autres choses, et à partir de celles-ci, d'autres encore, pour que le monde soit toujours jeune, ainsi, toi aussi, emporte dans ta pensée que toutes ces choses sont telles. Tout est dans l'opinion.</p>
+            </div>
+
+            <div class="passage">
+                <span class="passage-number">V, 16</span>
+                <p class="passage-text">La substance universelle est docile et malléable. La raison qui la gouverne n'a en elle-même aucun motif de mal faire, car elle ne contient aucune méchanceté ; elle ne fait aucun mal et rien n'est lésé par elle. Tout naît et s'achève conformément à elle.</p>
+            </div>
+
+            <div class="passage">
+                <span class="passage-number">V, 20</span>
+                <p class="passage-text">Chacun ne vit que dans le présent, cet instant infinitésimal. Le reste, c'est ou bien ce qu'on a vécu, ou bien ce qui est incertain. Petite est donc la durée que vit chacun ; petit aussi le coin de terre où il vit.</p>
+            </div>
+
+            <div class="passage">
+                <span class="passage-number">V, 23</span>
+                <p class="passage-text">Médite souvent sur la liaison de toutes choses dans le monde et sur leur relation mutuelle. Car, en quelque sorte, toutes sont entrelacées les unes avec les autres et toutes, par suite, sont amies les unes des autres.</p>
+            </div>
+
+            <div class="passage">
+                <span class="passage-number">V, 31</span>
+                <p class="passage-text">Aime le métier qu'on t'a enseigné et repose-toi en lui. Passe le reste de ta vie en homme qui a confié de tout son cœur sa propre personne aux dieux et qui ne se fait ni le tyran ni l'esclave d'aucun homme.</p>
+            </div>
+        </div>
+
+        <!-- LIVRE VI -->
+        <div class="book" id="livre6">
+            <h3>Livre VI - L'ordre cosmique</h3>
+            <p style="color: #c0c0c0; margin-bottom: 20px;">Réflexions sur l'harmonie universelle, la brièveté de la gloire et la nécessité de vivre selon la raison.</p>
+
+            <div class="passage">
+                <span class="passage-number">VI, 2</span>
+                <p class="passage-text">La meilleure façon de te venger, c'est de ne pas ressembler à l'offenseur.</p>
+            </div>
+
+            <div class="passage">
+                <span class="passage-number">VI, 6</span>
+                <p class="passage-text">La meilleure manière de te défendre d'eux, c'est de ne pas leur ressembler.</p>
+            </div>
+
+            <div class="passage">
+                <span class="passage-number">VI, 13</span>
+                <p class="passage-text">Comme les médecins ont toujours sous la main leurs instruments et leurs scalpels pour les cas urgents, ainsi toi, aie sous la main les principes grâce auxquels tu pourras connaître les choses divines et humaines et tout faire, même la plus petite chose, en te souvenant du lien qui unit le divin et l'humain.</p>
+            </div>
+
+            <div class="passage">
+                <span class="passage-number">VI, 30</span>
+                <p class="passage-text">Aie sans cesse présent à l'esprit combien de médecins sont morts, après avoir tant de fois froncé les sourcils sur leurs malades ; combien d'astrologues, après avoir annoncé, comme un fait important, la mort de certaines personnes ; combien de philosophes, après d'infinies dissertations sur la mort ou l'immortalité ; combien de héros, après avoir tué tant d'hommes ; combien de tyrans, après avoir usé de leur pouvoir de vie et de mort avec une arrogance terrible, comme s'ils étaient immortels ; combien de villes entières, pour ainsi parler, sont mortes : Hélice, Pompéi, Herculanum et d'innombrables autres.</p>
+            </div>
+
+            <div class="passage">
+                <span class="passage-number">VI, 44</span>
+                <p class="passage-text">Si c'est parce que les choses s'accordent avec ta nature que tu es content, accueille tout ce qui t'arrive, si dur que cela soit ; car cela aussi s'accorde avec la nature.</p>
+            </div>
+
+            <div class="passage">
+                <span class="passage-number">VI, 48</span>
+                <p class="passage-text">Médite souvent cette pensée : le monde est un être vivant unique, possédant une seule substance et une seule âme ; comment tout se rapporte à une seule sensation, la sienne ; comment il fait tout par une seule impulsion ; comment toutes choses sont causes conjointes de tout ce qui se produit ; enfin, quelle trame et quel tissu !</p>
+            </div>
+        </div>
+
+        <!-- LIVRE VII -->
+        <div class="book" id="livre7">
+            <h3>Livre VII - La sagesse pratique</h3>
+            <p style="color: #c0c0c0; margin-bottom: 20px;">Conseils pratiques pour vivre selon la vertu, accepter le changement et maintenir la sérénité face aux événements.</p>
+
+            <div class="passage">
+                <span class="passage-number">VII, 3</span>
+                <p class="passage-text">Ne fais rien au hasard ni autrement que selon les règles qui portent à sa perfection l'art de vivre.</p>
+            </div>
+
+            <div class="passage">
+                <span class="passage-number">VII, 7</span>
+                <p class="passage-text">Efface l'imagination. Arrête le mouvement de marionnette. Circonscris le moment présent. Comprends ce qui t'arrive à toi ou à un autre. Divise et distribue chaque chose en matière et en cause. Pense à ta dernière heure. La faute commise par cet homme, laisse-la là où elle a été commise.</p>
+            </div>
+
+            <div class="passage">
+                <span class="passage-number">VII, 13</span>
+                <p class="passage-text">Tout ce qui arrive est aussi habituel que la rose au printemps et le fruit en été ; il en va de même pour la maladie, la mort, la calomnie, le piège et tout ce qui réjouit ou attriste les insensés.</p>
+            </div>
+
+            <div class="passage">
+                <span class="passage-number">VII, 22</span>
+                <p class="passage-text">Aie sans cesse présent à l'esprit le mot d'Héraclite : la mort de la terre, c'est de devenir eau ; la mort de l'eau, c'est de devenir air ; celle de l'air, feu, et réciproquement. Songe aussi à celui qui oublie où mène le chemin. Ils sont en désaccord avec la Raison qui gouverne l'univers, celle avec laquelle ils sont le plus continuellement en contact ; et les choses qu'ils rencontrent chaque jour leur paraissent étrangères.</p>
+            </div>
+
+            <div class="passage">
+                <span class="passage-number">VII, 59</span>
+                <p class="passage-text">Regarde au-dedans de toi. Au-dedans est la source du bien, une source qui peut toujours jaillir, si tu creuses toujours.</p>
+            </div>
+
+            <div class="passage">
+                <span class="passage-number">VII, 68</span>
+                <p class="passage-text">Que le principe directeur et souverain de ton âme reste inaccessible aux mouvements violents ou doux de la chair. Qu'il ne se mêle pas à eux, mais qu'il se limite et qu'il circonscrive ces affections aux seules parties du corps. Quant à elles, lorsque, en vertu de cette autre sympathie qui se produit nécessairement dans un corps unifié, elles s'élèvent jusqu'à la pensée, alors il ne faut pas lutter contre la sensation qui est naturelle ; mais que le principe directeur n'ajoute pas de lui-même à cette sensation le jugement qu'elle est bonne ou mauvaise.</p>
+            </div>
+        </div>
+
+        <!-- LIVRE VIII -->
+        <div class="book" id="livre8">
+            <h3>Livre VIII - La constance dans l'adversité</h3>
+            <p style="color: #c0c0c0; margin-bottom: 20px;">Marc Aurèle médite sur la persévérance, l'acceptation de la volonté divine et la nécessité de rester fidèle à ses principes.</p>
+
+            <div class="passage">
+                <span class="passage-number">VIII, 1</span>
+                <p class="passage-text">Cette réflexion aussi contribue à la suppression de la vaine gloire : tu ne peux plus avoir vécu toute ta vie, ou du moins ta vie à partir de ta jeunesse, en philosophe ; mais, à beaucoup d'autres et à toi-même, il est évident que tu es loin de la philosophie. Tu t'es donc troublé, de sorte qu'il ne t'est plus facile d'acquérir la réputation de philosophe ; et ta position même s'y oppose.</p>
+            </div>
+
+            <div class="passage">
+                <span class="passage-number">VIII, 5</span>
+                <p class="passage-text">Chaque instant, applique-toi avec fermeté, comme un Romain et comme un homme, à faire ce que tu as sous la main, avec une gravité sérieuse et sincère, avec humanité, liberté, justice, et à te dégager de toutes les autres imaginations. Tu t'en dégageras si tu accomplis chaque action comme si c'était la dernière de ta vie, en te tenant éloigné de toute légèreté, de toute passion qui te ferait réagir contre le choix de la raison, de toute hypocrisie, égoïsme et mécontentement à l'égard de ce qui t'est dévolu.</p>
+            </div>
+
+            <div class="passage">
+                <span class="passage-number">VIII, 17</span>
+                <p class="passage-text">Si ce n'est pas juste, ne le fais pas ; si ce n'est pas vrai, ne le dis pas.</p>
+            </div>
+
+            <div class="passage">
+                <span class="passage-number">VIII, 32</span>
+                <p class="passage-text">Médite sur l'ensemble de la substance dont tu possèdes la plus petite partie ; médite sur l'ensemble du temps dont t'a été assignée une brève et minime fraction ; médite sur le destin dont tu constitues quelle partie ?</p>
+            </div>
+
+            <div class="passage">
+                <span class="passage-number">VIII, 36</span>
+                <p class="passage-text">Ne te trouble pas, simplifie-toi. Quelqu'un a commis une faute ? C'est contre lui-même qu'il l'a commise. Il t'est arrivé quelque chose ? C'est bien. Tout ce qui t'arrive faisait partie, dès l'origine, de ce qui t'a été assigné et filé avec ta destinée. En résumé : la vie est brève. Il faut tirer profit du moment présent avec raison et justice.</p>
+            </div>
+
+            <div class="passage">
+                <span class="passage-number">VIII, 47</span>
+                <p class="passage-text">Médite souvent sur la rapidité du passage et de l'éloignement des êtres et des événements. Car la substance est comme un fleuve au cours perpétuel.</p>
+            </div>
+
+            <div class="passage">
+                <span class="passage-number">VIII, 51</span>
+                <p class="passage-text">Commence par te dire à toi-même ce que tu veux être, puis fais ce que tu as à faire.</p>
+            </div>
+        </div>
+
+        <!-- LIVRE IX -->
+        <div class="book" id="livre9">
+            <h3>Livre IX - Justice et bienveillance</h3>
+            <p style="color: #c0c0c0; margin-bottom: 20px;">Réflexions sur la justice, la bienveillance envers autrui et l'importance de ne pas se laisser corrompre par la méchanceté des autres.</p>
+
+            <div class="passage">
+                <span class="passage-number">IX, 1</span>
+                <p class="passage-text">L'injustice est une impiété. Car la nature universelle ayant fait les êtres raisonnables les uns pour les autres, afin qu'ils se rendent mutuellement service selon leur valeur et ne se nuisent en aucune façon, quiconque transgresse la volonté de cette nature est manifestement impie envers la plus ancienne des divinités.</p>
+            </div>
+
+            <div class="passage">
+                <span class="passage-number">IX, 6</span>
+                <p class="passage-text">Ni la méchanceté d'autrui ni l'opinion d'autrui ni la voix d'autrui ne peuvent faire mal à celui qui n'en reçoit pas d'impression dans son principe directeur.</p>
+            </div>
+
+            <div class="passage">
+                <span class="passage-number">IX, 11</span>
+                <p class="passage-text">Que demande ton principe directeur pour lui-même ? C'est là toute la question. Quant au reste, qu'il dépende de toi ou non, ce sont choses mortes et fumée.</p>
+            </div>
+
+            <div class="passage">
+                <span class="passage-number">IX, 27</span>
+                <p class="passage-text">Efface l'imagination ; arrête les mouvements de marionnette ; circonscris le moment présent ; reconnais ce qui t'arrive ou ce qui arrive à autrui ; divise et distribue chaque objet en matière et en cause ; pense à la dernière heure ; la faute commise par cet homme, laisse-la où elle a été commise.</p>
+            </div>
+
+            <div class="passage">
+                <span class="passage-number">IX, 29</span>
+                <p class="passage-text">En voyant les choses humaines d'en haut : troupeaux, armées, champs, mariages, divorces, naissances, morts, tumultes de tribunaux, contrées désertes, variétés de peuples barbares, fêtes, lamentations, marchés, mélange de tout et ordre provenant des contraires.</p>
+            </div>
+
+            <div class="passage">
+                <span class="passage-number">IX, 42</span>
+                <p class="passage-text">Quand tu as du mal à te lever le matin, aie cette pensée à ta disposition : c'est pour accomplir une œuvre d'homme que je me réveille. Vais-je donc encore être de mauvaise humeur, si je vais faire ce pour quoi je suis né et ce pour quoi j'ai été introduit dans le monde ? Ou bien suis-je constitué pour cela : rester couché et me tenir au chaud sous mes couvertures ?</p>
+            </div>
+        </div>
+
+        <!-- LIVRE X -->
+        <div class="book" id="livre10">
+            <h3>Livre X - L'acceptation du destin</h3>
+            <p style="color: #c0c0c0; margin-bottom: 20px;">Marc Aurèle approfondit sa réflexion sur l'acceptation du destin, la vanité des honneurs et la nécessité de vivre en harmonie avec la nature.</p>
+
+            <div class="passage">
+                <span class="passage-number">X, 1</span>
+                <p class="passage-text">Ô mon âme, seras-tu jamais bonne, simple, unique, mise à nu, plus visible que le corps qui t'entoure ? Goûteras-tu jamais la disposition à l'affection et à l'amour ? Seras-tu jamais pleinement satisfaite et sans besoin, ne regrettant ni ne désirant quoi que ce soit, animé ou inanimé, pour jouir des plaisirs ?</p>
+            </div>
+
+            <div class="passage">
+                <span class="passage-number">X, 3</span>
+                <p class="passage-text">Tout ce qui est en quelque manière beau l'est par soi-même et se borne à soi-même, sans que la louange fasse partie de lui-même. Du moins ce qui est loué ne devient pas pour cela ni meilleur ni pire.</p>
+            </div>
+
+            <div class="passage">
+                <span class="passage-number">X, 8</span>
+                <p class="passage-text">Souviens-toi que changer d'avis et suivre celui qui te corrige, c'est tout de même être libre. Car c'est toi qui fais cette action, en vertu de ton impulsion propre et de ton jugement et, au reste, de ta propre intelligence.</p>
+            </div>
+
+            <div class="passage">
+                <span class="passage-number">X, 15</span>
+                <p class="passage-text">Ô homme, tu as été citoyen de cette grande Cité ; que t'importe que ce soit pour cinq ans ou pour trois ? Ce qui est conforme aux lois est équitable pour tous. Où est donc le mal, si ce n'est pas un tyran ni un juge inique qui te renvoie de la cité, mais la nature qui t'y a introduit ?</p>
+            </div>
+
+            <div class="passage">
+                <span class="passage-number">X, 33</span>
+                <p class="passage-text">Où sont maintenant tous ces hommes ? Nulle part ou n'importe où. De cette façon, tu verras toujours les choses humaines comme fumée et néant, surtout si tu te souviens qu'une fois changé, l'être ne sera plus jamais au cours de la durée infinie. Toi donc, pour quelle durée temporelle fais-tu effort ? Pourquoi ne te suffit-il pas de passer comme il convient ce moment ?</p>
+            </div>
+        </div>
+
+        <!-- LIVRE XI -->
+        <div class="book" id="livre11">
+            <h3>Livre XI - Les devoirs envers soi-même et autrui</h3>
+            <p style="color: #c0c0c0; margin-bottom: 20px;">Méditations sur les obligations morales, l'importance de l'auto-examen et la nécessité de traiter autrui avec justice et bienveillance.</p>
+
+            <div class="passage">
+                <span class="passage-number">XI, 1</span>
+                <p class="passage-text">Propriétés de l'âme raisonnable : elle se voit elle-même, elle s'analyse elle-même, elle se fait elle-même telle qu'elle veut être, elle-même recueille le fruit qu'elle porte – tandis que les fruits des plantes et les produits correspondants chez les animaux, d'autres les recueillent – elle atteint sa fin propre, en quelque point que se termine la vie.</p>
+            </div>
+
+            <div class="passage">
+                <span class="passage-number">XI, 4</span>
+                <p class="passage-text">Médite souvent sur la rapidité avec laquelle passent et s'éloignent les choses qui existent et celles qui se produisent. Car la substance est comme un fleuve au cours perpétuel, et les actions varient sans cesse, et les causes subissent d'innombrables changements ; rien n'est stable, presque rien.</p>
+            </div>
+
+            <div class="passage">
+                <span class="passage-number">XI, 12</span>
+                <p class="passage-text">Ne cesse de te poser ces questions et de t'interroger de cette façon : comment uses-tu maintenant de ton principe directeur ? Car tout est là. Quant au reste, qu'il dépende de toi ou non, ce sont choses mortes et fumée.</p>
+            </div>
+
+            <div class="passage">
+                <span class="passage-number">XI, 16</span>
+                <p class="passage-text">Ne sois pas vain glorieux de quoi que ce soit, et notamment des choses qui ne viennent pas de toi. Si un cheval se vantait en disant : « Je suis beau », on le supporterait. Mais toi, quand tu dis avec fierté : « J'ai un beau cheval », sache que tu te vantes d'un avantage qui appartient au cheval.</p>
+            </div>
+
+            <div class="passage">
+                <span class="passage-number">XI, 18</span>
+                <p class="passage-text">La rapidité du temps – l'éternité de part et d'autre – la vacuité de la sensation – la mutabilité de toute matière – le peu de distance du passé au présent – tout cela doit inspirer le mépris.</p>
+            </div>
+        </div>
+
+        <!-- LIVRE XII -->
+        <div class="book" id="livre12">
+            <h3>Livre XII - La sérénité finale</h3>
+            <p style="color: #c0c0c0; margin-bottom: 20px;">Les dernières réflexions de Marc Aurèle sur la vie, la mort et l'importance de maintenir sa tranquillité d'esprit jusqu'à la fin.</p>
+
+            <div class="passage">
+                <span class="passage-number">XII, 1</span>
+                <p class="passage-text">Tout ce que tu souhaites atteindre en faisant un détour, tu peux l'avoir dès maintenant, si tu ne te le refuses pas à toi-même. C'est-à-dire si tu laisses de côté tout le passé, si tu remets l'avenir à la Providence et si tu orientes seulement le présent vers la piété et la justice.</p>
+            </div>
+
+            <div class="passage">
+                <span class="passage-number">XII, 3</span>
+                <p class="passage-text">Trois rapports : l'un avec l'enveloppe qui m'entoure ; le second avec la cause divine d'où provient tout ce qui arrive à tous ; le troisième avec ceux qui vivent avec moi.</p>
+            </div>
+
+            <div class="passage">
+                <span class="passage-number">XII, 8</span>
+                <p class="passage-text">Rien n'est plus misérable que l'homme qui fait le tour de toutes choses, qui scrute, comme dit le poète, « les profondeurs de la terre », qui cherche à deviner par des conjectures ce qui se passe dans l'âme du prochain, sans s'apercevoir qu'il lui suffit d'être avec le seul génie qui est en lui et de le servir sincèrement.</p>
+            </div>
+
+            <div class="passage">
+                <span class="passage-number">XII, 26</span>
+                <p class="passage-text">Quand tu as peine à te lever : souviens-toi que c'est conformément à ta constitution et à la nature humaine d'accomplir des actions au service de la communauté, tandis que dormir, c'est aussi commun aux êtres privés de raison. Or, ce qui est conforme à la nature de chacun est plus propre, mieux adapté et même plus agréable.</p>
+            </div>
+
+            <div class="passage">
+                <span class="passage-number">XII, 36</span>
+                <p class="passage-text">Ô homme, tu as été citoyen de cette grande Cité. Que t'importe que ce soit cinq ans ou cent ans ? Car ce qui est conforme aux lois est équitable pour tous. Où est donc le mal, si ce n'est un tyran ni un juge inique, mais la nature qui t'a fait entrer dans la cité qui te fait sortir ? « Comme si le préteur qui a engagé un acteur comique le renvoyait de la scène. » — « Mais je n'ai pas joué les cinq actes, seulement trois. » — « Tu dis vrai ; mais dans la vie trois actes font une pièce complète. »</p>
+            </div>
+
+            <div class="quote-highlight">
+                <strong>XII, 36 (fin) - Méditation finale</strong><br><br>
+                Car celui qui fixe le terme est le même qui t'a composé et qui maintenant te dissout. Toi, tu n'es responsable ni de l'un ni de l'autre. Va donc, apaisé ; car celui qui te renvoie est apaisé.
+            </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 60px;">
+            <a href="index.html" class="back-button">← Retour à l'Accueil</a>
+        </div>
+    </div>
+
+    <footer>
+        <p>Plateforme dédiée à Marc Aurèle et à la philosophie stoïcienne</p>
+        <p style="margin-top: 10px; font-size: 0.9em;">Créée pour Aurelius Secundus</p>
+    </footer>
+</body>
+</html>
