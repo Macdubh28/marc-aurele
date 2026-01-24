@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Glossaire Stoïcien - Aurelius Secundus</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #2c3e50;
+            --secondary: #8b7355;
+            --accent: #c9a961;
+            --text: #333;
+            --bg: #f8f6f1;
+            --white: #fff;
+        }
+
+        body {
+            font-family: Georgia, serif;
+            line-height: 1.8;
+            color: var(--text);
+            background: var(--bg);
+        }
+
+        /* HEADER */
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: var(--white);
+            padding: 3rem 2rem;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            font-size: 3rem;
+            letter-spacing: 3px;
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .subtitle {
+            font-style: italic;
+            opacity: 0.9;
+            font-size: 1.3rem;
+            margin-top: 1rem;
+        }
+
+        /* NAVIGATION */
+        .nav-back {
+            background: var(--white);
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .nav-back a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        .nav-back a:hover {
+            color: var(--accent);
+        }
+
+        /* CONTAINER */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        /* INTRO */
+        .intro-section {
+            background: var(--white);
+            padding: 2.5rem;
+            border-radius: 12px;
+            margin-bottom: 3rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            border-left: 5px solid var(--accent);
+        }
+
+        .intro-section h2 {
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            font-size: 2.2rem;
+        }
+
+        /* SEARCH */
+        .search-box {
+            background: var(--white);
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            margin-bottom: 2rem;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 1rem 1.5rem;
+            font-size: 1.1rem;
+            border: 2px solid var(--accent);
+            border-radius: 25px;
+            font-family: Georgia, serif;
+            transition: all 0.3s;
+        }
+
+        .search-input:focus {
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(201, 169, 97, 0.2);
+        }
+
+        /* ALPHABET NAV */
+        .alphabet-nav {
+            background: var(--white);
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .alphabet-nav a {
+            display: inline-block;
+            padding: 0.5rem 0.8rem;
+            margin: 0.3rem;
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px;
+            transition: all 0.3s;
+        }
+
+        .alphabet-nav a:hover {
+            background: var(--accent);
+            color: var(--white);
+        }
+
+        /* GLOSSARY */
+        .glossary-section {
+            margin-bottom: 3rem;
+        }
+
+        .letter-header {
+            background: linear-gradient(to right, var(--secondary), transparent);
+            color: var(--white);
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+        }
+
+        .term-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 12px;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+            border-left: 4px solid var(--accent);
+            transition: all 0.3s;
+        }
+
+        .term-card:hover {
+            transform: translateX(5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.12);
+        }
+
+        .term-title {
+            font-size: 1.6rem;
+            color: var(--primary);
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .term-greek {
+            font-style: italic;
+            color: var(--secondary);
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .term-definition {
+            color: var(--text);
+            margin-bottom: 1rem;
+            font-size: 1.05rem;
+            line-height: 1.8;
+        }
+
+        .term-example {
+            background: rgba(139, 115, 85, 0.08);
+            padding: 1rem;
+            border-radius: 8px;
+            border-left: 3px solid var(--secondary);
+            font-style: italic;
+            font-size: 0.95rem;
+            color: var(--secondary);
+        }
+
+        /* FOOTER */
+        footer {
+            background: var(--primary);
+            color: var(--white);
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            h1 { font-size: 2rem; }
+            .term-card { padding: 1.5rem; }
+            .alphabet-nav a { padding: 0.4rem 0.6rem; font-size: 0.9rem; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>📚 GLOSSAIRE STOÏCIEN</h1>
+        <p class="subtitle">Lexique de la Philosophie Stoïcienne</p>
+    </header>
+
+    <nav class="nav-back">
+        <a href="index.html">← Retour à l'accueil</a>
+    </nav>
+
+    <div class="container">
+        <div class="intro-section">
+            <h2>Comprendre le Stoïcisme</h2>
+            <p>Ce glossaire rassemble les concepts fondamentaux de la philosophie stoïcienne. Chaque terme est expliqué dans son contexte philosophique avec des exemples tirés des œuvres de Marc Aurèle, Épictète et Sénèque.</p>
+        </div>
+
+        <div class="search-box">
+            <input type="text" class="search-input" id="searchInput" placeholder="🔍 Rechercher un terme..." onkeyup="searchTerms()">
+        </div>
+
+        <div class="alphabet-nav">
+            <a href="#A">A</a>
+            <a href="#D">D</a>
+            <a href="#E">E</a>
+            <a href="#H">H</a>
+            <a href="#L">L</a>
+            <a href="#M">M</a>
+            <a href="#O">O</a>
+            <a href="#P">P</a>
+            <a href="#S">S</a>
+            <a href="#V">V</a>
+        </div>
+
+        <div id="glossaryContent">
+            <!-- LETTRE A -->
+            <div class="glossary-section" id="A">
+                <div class="letter-header">A</div>
+                
+                <div class="term-card">
+                    <div class="term-title">AMOR FATI</div>
+                    <div class="term-greek">(Latin : "Amour du destin")</div>
+                    <div class="term-definition">
+                        Concept central du stoïcisme signifiant l'acceptation totale et l'amour de tout ce qui arrive dans la vie, que ce soit bon ou mauvais selon nos jugements. Il ne s'agit pas de résignation passive, mais d'une acceptation active qui transforme les obstacles en opportunités de croissance.
+                    </div>
+                    <div class="term-example">
+                        "Ne cherche pas à ce que les événements arrivent comme tu veux, mais veuille les événements comme ils arrivent et tu seras heureux." — Épictète
+                    </div>
+                </div>
+
+                <div class="term-card">
+                    <div class="term-title">APATHEIA</div>
+                    <div class="term-greek">(Grec : ἀπάθεια - "Absence de passion")</div>
+                    <div class="term-definition">
+                        État de tranquillité émotionnelle où l'on n'est pas troublé par les passions destructrices (colère, peur, désir excessif). L'apatheia ne signifie pas l'absence d'émotions, mais la liberté face aux émotions qui nous dominent et nous font souffrir. C'est un état de sérénité et de contrôle de soi.
+                    </div>
+                    <div class="term-example">
+                        "Si tu es troublé par quelque chose d'extérieur, la douleur n'est pas due à la chose elle-même, mais à ton jugement à son sujet." — Marc Aurèle, Méditations VIII
+                    </div>
+                </div>
+
+                <div class="term-card">
+                    <div class="term-title">ARETÊ</div>
+                    <div class="term-greek">(Grec : ἀρετή - "Excellence, Vertu")</div>
+                    <div class="term-definition">
+                        La vertu ou excellence morale. Pour les stoïciens, c'est le seul véritable bien et la seule voie vers le bonheur authentique. L'aretê englobe quatre vertus cardinales : la sagesse (sophia), le courage (andreia), la justice (dikaiosunê) et la tempérance (sôphrosunê). Vivre selon l'aretê, c'est vivre en accord avec la nature rationnelle de l'homme.
+                    </div>
+                    <div class="term-example">
+                        "Si tu travailles sur ce qui est en ton pouvoir, tu trouveras tout ce dont tu as besoin." — Marc Aurèle
+                    </div>
+                </div>
+
+                <div class="term-card">
+                    <div class="term-title">ATARAXIE</div>
+                    <div class="term-greek">(Grec : ἀταραξία - "Absence de trouble")</div>
+                    <div class="term-definition">
+                        État de tranquillité de l'âme, de paix intérieure et d'imperturbabilité face aux événements extérieurs. L'ataraxie est le résultat de la sagesse stoïcienne : celui qui distingue ce qui dépend de lui et ce qui n'en dépend pas atteint cette sérénité profonde. C'est l'objectif ultime du sage stoïcien.
+                    </div>
+                    <div class="term-example">
+                        "Tu as le pouvoir de te retirer en toi-même quand tu le veux. Aucune retraite n'est plus paisible." — Marc Aurèle, Méditations IV
+                    </div>
+                </div>
+            </div>
+
+            <!-- LETTRE D -->
+            <div class="glossary-section" id="D">
+                <div class="letter-header">D</div>
+                
+                <div class="term-card">
+                    <div class="term-title">DICHOTOMIE DU CONTRÔLE</div>
+                    <div class="term-greek">(Principe fondamental du stoïcisme)</div>
+                    <div class="term-definition">
+                        Principe essentiel du stoïcisme établi par Épictète : il existe des choses qui dépendent de nous (nos pensées, jugements, désirs, aversions, actions) et des choses qui n'en dépendent pas (événements extérieurs, opinions des autres, santé, richesse, réputation). La sagesse consiste à concentrer notre énergie uniquement sur ce qui dépend de nous et à accepter le reste avec sérénité.
+                    </div>
+                    <div class="term-example">
+                        "Parmi les choses, les unes dépendent de nous, les autres n'en dépendent pas. De nous dépendent la pensée, l'impulsion, le désir, l'aversion." — Épictète, Manuel I
+                    </div>
+                </div>
+            </div>
+
+            <!-- LETTRE E -->
+            <div class="glossary-section" id="E">
+                <div class="letter-header">E</div>
+                
+                <div class="term-card">
+                    <div class="term-title">EUDAIMONIA</div>
+                    <div class="term-greek">(Grec : εὐδαιμονία - "Bonheur, Prospérité")</div>
+                    <div class="term-definition">
+                        Le bonheur authentique, la vie bonne, l'épanouissement humain véritable. Pour les stoïciens, l'eudaimonia ne dépend pas des circonstances extérieures, de la richesse ou du plaisir, mais uniquement de la vie vertueuse. C'est un état durable de bien-être qui résulte de vivre en accord avec la nature et la raison.
+                    </div>
+                    <div class="term-example">
+                        "Le bonheur de ta vie dépend de la qualité de tes pensées." — Marc Aurèle, Méditations
+                    </div>
+                </div>
+
+                <div class="term-card">
+                    <div class="term-title">EPOCHÉ</div>
+                    <div class="term-greek">(Grec : ἐποχή - "Suspension du jugement")</div>
+                    <div class="term-definition">
+                        La suspension du jugement, particulièrement des jugements hâtifs ou émotionnels. Les stoïciens enseignent qu'avant de réagir à un événement, nous devons suspendre notre jugement et examiner la situation avec raison. Cette pause mentale nous permet de choisir une réponse appropriée plutôt que de réagir impulsivement.
+                    </div>
+                    <div class="term-example">
+                        "Retire de toute chose l'opinion que tu t'en fais, et te voilà sauvé." — Marc Aurèle, Méditations
+                    </div>
+                </div>
+            </div>
+
+            <!-- LETTRE H -->
+            <div class="glossary-section" id="H">
+                <div class="letter-header">H</div>
+                
+                <div class="term-card">
+                    <div class="term-title">HÊGEMONIKON</div>
+                    <div class="term-greek">(Grec : ἡγεμονικόν - "Principe directeur")</div>
+                    <div class="term-definition">
+                        Le principe directeur de l'âme, le centre de commandement de notre être rationnel. C'est la partie de nous qui juge, décide et contrôle nos réactions. Pour les stoïciens, le hêgemonikon est notre faculté la plus précieuse, celle qui nous permet de vivre selon la raison et la vertu. C'est notre libre arbitre moral.
+                    </div>
+                    <div class="term-example">
+                        "Tu as le pouvoir sur ton esprit, pas sur les événements extérieurs. Réalise cela, et tu trouveras la force." — Marc Aurèle
+                    </div>
+                </div>
+            </div>
+
+            <!-- LETTRE L -->
+            <div class="glossary-section" id="L">
+                <div class="letter-header">L</div>
+                
+                <div class="term-card">
+                    <div class="term-title">LOGOS</div>
+                    <div class="term-greek">(Grec : λόγος - "Raison universelle")</div>
+                    <div class="term-definition">
+                        La raison universelle, le principe rationnel qui gouverne l'univers. Pour les stoïciens, le logos est la force divine et rationnelle qui ordonne toute chose. Vivre selon le logos signifie vivre en harmonie avec la nature et la raison universelle. Notre propre raison (notre logos personnel) est une parcelle de cette raison cosmique.
+                    </div>
+                    <div class="term-example">
+                        "Tout est entrelacé, et la connexion est sacrée, et presque rien n'est étranger à quoi que ce soit d'autre." — Marc Aurèle, Méditations VII
+                    </div>
+                </div>
+            </div>
+
+            <!-- LETTRE M -->
+            <div class="glossary-section" id="M">
+                <div class="letter-header">M</div>
+                
+                <div class="term-card">
+                    <div class="term-title">MEMENTO MORI</div>
+                    <div class="term-greek">(Latin : "Souviens-toi que tu vas mourir")</div>
+                    <div class="term-definition">
+                        Exercice stoïcien consistant à méditer sur sa propre mortalité et l'impermanence de toute chose. Loin d'être morbide, cette pratique nous aide à apprécier le présent, à ne pas gaspiller notre temps avec des futilités, et à vivre chaque jour comme s'il était le dernier. La conscience de la mort nous libère et nous rend plus vivants.
+                    </div>
+                    <div class="term-example">
+                        "Ce n'est pas la mort qu'un homme devrait craindre, mais il devrait craindre de ne jamais commencer à vivre." — Marc Aurèle, Méditations
+                    </div>
+                </div>
+            </div>
+
+            <!-- LETTRE O -->
+            <div class="glossary-section" id="O">
+                <div class="letter-header">O</div>
+                
+                <div class="term-card">
+                    <div class="term-title">OIKEÍÔSIS</div>
+                    <div class="term-greek">(Grec : οἰκείωσις - "Appropriation, Affinité")</div>
+                    <div class="term-definition">
+                        Le processus naturel d'appropriation et d'extension de notre cercle de préoccupation. Initialement, nous nous soucions de nous-mêmes, puis de notre famille, de nos amis, de notre communauté, et finalement de l'humanité entière. Les stoïciens enseignent que la sagesse consiste à élargir progressivement ce cercle jusqu'à embrasser toute l'humanité dans notre bienveillance.
+                    </div>
+                    <div class="term-example">
+                        "Ce qui ne nuit pas à la communauté ne nuit pas non plus à l'individu." — Marc Aurèle, Méditations V
+                    </div>
+                </div>
+            </div>
+
+            <!-- LETTRE P -->
+            <div class="glossary-section" id="P">
+                <div class="letter-header">P</div>
+                
+                <div class="term-card">
+                    <div class="term-title">PHILANTHROPIA</div>
+                    <div class="term-greek">(Grec : φιλανθρωπία - "Amour de l'humanité")</div>
+                    <div class="term-definition">
+                        L'amour universel de l'humanité, la bienveillance envers tous les êtres humains. Les stoïciens considèrent que nous sommes tous membres d'une même communauté cosmopolite, citoyens du monde. La philanthropia nous pousse à traiter chacun avec dignité, patience et compassion, même ceux qui nous ont fait du tort.
+                    </div>
+                    <div class="term-example">
+                        "Commence chaque journée en te disant : aujourd'hui, je vais rencontrer des personnes indiscrètes, ingrates, violentes. Mais je ne serai pas surpris." — Marc Aurèle, Méditations II
+                    </div>
+                </div>
+
+                <div class="term-card">
+                    <div class="term-title">PRAEMEDITATIO MALORUM</div>
+                    <div class="term-greek">(Latin : "Préméditation des maux")</div>
+                    <div class="term-definition">
+                        Exercice stoïcien consistant à visualiser les difficultés et obstacles potentiels avant qu'ils ne surviennent. En imaginant les pires scénarios possibles, nous nous préparons mentalement et émotionnellement, réduisant ainsi la surprise et l'intensité de notre réaction si ces événements se produisent. Cette pratique renforce notre résilience.
+                    </div>
+                    <div class="term-example">
+                        "Nous souffrons plus en imagination qu'en réalité." — Sénèque, Lettres à Lucilius XIII
+                    </div>
+                </div>
+
+                <div class="term-card">
+                    <div class="term-title">PROHAIRESIS</div>
+                    <div class="term-greek">(Grec : προαίρεσις - "Faculté de choix moral")</div>
+                    <div class="term-definition">
+                        Notre capacité de choisir et de décider, notre volonté morale. Pour Épictète, la prohairesis est la seule chose qui soit vraiment nôtre et sous notre contrôle absolu. C'est le siège de notre liberté authentique. Même dans les pires circonstances, personne ne peut nous enlever notre capacité de choisir comment nous réagissons.
+                    </div>
+                    <div class="term-example">
+                        "Aucun homme n'est libre s'il n'est pas maître de lui-même." — Épictète, Entretiens
+                    </div>
+                </div>
+            </div>
+
+            <!-- LETTRE S -->
+            <div class="glossary-section" id="S">
+                <div class="letter-header">S</div>
+                
+                <div class="term-card">
+                    <div class="term-title">SYMPATHEIA</div>
+                    <div class="term-greek">(Grec : συμπάθεια - "Interconnexion universelle")</div>
+                    <div class="term-definition">
+                        Le principe d'interconnexion de toutes choses dans l'univers. Pour les stoïciens, tout est lié par une relation de cause à effet dans un cosmos unifié et ordonné. Rien n'arrive de manière isolée. Cette compréhension nous aide à accepter les événements comme partie d'un tout cohérent et à voir notre place dans le grand ordre cosmique.
+                    </div>
+                    <div class="term-example">
+                        "Tout est entrelacé, et la connexion est sacrée, et presque rien n'est étranger à quoi que ce soit d'autre." — Marc Aurèle, Méditations VII
+                    </div>
+                </div>
+            </div>
+
+            <!-- LETTRE V -->
+            <div class="glossary-section" id="V">
+                <div class="letter-header">V</div>
+                
+                <div class="term-card">
+                    <div class="term-title">VUE D'EN HAUT</div>
+                    <div class="term-greek">(Exercice stoïcien de perspective cosmique)</div>
+                    <div class="term-definition">
+                        Exercice mental consistant à imaginer observer la Terre et nos préoccupations depuis les hauteurs du cosmos. Cette visualisation nous aide à relativiser nos problèmes quotidiens, à voir leur insignifiance dans le grand schéma de l'univers. Marc Aurèle utilisait régulièrement cet exercice pour maintenir la perspective et l'humilité.
+                    </div>
+                    <div class="term-example">
+                        "Contemple tout d'en haut : les assemblées innombrables, les cérémonies variées, les navigations diverses, par gros temps ou par temps calme. Considère la diversité qui fut, qui est, et qui sera." — Marc Aurèle, Méditations IX
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p><strong>AURELIUS SECUNDUS</strong></p>
+        <p>Plateforme de Philosophie Stoïcienne</p>
+    </footer>
+
+    <script>
+        function searchTerms() {
+            const input = document.getElementById('searchInput');
+            const filter = input.value.toUpperCase();
+            const cards = document.getElementsByClassName('term-card');
+
+            for (let i = 0; i < cards.length; i++) {
+                const title = cards[i].getElementsByClassName('term-title')[0];
+                const definition = cards[i].getElementsByClassName('term-definition')[0];
+                const titleText = title.textContent || title.innerText;
+                const defText = definition.textContent || definition.innerText;
+
+                if (titleText.toUpperCase().indexOf(filter) > -1 || defText.toUpperCase().indexOf(filter) > -1) {
+                    cards[i].style.display = "";
+                } else {
+                    cards[i].style.display = "none";
+                }
+            }
+        }
+    </script>
+</body>
+</html>

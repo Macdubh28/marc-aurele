@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Algorithm of Life - Aurelius Secundus</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #2c3e50;
+            --secondary: #8b7355;
+            --accent: #c9a961;
+            --text: #333;
+            --bg: #f8f6f1;
+            --white: #fff;
+        }
+
+        body {
+            font-family: Georgia, serif;
+            line-height: 1.8;
+            color: var(--text);
+            background: var(--bg);
+        }
+
+        /* HEADER */
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: var(--white);
+            padding: 3rem 2rem;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            font-size: 3rem;
+            letter-spacing: 3px;
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .subtitle {
+            font-style: italic;
+            opacity: 0.9;
+            font-size: 1.3rem;
+            margin-top: 1rem;
+        }
+
+        /* NAVIGATION */
+        .nav-back {
+            background: var(--white);
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .nav-back a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        .nav-back a:hover {
+            color: var(--accent);
+        }
+
+        /* CONTAINER */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        /* INTRO */
+        .intro-section {
+            background: var(--white);
+            padding: 2.5rem;
+            border-radius: 12px;
+            margin-bottom: 3rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            border-left: 5px solid var(--accent);
+        }
+
+        .intro-section h2 {
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            font-size: 2.2rem;
+        }
+
+        .intro-section p {
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+        }
+
+        /* QUOTE */
+        .quote-highlight {
+            background: linear-gradient(to right, rgba(201, 169, 97, 0.1), transparent);
+            border-left: 4px solid var(--accent);
+            padding: 1.5rem;
+            margin: 2rem 0;
+            font-style: italic;
+            color: var(--secondary);
+            font-size: 1.2rem;
+        }
+
+        /* PRINCIPLES */
+        .principles-container {
+            display: flex;
+            flex-direction: column;
+            gap: 2.5rem;
+        }
+
+        .principle-card {
+            background: var(--white);
+            padding: 2.5rem;
+            border-radius: 15px;
+            box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+            border-left: 6px solid var(--accent);
+            transition: all 0.3s;
+            animation: slideIn 0.5s ease-out;
+        }
+
+        .principle-card:hover {
+            transform: translateX(10px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .principle-card:nth-child(1) { animation-delay: 0.1s; }
+        .principle-card:nth-child(2) { animation-delay: 0.2s; }
+        .principle-card:nth-child(3) { animation-delay: 0.3s; }
+        .principle-card:nth-child(4) { animation-delay: 0.4s; }
+        .principle-card:nth-child(5) { animation-delay: 0.5s; }
+
+        .principle-number {
+            display: inline-block;
+            background: var(--accent);
+            color: var(--white);
+            width: 50px;
+            height: 50px;
+            line-height: 50px;
+            text-align: center;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+        }
+
+        .principle-title {
+            font-size: 1.8rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-weight: bold;
+        }
+
+        .principle-description {
+            font-size: 1.1rem;
+            color: var(--text);
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .principle-practice {
+            background: rgba(139, 115, 85, 0.08);
+            padding: 1.2rem;
+            border-radius: 8px;
+            border-left: 3px solid var(--secondary);
+        }
+
+        .principle-practice strong {
+            color: var(--secondary);
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .principle-quote {
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(0,0,0,0.1);
+            font-style: italic;
+            color: var(--secondary);
+            font-size: 1rem;
+        }
+
+        /* SUMMARY */
+        .summary-box {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: var(--white);
+            padding: 2.5rem;
+            border-radius: 15px;
+            margin-top: 3rem;
+            text-align: center;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+        }
+
+        .summary-box h3 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .summary-box p {
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            opacity: 0.95;
+        }
+
+        /* FOOTER */
+        footer {
+            background: var(--primary);
+            color: var(--white);
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            h1 { font-size: 2rem; }
+            .principle-card { padding: 1.5rem; }
+            .principle-title { font-size: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>⚡ ALGORITHM OF LIFE</h1>
+        <p class="subtitle">Les 5 Principes Stoïciens d'Aurelius Secundus</p>
+    </header>
+
+    <nav class="nav-back">
+        <a href="index.html">← Retour à l'accueil</a>
+    </nav>
+
+    <div class="container">
+        <div class="intro-section">
+            <h2>L'Algorithm of Life</h2>
+            <p>L'<strong>Algorithm of Life</strong> est un système de cinq principes fondamentaux inspirés de la philosophie de Marc Aurèle et du stoïcisme. Ces principes forment un algorithme de vie, une méthode pratique pour naviguer les défis de l'existence avec sagesse et sérénité.</p>
+            <p>Comme Marc Aurèle l'écrivait dans ses Méditations, la vie n'est pas une question de chance ou de circonstances extérieures, mais de la qualité de nos pensées et de nos choix. Ces cinq principes constituent un guide pour transformer chaque jour en une opportunité de croissance et de vertu.</p>
+        </div>
+
+        <div class="quote-highlight">
+            "Notre vie est ce que nos pensées en font."
+            <br><em>— Marc Aurèle, Méditations</em>
+        </div>
+
+        <div class="principles-container">
+            <!-- PRINCIPE 1 -->
+            <div class="principle-card">
+                <div class="principle-number">1</div>
+                <h3 class="principle-title">🎯 CONTRÔLE INTÉRIEUR (Prohairesis)</h3>
+                <p class="principle-description">
+                    Le premier principe est la <strong>dichotomie du contrôle</strong> : distinguer rigoureusement ce qui dépend de nous de ce qui n'en dépend pas. Nous contrôlons nos pensées, nos jugements, nos intentions et nos actions. Tout le reste — les événements extérieurs, les opinions des autres, la fortune — échappe à notre maîtrise.
+                </p>
+                <div class="principle-practice">
+                    <strong>💡 Application pratique :</strong>
+                    Chaque matin, rappelle-toi : "Aujourd'hui, je vais maîtriser mes réactions, pas les événements." Face à chaque situation, demande-toi : "Est-ce que cela dépend de moi ?" Si non, accepte-le. Si oui, agis avec vertu.
+                </div>
+                <div class="principle-quote">
+                    "Tu as le pouvoir sur ton esprit, pas sur les événements extérieurs. Réalise cela, et tu trouveras la force." — Marc Aurèle, Méditations
+                </div>
+            </div>
+
+            <!-- PRINCIPE 2 -->
+            <div class="principle-card">
+                <div class="principle-number">2</div>
+                <h3 class="principle-title">🌅 PRÉSENCE ET IMPERMANENCE (Memento Mori)</h3>
+                <p class="principle-description">
+                    Le deuxième principe nous enseigne à <strong>vivre dans le présent</strong> tout en gardant conscience de notre mortalité. Chaque jour est un don précieux et limité. En méditant sur l'impermanence de toute chose, nous apprenons à apprécier l'instant présent et à ne pas reporter ce qui compte vraiment.
+                </p>
+                <div class="principle-practice">
+                    <strong>💡 Application pratique :</strong>
+                    Commence chaque journée en pensant : "Ceci pourrait être mon dernier jour." Non pas avec peur, mais avec gratitude et urgence. Vis comme si chaque moment comptait, car c'est le cas. Ne remets pas à demain ce qui peut donner du sens aujourd'hui.
+                </div>
+                <div class="principle-quote">
+                    "Confine-toi au présent. Ce n'est pas la mort qu'un homme devrait craindre, mais il devrait craindre de ne jamais commencer à vivre." — Marc Aurèle, Méditations
+                </div>
+            </div>
+
+            <!-- PRINCIPE 3 -->
+            <div class="principle-card">
+                <div class="principle-number">3</div>
+                <h3 class="principle-title">💎 VERTU COMME SEUL BIEN (Aretê)</h3>
+                <p class="principle-description">
+                    Le troisième principe affirme que la <strong>vertu est le seul véritable bien</strong>. Ni la richesse, ni la gloire, ni le plaisir ne peuvent nous rendre heureux s'ils sont obtenus de manière injuste. Seule une vie guidée par la sagesse, le courage, la justice et la tempérance a une valeur durable.
+                </p>
+                <div class="principle-practice">
+                    <strong>💡 Application pratique :</strong>
+                    À chaque décision, demande-toi : "Quelle est l'action vertueuse ici ?" Privilégie l'intégrité sur la facilité, la justice sur l'avantage personnel. Le soir, évalue ta journée non par ce que tu as obtenu, mais par la manière dont tu t'es comporté.
+                </div>
+                <div class="principle-quote">
+                    "Si tu travailles sur ce qui est en ton pouvoir, tu trouveras tout ce dont tu as besoin. Si tu te focalises sur ce qui ne dépend pas de toi, tu ne trouveras que troubles et malheurs." — Marc Aurèle, Méditations
+                </div>
+            </div>
+
+            <!-- PRINCIPE 4 -->
+            <div class="principle-card">
+                <div class="principle-number">4</div>
+                <h3 class="principle-title">🔄 AMOR FATI (Amour du Destin)</h3>
+                <p class="principle-description">
+                    Le quatrième principe nous enseigne à <strong>aimer notre destin</strong>, quoi qu'il nous arrive. Tout événement, même difficile, fait partie de l'ordre naturel des choses. Au lieu de résister à ce qui est, nous devons l'embrasser et y trouver une opportunité de croissance. L'obstacle devient le chemin.
+                </p>
+                <div class="principle-practice">
+                    <strong>💡 Application pratique :</strong>
+                    Face à l'adversité, ne dis pas "Pourquoi moi ?" mais "Que puis-je apprendre de ceci ?" Transforme chaque obstacle en exercice, chaque difficulté en occasion de pratiquer la vertu. Accueille tous les événements comme nécessaires et bénéfiques.
+                </div>
+                <div class="principle-quote">
+                    "L'obstacle sur le chemin devient le chemin. Accepte tout ce qui t'arrive, même si cela semble horrible. Tout arrive pour une raison." — Marc Aurèle, Méditations
+                </div>
+            </div>
+
+            <!-- PRINCIPE 5 -->
+            <div class="principle-card">
+                <div class="principle-number">5</div>
+                <h3 class="principle-title">🤝 BIENVEILLANCE UNIVERSELLE (Philanthropia)</h3>
+                <p class="principle-description">
+                    Le cinquième principe nous rappelle que nous sommes tous <strong>membres d'une même communauté humaine</strong>. Nos actions doivent servir le bien commun. Même face à l'injustice ou à la méchanceté, nous devons répondre avec patience et bienveillance, comprenant que les autres agissent par ignorance.
+                </p>
+                <div class="principle-practice">
+                    <strong>💡 Application pratique :</strong>
+                    Chaque matin, rappelle-toi : "Aujourd'hui, je vais rencontrer des personnes difficiles. Mais je ne serai pas surpris, car je sais que nous faisons tous partie d'un même tout." Traite chacun avec dignité. Cherche à comprendre avant de juger. Sois patient avec les défauts des autres, comme tu l'es avec les tiens.
+                </div>
+                <div class="principle-quote">
+                    "La meilleure vengeance est de ne pas ressembler à celui qui a fait le mal. Ce que nous faisons aujourd'hui affecte l'éternité." — Marc Aurèle, Méditations
+                </div>
+            </div>
+        </div>
+
+        <div class="summary-box">
+            <h3>⚖️ L'ÉQUILIBRE DES CINQ PRINCIPES</h3>
+            <p>Ces cinq principes forment un système cohérent : le <strong>contrôle intérieur</strong> nous donne la paix, la <strong>présence</strong> nous ancre dans la réalité, la <strong>vertu</strong> guide nos actions, l'<strong>amor fati</strong> nous rend résilients, et la <strong>bienveillance</strong> nous connecte aux autres.</p>
+            <p style="margin-top: 1.5rem;">Ensemble, ils constituent l'<strong>Algorithm of Life</strong> — non pas une formule rigide, mais un art de vivre qui se raffine avec la pratique quotidienne.</p>
+            <p style="margin-top: 1.5rem; font-style: italic; font-size: 1.2rem;">
+                "Le bonheur de ta vie dépend de la qualité de tes pensées."
+            </p>
+        </div>
+    </div>
+
+    <footer>
+        <p><strong>AURELIUS SECUNDUS</strong></p>
+        <p>Plateforme de Philosophie Stoïcienne</p>
+    </footer>
+</body>
+</html>

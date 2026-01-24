@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Citations du Jour - Aurelius Secundus</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #2c3e50;
+            --secondary: #8b7355;
+            --accent: #c9a961;
+            --text: #333;
+            --bg: #f8f6f1;
+            --white: #fff;
+        }
+
+        body {
+            font-family: Georgia, serif;
+            line-height: 1.8;
+            color: var(--text);
+            background: var(--bg);
+            min-height: 100vh;
+        }
+
+        /* HEADER */
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: var(--white);
+            padding: 3rem 2rem;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            font-size: 3rem;
+            letter-spacing: 3px;
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .subtitle {
+            font-style: italic;
+            opacity: 0.9;
+            font-size: 1.3rem;
+            margin-top: 1rem;
+        }
+
+        /* NAVIGATION */
+        .nav-back {
+            background: var(--white);
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .nav-back a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        .nav-back a:hover {
+            color: var(--accent);
+        }
+
+        /* CONTAINER */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        /* QUOTE DISPLAY */
+        .quote-container {
+            background: var(--white);
+            padding: 3rem;
+            border-radius: 15px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+            text-align: center;
+            margin-bottom: 2rem;
+            border-left: 5px solid var(--accent);
+            min-height: 300px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            animation: fadeIn 0.6s;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .quote-icon {
+            font-size: 3rem;
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            opacity: 0.6;
+        }
+
+        .quote-text {
+            font-size: 1.6rem;
+            line-height: 1.8;
+            color: var(--secondary);
+            font-style: italic;
+            margin-bottom: 2rem;
+        }
+
+        .quote-author {
+            font-size: 1.2rem;
+            color: var(--primary);
+            font-weight: bold;
+            margin-top: 1rem;
+        }
+
+        .quote-source {
+            font-size: 1rem;
+            color: var(--text);
+            opacity: 0.7;
+            margin-top: 0.5rem;
+        }
+
+        /* BUTTON */
+        .btn-new-quote {
+            display: inline-block;
+            background: var(--secondary);
+            color: var(--white);
+            padding: 1rem 2.5rem;
+            border: none;
+            border-radius: 25px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            font-family: Georgia, serif;
+        }
+
+        .btn-new-quote:hover {
+            background: var(--primary);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(0,0,0,0.2);
+        }
+
+        .btn-new-quote:active {
+            transform: translateY(0);
+        }
+
+        /* INFO BOX */
+        .info-box {
+            background: linear-gradient(to right, rgba(201, 169, 97, 0.1), transparent);
+            border-left: 4px solid var(--accent);
+            padding: 1.5rem;
+            margin-top: 2rem;
+            border-radius: 8px;
+        }
+
+        .info-box p {
+            margin: 0.5rem 0;
+            color: var(--text);
+        }
+
+        /* FOOTER */
+        footer {
+            background: var(--primary);
+            color: var(--white);
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            h1 { font-size: 2rem; }
+            .quote-text { font-size: 1.3rem; }
+            .quote-container { padding: 2rem; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>📖 CITATIONS DU JOUR</h1>
+        <p class="subtitle">Sagesse Stoïcienne Quotidienne</p>
+    </header>
+
+    <nav class="nav-back">
+        <a href="index.html">← Retour à l'accueil</a>
+    </nav>
+
+    <div class="container">
+        <div class="quote-container" id="quoteDisplay">
+            <div class="quote-icon">"</div>
+            <div class="quote-text" id="quoteText"></div>
+            <div class="quote-author" id="quoteAuthor"></div>
+            <div class="quote-source" id="quoteSource"></div>
+        </div>
+
+        <div style="text-align: center;">
+            <button class="btn-new-quote" onclick="newQuote()">✨ Nouvelle Citation</button>
+        </div>
+
+        <div class="info-box">
+            <p><strong>💡 Conseil :</strong> Prenez quelques instants pour méditer sur cette citation. Que vous enseigne-t-elle ? Comment pouvez-vous l'appliquer dans votre vie aujourd'hui ?</p>
+            <p style="margin-top: 1rem;"><strong>📚 Collection :</strong> 50 citations des trois grands maîtres stoïciens : Marc Aurèle, Épictète et Sénèque.</p>
+        </div>
+    </div>
+
+    <footer>
+        <p><strong>AURELIUS SECUNDUS</strong></p>
+        <p>Plateforme de Philosophie Stoïcienne</p>
+    </footer>
+
+    <script>
+        const quotes = [
+            // MARC AURÈLE
+            {
+                text: "Tu as le pouvoir sur ton esprit, pas sur les événements extérieurs. Réalise cela, et tu trouveras la force.",
+                author: "Marc Aurèle",
+                source: "Méditations"
+            },
+            {
+                text: "La vie de l'homme ne dure qu'un instant. Sa substance est en perpétuel écoulement, ses sensations obscures, tout son corps sujet à la corruption, son âme, un tourbillon, sa destinée, une énigme, sa renommée, incertaine.",
+                author: "Marc Aurèle",
+                source: "Méditations, Livre II"
+            },
+            {
+                text: "Que la force me soit donnée de supporter ce qui ne peut être changé et le courage de changer ce qui peut l'être mais aussi la sagesse de distinguer l'un de l'autre.",
+                author: "Marc Aurèle",
+                source: "Méditations"
+            },
+            {
+                text: "Le bonheur de ta vie dépend de la qualité de tes pensées.",
+                author: "Marc Aurèle",
+                source: "Méditations"
+            },
+            {
+                text: "Chaque matin, rappelle-toi : je peux maîtriser mes pensées et mes actions. Tout le reste ne dépend pas de moi.",
+                author: "Marc Aurèle",
+                source: "Méditations, Livre V"
+            },
+            {
+                text: "Ne perds pas ton temps à te préoccuper de ce que font les autres. Concentre-toi sur toi-même et sur ce que tu peux contrôler.",
+                author: "Marc Aurèle",
+                source: "Méditations"
+            },
+            {
+                text: "L'obstacle sur le chemin devient le chemin. Ne jamais oublier, dans un obstacle, il y a toujours une nouvelle voie.",
+                author: "Marc Aurèle",
+                source: "Méditations, Livre V"
+            },
+            {
+                text: "Tu as le pouvoir de te retirer en toi-même quand tu le veux. Aucune retraite n'est plus paisible ni moins encombrée que celle que l'homme trouve dans son âme.",
+                author: "Marc Aurèle",
+                source: "Méditations, Livre IV"
+            },
+            {
+                text: "Considère chaque jour comme une vie en miniature. Vis-le comme si c'était le dernier.",
+                author: "Marc Aurèle",
+                source: "Méditations"
+            },
+            {
+                text: "Ce n'est pas la mort qu'un homme devrait craindre, mais il devrait craindre de ne jamais commencer à vivre.",
+                author: "Marc Aurèle",
+                source: "Méditations"
+            },
+            {
+                text: "Fais disparaître ton opinion, et tu auras fait disparaître le 'j'ai été blessé'. Fais disparaître le 'j'ai été blessé', et la blessure disparaît.",
+                author: "Marc Aurèle",
+                source: "Méditations, Livre IV"
+            },
+            {
+                text: "Confine-toi au présent.",
+                author: "Marc Aurèle",
+                source: "Méditations, Livre VII"
+            },
+            {
+                text: "Notre vie est ce que nos pensées en font.",
+                author: "Marc Aurèle",
+                source: "Méditations"
+            },
+            {
+                text: "Commence chaque journée en te disant : aujourd'hui, je vais rencontrer des personnes indiscrètes, ingrates, violentes, déloyales et égoïstes. Mais je ne serai pas surpris ou perturbé, car je ne peux pas imaginer un monde sans de telles personnes.",
+                author: "Marc Aurèle",
+                source: "Méditations, Livre II"
+            },
+            {
+                text: "La meilleure vengeance est de ne pas ressembler à celui qui a fait le mal.",
+                author: "Marc Aurèle",
+                source: "Méditations, Livre VI"
+            },
+            {
+                text: "Accepte tout ce qui t'arrive, même si cela semble horrible. Tout arrive pour une raison.",
+                author: "Marc Aurèle",
+                source: "Méditations"
+            },
+            {
+                text: "Si tu es troublé par quelque chose d'extérieur, la douleur n'est pas due à la chose elle-même, mais à ton jugement à son sujet. Et tu as le pouvoir d'effacer ce jugement maintenant.",
+                author: "Marc Aurèle",
+                source: "Méditations, Livre VIII"
+            },
+            
+            // ÉPICTÈTE
+            {
+                text: "Parmi les choses, les unes dépendent de nous, les autres n'en dépendent pas.",
+                author: "Épictète",
+                source: "Manuel, I"
+            },
+            {
+                text: "Ce qui trouble les hommes, ce ne sont pas les choses, mais les jugements qu'ils portent sur les choses.",
+                author: "Épictète",
+                source: "Manuel, V"
+            },
+            {
+                text: "Ne demande pas que les événements arrivent comme tu le souhaites, mais souhaite qu'ils arrivent comme ils arrivent, et tu seras en paix.",
+                author: "Épictète",
+                source: "Manuel, VIII"
+            },
+            {
+                text: "Les gens ne sont pas troublés par les choses, mais par les opinions qu'ils en ont.",
+                author: "Épictète",
+                source: "Entretiens"
+            },
+            {
+                text: "La liberté est la seule chose qui vaille qu'on vive pour elle.",
+                author: "Épictète",
+                source: "Entretiens"
+            },
+            {
+                text: "Si tu veux progresser, renonce à de tels raisonnements : Si je néglige mes affaires, je n'aurai pas de quoi vivre. À force de ne pas réprimander mon serviteur, il deviendra mauvais.",
+                author: "Épictète",
+                source: "Manuel, XII"
+            },
+            {
+                text: "Ne cherche pas à ce que les événements arrivent comme tu veux, mais veuille les événements comme ils arrivent et tu seras heureux.",
+                author: "Épictète",
+                source: "Manuel"
+            },
+            {
+                text: "Aucun homme n'est libre s'il n'est pas maître de lui-même.",
+                author: "Épictète",
+                source: "Entretiens"
+            },
+            {
+                text: "Tu es qu'une petite âme portant un cadavre.",
+                author: "Épictète",
+                source: "Fragments"
+            },
+            {
+                text: "Rappelle-toi que ce n'est ni celui qui injurie, ni celui qui frappe, qui outrage, mais l'opinion qu'on a d'eux comme nous outrageant.",
+                author: "Épictète",
+                source: "Manuel, XX"
+            },
+            {
+                text: "À chaque événement qui t'arrive, souviens-toi de rentrer en toi-même et de chercher quelle faculté tu possèdes pour en faire usage.",
+                author: "Épictète",
+                source: "Manuel, X"
+            },
+            {
+                text: "L'homme a deux anses : l'une par laquelle il peut être porté, l'autre par laquelle il ne peut pas l'être.",
+                author: "Épictète",
+                source: "Manuel, XLIII"
+            },
+            {
+                text: "Que dois-je devenir ? Un homme de bien. Comment ? Si tu considères d'abord ce qu'est l'homme.",
+                author: "Épictète",
+                source: "Entretiens"
+            },
+            {
+                text: "Si quelqu'un te met entre les mains l'autorité de faire quelque chose, souviens-toi de chercher, non ce qu'elle a d'agréable, mais ce qu'elle a de juste.",
+                author: "Épictète",
+                source: "Manuel"
+            },
+            
+            // SÉNÈQUE
+            {
+                text: "Ce n'est pas parce que les choses sont difficiles que nous n'osons pas, c'est parce que nous n'osons pas qu'elles sont difficiles.",
+                author: "Sénèque",
+                source: "Lettres à Lucilius"
+            },
+            {
+                text: "La vie n'est pas courte, nous la gaspillons.",
+                author: "Sénèque",
+                source: "De la brièveté de la vie"
+            },
+            {
+                text: "Commence à vivre tout de suite et compte chaque jour comme une vie à part entière.",
+                author: "Sénèque",
+                source: "Lettres à Lucilius"
+            },
+            {
+                text: "Nous souffrons plus en imagination qu'en réalité.",
+                author: "Sénèque",
+                source: "Lettres à Lucilius, XIII"
+            },
+            {
+                text: "Un homme n'est jamais si grand que lorsqu'il est à genoux pour aider quelqu'un.",
+                author: "Sénèque",
+                source: "De la Clémence"
+            },
+            {
+                text: "Ce n'est pas que nous ayons peu de temps, mais c'est que nous en perdons beaucoup.",
+                author: "Sénèque",
+                source: "De la brièveté de la vie"
+            },
+            {
+                text: "Les difficultés renforcent l'esprit, comme le travail renforce le corps.",
+                author: "Sénèque",
+                source: "Lettres à Lucilius"
+            },
+            {
+                text: "La colère est une courte folie.",
+                author: "Sénèque",
+                source: "De la colère"
+            },
+            {
+                text: "Heureux celui qui sait braver le danger sans en avoir peur, non pas parce qu'il ne ressent rien, mais parce qu'il sait le dominer.",
+                author: "Sénèque",
+                source: "Lettres à Lucilius"
+            },
+            {
+                text: "Toute cruauté naît de la faiblesse.",
+                author: "Sénèque",
+                source: "De la Clémence"
+            },
+            {
+                text: "Aussi longtemps que tu vivras, continue d'apprendre à vivre.",
+                author: "Sénèque",
+                source: "Lettres à Lucilius, LXXVI"
+            },
+            {
+                text: "Si tu veux être aimé, aime.",
+                author: "Sénèque",
+                source: "Lettres à Lucilius, IX"
+            },
+            {
+                text: "La vie est longue si on sait en user.",
+                author: "Sénèque",
+                source: "De la brièveté de la vie"
+            },
+            {
+                text: "C'est une folie de vouloir être malheureux pour le devenir peut-être un jour.",
+                author: "Sénèque",
+                source: "Lettres à Lucilius"
+            },
+            {
+                text: "Le sage ne perd jamais rien : il a tout en lui. Il se suffit à lui-même.",
+                author: "Sénèque",
+                source: "De la constance du sage"
+            },
+            {
+                text: "Aucun homme n'a de dette envers toi si tu ne t'es rendu service qu'à toi-même en le servant.",
+                author: "Sénèque",
+                source: "Des bienfaits"
+            },
+            {
+                text: "L'homme le plus puissant est celui qui est maître de lui-même.",
+                author: "Sénèque",
+                source: "Lettres à Lucilius"
+            },
+            {
+                text: "La pierre précieuse ne peut être polie sans friction, ni l'homme perfectionné sans épreuves.",
+                author: "Sénèque",
+                source: "De la Providence"
+            }
+        ];
+
+        let currentQuoteIndex = -1;
+
+        function getRandomQuote() {
+            let newIndex;
+            do {
+                newIndex = Math.floor(Math.random() * quotes.length);
+            } while (newIndex === currentQuoteIndex && quotes.length > 1);
+            currentQuoteIndex = newIndex;
+            return quotes[newIndex];
+        }
+
+        function displayQuote(quote) {
+            document.getElementById('quoteText').textContent = quote.text;
+            document.getElementById('quoteAuthor').textContent = `— ${quote.author}`;
+            document.getElementById('quoteSource').textContent = quote.source;
+        }
+
+        function newQuote() {
+            const quoteContainer = document.getElementById('quoteDisplay');
+            quoteContainer.style.animation = 'none';
+            setTimeout(() => {
+                const quote = getRandomQuote();
+                displayQuote(quote);
+                quoteContainer.style.animation = 'fadeIn 0.6s';
+            }, 50);
+        }
+
+        // Afficher une citation au chargement
+        window.onload = function() {
+            const quote = getRandomQuote();
+            displayQuote(quote);
+        };
+    </script>
+</body>
+</html>
