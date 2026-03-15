@@ -1,0 +1,995 @@
+!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>AURELIUS SECUNDUS — Philosophie Stoïcienne</title>
+  <style>
+    :root {
+      --gold: #C9A84C;
+      --gold-light: #E8C96A;
+      --dark: #0D0D0D;
+      --dark-mid: #151515;
+      --dark-light: #1E1E1E;
+      --dark-card: #242424;
+      --text: #E8E0D0;
+      --text-muted: #9A8F80;
+      --blue-acc: #2B4A7A;
+    }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body { background:var(--dark); color:var(--text); font-family:'Georgia',serif; display:flex; min-height:100vh; }
+
+    /* ── SIDEBAR ── */
+    #sidebar {
+      width:260px; min-height:100vh; background:var(--dark-mid);
+      border-right:1px solid #2A2A2A; position:fixed; top:0; left:0;
+      display:flex; flex-direction:column; padding:0 0 30px 0; z-index:100;
+    }
+    #sidebar-logo {
+      padding:28px 20px 20px; border-bottom:1px solid #2A2A2A; text-align:center;
+    }
+    #sidebar-logo h1 { font-size:1.05rem; letter-spacing:3px; color:var(--gold); text-transform:uppercase; }
+    #sidebar-logo p { font-size:0.7rem; color:var(--text-muted); letter-spacing:1px; margin-top:4px; }
+    nav { flex:1; padding:20px 0; }
+    nav a {
+      display:flex; align-items:center; gap:10px;
+      padding:12px 22px; color:var(--text-muted); text-decoration:none;
+      font-size:0.85rem; letter-spacing:1px; transition:all .2s;
+      border-left:3px solid transparent;
+    }
+    nav a:hover, nav a.active {
+      color:var(--gold); background:rgba(201,168,76,.07);
+      border-left-color:var(--gold);
+    }
+    nav a .icon { font-size:1.1rem; width:22px; text-align:center; }
+    #sidebar-footer { padding:16px 20px; border-top:1px solid #2A2A2A; text-align:center; }
+    #sidebar-footer p { font-size:0.65rem; color:var(--text-muted); letter-spacing:1px; }
+
+    /* ── MAIN ── */
+    #main { margin-left:260px; flex:1; }
+
+    /* HERO */
+    #hero {
+      background: linear-gradient(160deg, #0D1B2A 0%, #0D0D0D 60%);
+      border-bottom:1px solid #2A2A2A;
+      padding:70px 60px 60px;
+      text-align:center;
+    }
+    #hero .eagle { font-size:3.5rem; margin-bottom:16px; }
+    #hero h2 { font-size:2.4rem; letter-spacing:4px; color:var(--gold); text-transform:uppercase; }
+    #hero p { font-size:1rem; color:var(--text-muted); margin-top:10px; font-style:italic; letter-spacing:1px; }
+    #hero .divider { width:80px; height:1px; background:var(--gold); margin:20px auto; opacity:.5; }
+
+    /* SECTIONS */
+    .section { padding:60px 60px 40px; border-bottom:1px solid #1A1A1A; }
+    .section:last-child { border-bottom:none; }
+    .section-title {
+      font-size:1.3rem; letter-spacing:3px; color:var(--gold);
+      text-transform:uppercase; margin-bottom:8px;
+      display:flex; align-items:center; gap:12px;
+    }
+    .section-title .num { font-size:0.7rem; color:var(--text-muted); }
+    .section-subtitle { font-size:0.85rem; color:var(--text-muted); letter-spacing:1px; margin-bottom:36px; }
+    .gold-line { width:50px; height:1px; background:var(--gold); margin:12px 0 30px; opacity:.5; }
+
+    /* CITATION CARDS */
+    .cards-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(320px,1fr)); gap:20px; }
+    .card {
+      background:var(--dark-card); border:1px solid #2E2E2E;
+      border-radius:4px; padding:26px; transition:border-color .2s;
+    }
+    .card:hover { border-color:var(--gold); }
+    .card .quote { font-size:1rem; font-style:italic; color:var(--text); line-height:1.7; margin-bottom:14px; }
+    .card .author { font-size:0.75rem; letter-spacing:2px; color:var(--gold); text-transform:uppercase; }
+    .card .source { font-size:0.7rem; color:var(--text-muted); margin-top:4px; }
+
+    /* FONDEMENTS */
+    .fondements-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:18px; }
+    .fondement-card {
+      background:var(--dark-card); border:1px solid #2E2E2E;
+      border-radius:4px; padding:22px; position:relative;
+    }
+    .fondement-card .num-badge {
+      position:absolute; top:-10px; left:20px;
+      background:var(--gold); color:var(--dark); font-size:0.7rem;
+      font-weight:bold; letter-spacing:2px; padding:3px 10px;
+    }
+    .fondement-card h3 { font-size:1rem; color:var(--gold); margin:12px 0 8px; letter-spacing:1px; }
+    .fondement-card p { font-size:0.82rem; color:var(--text-muted); line-height:1.7; }
+    .fondement-card .key-quote { font-size:0.8rem; font-style:italic; color:var(--text); margin-top:12px; padding-top:10px; border-top:1px solid #333; }
+
+    /* TEXTES */
+    .texte-book {
+      background:var(--dark-card); border:1px solid #2E2E2E;
+      border-radius:4px; margin-bottom:24px; overflow:hidden;
+    }
+    .texte-header {
+      background:linear-gradient(90deg,#1A2535,var(--dark-card));
+      padding:20px 28px; cursor:pointer;
+      display:flex; justify-content:space-between; align-items:center;
+    }
+    .texte-header h3 { font-size:1rem; color:var(--gold); letter-spacing:2px; }
+    .texte-header .meta { font-size:0.75rem; color:var(--text-muted); margin-top:4px; }
+    .texte-header .toggle { color:var(--gold); font-size:1.2rem; transition:transform .3s; }
+    .texte-body { padding:24px 28px; display:none; }
+    .texte-body.open { display:block; }
+    .passage { margin-bottom:20px; }
+    .passage .ref { font-size:0.7rem; color:var(--gold); letter-spacing:2px; margin-bottom:6px; }
+    .passage blockquote { font-style:italic; color:var(--text); line-height:1.8; font-size:0.9rem; border-left:2px solid var(--gold); padding-left:14px; }
+    .passage .commentaire { font-size:0.8rem; color:var(--text-muted); margin-top:8px; line-height:1.6; }
+
+    /* EXERCICES */
+    .exercices-tabs { display:flex; gap:10px; margin-bottom:28px; flex-wrap:wrap; }
+    .tab-btn {
+      padding:8px 18px; border:1px solid #333; background:transparent;
+      color:var(--text-muted); cursor:pointer; font-size:0.78rem;
+      letter-spacing:1px; transition:all .2s; font-family:'Georgia',serif;
+    }
+    .tab-btn.active, .tab-btn:hover { border-color:var(--gold); color:var(--gold); background:rgba(201,168,76,.07); }
+    .exercice-panel { display:none; }
+    .exercice-panel.active { display:block; }
+    .exercice-item {
+      background:var(--dark-card); border:1px solid #2E2E2E;
+      border-radius:4px; padding:22px; margin-bottom:16px;
+    }
+    .exercice-item h4 { color:var(--gold); font-size:0.95rem; margin-bottom:6px; letter-spacing:1px; }
+    .exercice-item .duree { font-size:0.7rem; color:var(--text-muted); letter-spacing:2px; margin-bottom:10px; }
+    .exercice-item p, .exercice-item li { font-size:0.85rem; color:var(--text-muted); line-height:1.7; }
+    .exercice-item ul { padding-left:18px; margin-top:8px; }
+    .exercice-item .questions { margin-top:12px; }
+    .exercice-item .questions li { color:var(--text); margin-bottom:4px; }
+
+    /* GLOSSAIRE */
+    .glossaire-search {
+      width:100%; padding:12px 18px; background:var(--dark-card);
+      border:1px solid #333; color:var(--text); font-family:'Georgia',serif;
+      font-size:0.9rem; margin-bottom:24px; outline:none;
+    }
+    .glossaire-search:focus { border-color:var(--gold); }
+    .glossaire-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:16px; }
+    .terme-card {
+      background:var(--dark-card); border:1px solid #2E2E2E;
+      border-radius:4px; padding:20px;
+    }
+    .terme-card h4 { color:var(--gold); font-size:0.95rem; letter-spacing:2px; margin-bottom:4px; }
+    .terme-card .grec { font-size:0.75rem; color:var(--text-muted); font-style:italic; margin-bottom:8px; }
+    .terme-card p { font-size:0.82rem; color:var(--text); line-height:1.6; }
+    .terme-card .exemple { font-size:0.78rem; font-style:italic; color:var(--text-muted); margin-top:8px; border-top:1px solid #333; padding-top:8px; }
+
+    /* ALGORITHME */
+    .algo-step {
+      display:flex; gap:20px; margin-bottom:20px;
+      background:var(--dark-card); border:1px solid #2E2E2E;
+      border-radius:4px; padding:22px;
+    }
+    .algo-step .step-num {
+      min-width:44px; height:44px; background:var(--gold);
+      color:var(--dark); display:flex; align-items:center; justify-content:center;
+      font-weight:bold; font-size:1.1rem; flex-shrink:0;
+    }
+    .algo-step .step-content h4 { color:var(--gold); font-size:0.95rem; letter-spacing:1px; margin-bottom:6px; }
+    .algo-step .step-content p { font-size:0.85rem; color:var(--text-muted); line-height:1.7; }
+    .algo-step .step-content .mantra { font-style:italic; color:var(--text); margin-top:8px; font-size:0.85rem; }
+
+    /* PHILOSOPHES */
+    .philosophe-card {
+      background:var(--dark-card); border:1px solid #2E2E2E;
+      border-radius:4px; padding:28px; margin-bottom:20px;
+    }
+    .philosophe-header { display:flex; align-items:center; gap:16px; margin-bottom:16px; }
+    .philosophe-avatar {
+      width:56px; height:56px; border-radius:50%;
+      background:linear-gradient(135deg,var(--blue-acc),var(--dark));
+      border:2px solid var(--gold); display:flex; align-items:center; justify-content:center;
+      font-size:1.6rem; flex-shrink:0;
+    }
+    .philosophe-header h3 { color:var(--gold); font-size:1.1rem; letter-spacing:2px; }
+    .philosophe-header .dates { font-size:0.75rem; color:var(--text-muted); }
+    .philosophe-card p { font-size:0.85rem; color:var(--text-muted); line-height:1.7; margin-bottom:12px; }
+    .philosophe-card .oeuvres { font-size:0.8rem; color:var(--text-muted); }
+    .philosophe-card .oeuvres span { color:var(--gold); }
+    .citation-philo { font-style:italic; color:var(--text); font-size:0.9rem; line-height:1.7; border-left:2px solid var(--gold); padding-left:14px; margin-top:14px; }
+
+    /* Responsive */
+    @media(max-width:768px){
+      #sidebar{ width:100%; min-height:auto; position:relative; }
+      #main{ margin-left:0; }
+      .section{ padding:40px 20px 30px; }
+      #hero{ padding:40px 20px 30px; }
+      #hero h2{ font-size:1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══ SIDEBAR ══ -->
+<aside id="sidebar">
+  <div id="sidebar-logo">
+    <h1>⚖ AURELIUS SECUNDUS</h1>
+    <p>@AigleRoyal28</p>
+  </div>
+  <nav>
+    <a href="#citations" class="active"><span class="icon">🏛</span> Citations du Jour</a>
+    <a href="#fondements"><span class="icon">📜</span> Les 12 Fondements</a>
+    <a href="#textes"><span class="icon">📚</span> Textes Philosophiques</a>
+    <a href="#exercices"><span class="icon">⚔</span> Exercices Stoïciens</a>
+    <a href="#glossaire"><span class="icon">🗝</span> Glossaire</a>
+    <a href="#algorithme"><span class="icon">🔄</span> Algorithme de Vie</a>
+    <a href="#philosophes"><span class="icon">🦅</span> Les Philosophes</a>
+    <a href="#morale-ghost"><span class="icon">🦅</span> Morale de Ghost</a>
+    <a href="meditation_memento_mori.html"><span class="icon">💀</span> Méditation — Memento Mori</a>
+  </nav>
+  <div id="sidebar-footer">
+    <p>LA PHILOSOPHIE STOÏCIENNE<br>AU SERVICE DE LA VIE MODERNE</p>
+  </div>
+</aside>
+
+<!-- ══ MAIN ══ -->
+<main id="main">
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="eagle">🦅</div>
+    <h2>AURELIUS SECUNDUS</h2>
+    <p>La philosophie stoïcienne au service de la vie moderne</p>
+    <div class="divider"></div>
+  </section>
+
+  <!-- ══ 01 CITATIONS ══ -->
+  <section class="section" id="citations">
+    <div class="section-title"><span class="num">01</span> Citations du Jour</div>
+    <p class="section-subtitle">Une sagesse nouvelle chaque jour — Marc Aurèle, Épictète, Sénèque 🌅</p>
+    <div class="gold-line"></div>
+    <div class="cards-grid">
+      <div class="card">
+        <p class="quote">« L'obstacle est le chemin. Marche. »</p>
+        <p class="author">Marc Aurèle</p>
+        <p class="source">Méditations — Nouvelle citation</p>
+      </div>
+      <div class="card">
+        <p class="quote">« Au hasard tu contrôles tes pensées. Tout le reste est bruit. »</p>
+        <p class="author">Marc Aurèle</p>
+        <p class="source">Méditations</p>
+      </div>
+      <div class="card">
+        <p class="quote">« Ce n'est pas que le temps manque. C'est qu'on le gaspille. »</p>
+        <p class="author">Sénèque</p>
+        <p class="source">Lettres à Lucilius</p>
+      </div>
+      <div class="card">
+        <p class="quote">« Tout dépend de toi. Seulement de toi. »</p>
+        <p class="author">Épictète</p>
+        <p class="source">Manuel</p>
+      </div>
+      <div class="card">
+        <p class="quote">« Nul ne peut te blesser sans ta permission. »</p>
+        <p class="author">Marc Aurèle</p>
+        <p class="source">Méditations</p>
+      </div>
+      <div class="card">
+        <p class="quote">« Vois ce qui arrive. Tu seras toujours victorieux. »</p>
+        <p class="author">Sénèque</p>
+        <p class="source">Lettres à Lucilius</p>
+      </div>
+      <div class="card">
+        <p class="quote">« Le bonheur naît dans tes pensées. Nulle part ailleurs. »</p>
+        <p class="author">Épictète</p>
+        <p class="source">Manuel</p>
+      </div>
+      <div class="card">
+        <p class="quote">« L'âme devient ce qu'elle côtoie chaque jour. »</p>
+        <p class="author">Marc Aurèle</p>
+        <p class="source">Méditations</p>
+      </div>
+      <div class="card">
+        <p class="quote">« Commence. Le courage vient en faisant. »</p>
+        <p class="author">Sénèque</p>
+        <p class="source">Lettres à Lucilius</p>
+      </div>
+      <div class="card">
+        <p class="quote">« Ne cherche pas la paix. Construis-la en toi. »</p>
+        <p class="author">Sénèque</p>
+        <p class="source">Lettres à Lucilius</p>
+      </div>
+      <div class="card">
+        <p class="quote">« Connais tes chaînes. C'est ainsi qu'on les brise. »</p>
+        <p class="author">Marc Aurèle</p>
+        <p class="source">Méditations</p>
+      </div>
+      <div class="card">
+        <p class="quote">« Chaque jour est une vie. Vis-le entier. »</p>
+        <p class="author">Épictète</p>
+        <p class="source">Entretiens</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ 02 FONDEMENTS ══ -->
+  <section class="section" id="fondements">
+    <div class="section-title"><span class="num">02</span> Les 12 Fondements</div>
+    <p class="section-subtitle">Les concepts essentiels du stoïcisme — de l'accessible au plus profond</p>
+    <div class="gold-line"></div>
+    <div class="fondements-grid">
+      <div class="fondement-card">
+        <div class="num-badge">01</div>
+        <h3>La Dichotomie du Contrôle</h3>
+        <p>Ce qui dépend de toi : tes opinions, tes désirs, tes aversions, tes actions. Ce qui ne dépend pas de toi : ton corps, ta réputation, les opinions des autres, la fortune.</p>
+        <p class="key-quote">« Demande-toi en permanence : est-ce que cela dépend de moi ? »</p>
+      </div>
+      <div class="fondement-card">
+        <div class="num-badge">02</div>
+        <h3>L'Amor Fati</h3>
+        <p>Aime ce qui arrive. Non pas dans la résignation, mais dans la pleine acceptation que chaque événement fait partie du logos universel.</p>
+        <p class="key-quote">« Non seulement accepter ce qui arrive, mais l'aimer. »</p>
+      </div>
+      <div class="fondement-card">
+        <div class="num-badge">03</div>
+        <h3>Le Memento Mori</h3>
+        <p>Rappelle-toi que tu mourras. Pas comme une angoisse, mais comme un outil de clarté : face à la mort, ce qui compte vraiment devient évident.</p>
+        <p class="key-quote">« Demande-toi : si c'était mon dernier jour, est-ce que ce que je m'apprête à faire vaut la peine ? »</p>
+      </div>
+      <div class="fondement-card">
+        <div class="num-badge">04</div>
+        <h3>La Vertu comme Seul Bien</h3>
+        <p>Pour les stoïciens, la vertu — sagesse, justice, courage, tempérance — est le seul bien véritable. Tout le reste est "indifférent".</p>
+        <p class="key-quote">« La vertu suffit au bonheur. »</p>
+      </div>
+      <div class="fondement-card">
+        <div class="num-badge">05</div>
+        <h3>Le Logos</h3>
+        <p>La raison universelle qui ordonne le cosmos. Chaque être humain possède une étincelle de ce logos. Vivre selon le logos, c'est vivre en accord avec la nature.</p>
+        <p class="key-quote">« Vis en accord avec la nature — c'est-à-dire avec la raison. »</p>
+      </div>
+      <div class="fondement-card">
+        <div class="num-badge">06</div>
+        <h3>La Préméditation des Maux</h3>
+        <p>Visualise le pire scénario possible. Non pour t'y complaire, mais pour t'y préparer et réaliser que tu peux y survivre et t'y adapter.</p>
+        <p class="key-quote">« Visualise les 3 pires choses qui pourraient arriver cette semaine. »</p>
+      </div>
+      <div class="fondement-card">
+        <div class="num-badge">07</div>
+        <h3>L'Action Disciplinée</h3>
+        <p>Toutes les choses qui arrivent sont ordonnées pour le bien du destin. Ta mission est d'agir avec discipline, sans te battre contre ce qui est hors de ton contrôle.</p>
+        <p class="key-quote">« Agis comme un médecin : avec soin, méthode et sans passion. »</p>
+      </div>
+      <div class="fondement-card">
+        <div class="num-badge">08</div>
+        <h3>Les Exercices de Pensée</h3>
+        <p>Ne te permets jamais d'être emporté par l'imagination. La philosophie stoïcienne est une pratique quotidienne, pas une théorie abstraite.</p>
+        <p class="key-quote">« La philosophie ne se lit pas. Elle se vit. »</p>
+      </div>
+      <div class="fondement-card">
+        <div class="num-badge">09</div>
+        <h3>La Vue de Haut (Cosmique)</h3>
+        <p>Marc Aurèle s'imaginait regarder la Terre depuis les étoiles. Prends du recul : tes problèmes actuels — dans 10 ans ? Dans 100 ans ? Dans 1000 ans ?</p>
+        <p class="key-quote">« Recalibre ta perspective. »</p>
+      </div>
+      <div class="fondement-card">
+        <div class="num-badge">10</div>
+        <h3>La Maîtrise des Passions</h3>
+        <p>Quand tu sens la colère monter, applique la règle des 3 secondes. Les passions ne sont pas des fautes — les laisser te gouverner en est une.</p>
+        <p class="key-quote">« Tu ne contrôles pas les actions des autres — seulement tes réponses. »</p>
+      </div>
+      <div class="fondement-card">
+        <div class="num-badge">11</div>
+        <h3>La Justice Cosmique</h3>
+        <p>La justice stoïcienne n'est pas abstraite — elle est concrète. Chaque jour, accomplis un acte qui bénéficie à quelqu'un d'autre sans attendre de retour.</p>
+        <p class="key-quote">« C'est ton devoir de citoyen du monde. »</p>
+      </div>
+      <div class="fondement-card">
+        <div class="num-badge">12</div>
+        <h3>La Citadelle Intérieure</h3>
+        <p>Ta paix intérieure ne dépend d'aucun lieu géographique. Elle est disponible à chaque instant, en toi. C'est la forteresse que nul ne peut prendre.</p>
+        <p class="key-quote">« Retire-toi en toi-même. »</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ 03 TEXTES ══ -->
+  <section class="section" id="textes">
+    <div class="section-title"><span class="num">03</span> Textes Philosophiques</div>
+    <p class="section-subtitle">Les œuvres majeures commentées et annotées pour la vie moderne 📖</p>
+    <div class="gold-line"></div>
+
+    <div class="texte-book">
+      <div class="texte-header" onclick="toggleTexte(this)">
+        <div>
+          <h3>⚖ MÉDITATIONS — Marc Aurèle</h3>
+          <p class="meta">Journal personnel intime · 12 Livres · ~170 ap. J.-C.</p>
+        </div>
+        <span class="toggle">▼</span>
+      </div>
+      <div class="texte-body">
+        <div class="passage">
+          <p class="ref">LIVRE II — SUR LA DURÉE DE LA VIE, 4</p>
+          <blockquote>« Rappelle-toi depuis combien de temps tu remets tout à plus tard, et combien de fois les dieux t'ont accordé des délais que tu n'as pas utilisés. »</blockquote>
+          <p class="commentaire">→ Le memento mori en action. Chaque matin rappelle-toi que le temps est compté et que remettre à demain c'est voler ta propre vie.</p>
+        </div>
+        <div class="passage">
+          <p class="ref">LIVRE II, 14</p>
+          <blockquote>« Même si tu devais vivre trois mille ans, ou même trente mille, rappelle-toi que nul ne perd d'autre vie que celle qu'il vit présentement. »</blockquote>
+          <p class="commentaire">→ L'instant présent est le seul moment que tu possèdes vraiment. Passé et futur sont des illusions. La puissance réside dans le maintenant.</p>
+        </div>
+        <div class="passage">
+          <p class="ref">LIVRE IV — LA CITADELLE INTÉRIEURE, 3</p>
+          <blockquote>« Les hommes cherchent des retraites pour eux-mêmes dans les campagnes, sur les rivages de la mer, dans les montagnes. Et toi aussi tu désires ardemment de telles retraites. Mais tout cela révèle un manque de culture. »</blockquote>
+          <p class="commentaire">→ Ta paix intérieure ne dépend d'aucun lieu géographique. Elle est disponible à chaque instant, en toi. C'est la citadelle intérieure.</p>
+        </div>
+        <div class="passage">
+          <p class="ref">LIVRE IV, 7</p>
+          <blockquote>« N'aie pas honte de te faire aider. Réaliser ta tâche comme un soldat lors d'un assaut. »</blockquote>
+          <p class="commentaire">→ Demander de l'aide n'est pas une faiblesse. C'est la sagesse de reconnaître ses limites et d'agir efficacement malgré elles.</p>
+        </div>
+        <div class="passage">
+          <p class="ref">LIVRE V — LA DISCIPLINE DE L'ACTION, 8</p>
+          <blockquote>« Comme un médecin ordonne toujours ses prescriptions pour le bien de ses malades, ainsi toutes les choses qui arrivent sont ordonnées pour le bien du destin. »</blockquote>
+          <p class="commentaire">→ L'Amor Fati : ce qui arrive n'est pas accidentel. L'univers a une logique. Ta mission est de t'y aligner, pas de lutter contre.</p>
+        </div>
+        <div class="passage">
+          <p class="ref">LIVRE VIII — EXERCICES DE PENSÉE, 7</p>
+          <blockquote>« Ne te permets jamais d'être emporté par l'imagination. Aide les autres autant que tu le peux et autant qu'ils le méritent. Si quelqu'un te fait du mal, cela le concerne, pas toi. »</blockquote>
+          <p class="commentaire">→ La dichotomie du contrôle appliquée aux relations humaines. Tu ne contrôles pas les actions des autres — seulement tes réponses.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="texte-book">
+      <div class="texte-header" onclick="toggleTexte(this)">
+        <div>
+          <h3>⚡ MANUEL — Épictète</h3>
+          <p class="meta">Recueil pratique · Arrien de Nicomédie · ~130 ap. J.-C.</p>
+        </div>
+        <span class="toggle">▼</span>
+      </div>
+      <div class="texte-body">
+        <div class="passage">
+          <p class="ref">CHAPITRE 1 — LA DICHOTOMIE FONDAMENTALE</p>
+          <blockquote>« Parmi les choses, les unes dépendent de nous, les autres n'en dépendent pas. De nous dépendent : le jugement de valeur, l'impulsion à agir, le désir, l'aversion. »</blockquote>
+          <p class="commentaire">→ C'est le fondement de toute la philosophie stoïcienne. Avant chaque action, pose-toi la question : est-ce que cela dépend de moi ?</p>
+        </div>
+        <div class="passage">
+          <p class="ref">CHAPITRE 5 — LES PERTURBATIONS</p>
+          <blockquote>« Ce ne sont pas les choses qui troublent les hommes, mais les jugements qu'ils portent sur les choses. »</blockquote>
+          <p class="commentaire">→ La source de ta souffrance n'est jamais extérieure. Elle est dans ton interprétation des événements. Change ton jugement, change ta réalité.</p>
+        </div>
+        <div class="passage">
+          <p class="ref">CHAPITRE 17 — L'ACTEUR SUR SCÈNE</p>
+          <blockquote>« Souviens-toi que tu es l'acteur d'une pièce dont le rôle est déterminé par l'auteur : si court, joue court ; si long, joue long. »</blockquote>
+          <p class="commentaire">→ Accepte le rôle qui t'a été donné dans la vie. Joue-le avec excellence. C'est ta seule mission.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="texte-book">
+      <div class="texte-header" onclick="toggleTexte(this)">
+        <div>
+          <h3>✉ LETTRES À LUCILIUS — Sénèque</h3>
+          <p class="meta">124 lettres · Guide de vie pratique · ~65 ap. J.-C.</p>
+        </div>
+        <span class="toggle">▼</span>
+      </div>
+      <div class="texte-body">
+        <div class="passage">
+          <p class="ref">LETTRE I — SUR L'USAGE DU TEMPS</p>
+          <blockquote>« Ita fac, mi Lucili : vindica te tibi. — Fais ainsi, mon Lucilius : revendique-toi pour toi-même. »</blockquote>
+          <p class="commentaire">→ La première lettre dit tout. Reprends possession de ton temps. Chaque heure perdue est une mort partielle.</p>
+        </div>
+        <div class="passage">
+          <p class="ref">LETTRE VII — SUR LA FOULE</p>
+          <blockquote>« Recede in te ipse quantum potes. — Retire-toi en toi-même autant que tu le peux. »</blockquote>
+          <p class="commentaire">→ La foule dilue. La solitude construit. Choisis tes compagnons avec soin — ils forment ton esprit.</p>
+        </div>
+        <div class="passage">
+          <p class="ref">LETTRE LXXVII — SUR LA MORT VOLONTAIRE</p>
+          <blockquote>« Omnia aliena sunt, tempus tantum nostrum est. — Tout est étranger à nous, le temps seul est nôtre. »</blockquote>
+          <p class="commentaire">→ Le temps est le seul capital inaliénable. Tout le reste peut t'être repris. Le temps déjà vécu, jamais.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ 04 EXERCICES ══ -->
+  <section class="section" id="exercices">
+    <div class="section-title"><span class="num">04</span> Exercices Stoïciens</div>
+    <p class="section-subtitle">Pratiques quotidiennes pour incarner le stoïcisme — pas seulement le comprendre 🔥</p>
+    <div class="gold-line"></div>
+    <div class="exercices-tabs">
+      <button class="tab-btn active" onclick="switchTab('matin')">🌅 Examen du Matin</button>
+      <button class="tab-btn" onclick="switchTab('soir')">🌙 Examen du Soir</button>
+      <button class="tab-btn" onclick="switchTab('memento')">💀 Memento Mori</button>
+      <button class="tab-btn" onclick="switchTab('askesis')">💪 Askesis</button>
+      <button class="tab-btn" onclick="switchTab('journal')">📓 Journal Stoïcien</button>
+    </div>
+
+    <div class="exercice-panel active" id="panel-matin">
+      <div class="exercice-item">
+        <h4>Examen du Matin</h4>
+        <p class="duree">⏱ 5 MIN · AVANT DE TOUCHER TON TÉLÉPHONE</p>
+        <p>Pose-toi ces 3 questions avant de commencer ta journée :</p>
+        <div class="questions"><ul>
+          <li>1. Qu'est-ce qui dépend de moi aujourd'hui ?</li>
+          <li>2. Quel obstacle pourrais-je rencontrer — et comment y répondre ?</li>
+          <li>3. Quelle vertu vais-je incarner aujourd'hui ?</li>
+        </ul></div>
+      </div>
+    </div>
+    <div class="exercice-panel" id="panel-soir">
+      <div class="exercice-item">
+        <h4>Examen du Soir</h4>
+        <p class="duree">⏱ 10 MIN · CHAQUE SOIR</p>
+        <p>Revue stoïcienne de la journée avec 3 questions :</p>
+        <div class="questions"><ul>
+          <li>1. Qu'est-ce que j'ai bien fait aujourd'hui ?</li>
+          <li>2. Où ai-je manqué de vertu ou de discipline ?</li>
+          <li>3. Comment ferai-je mieux demain ?</li>
+        </ul></div>
+      </div>
+    </div>
+    <div class="exercice-panel" id="panel-memento">
+      <div class="exercice-item">
+        <h4>Memento Mori Quotidien</h4>
+        <p class="duree">⏱ 2 MIN · CHAQUE MATIN</p>
+        <p>Rappelle-toi que tu mourras. Pas par angoisse, mais pour te forcer à te concentrer sur ce qui compte vraiment. Demande-toi :</p>
+        <div class="questions"><ul>
+          <li>« Si c'était mon dernier jour, est-ce que ce que je m'apprête à faire en vaut la peine ? »</li>
+        </ul></div>
+      </div>
+      <div class="exercice-item">
+        <h4>Préméditation des Maux — Hebdomadaire</h4>
+        <p class="duree">⏱ CHAQUE LUNDI MATIN</p>
+        <p>Visualise les 3 pires choses qui pourraient arriver cette semaine. Pour chacune :</p>
+        <div class="questions"><ul>
+          <li>1. Est-ce probable ?</li>
+          <li>2. Que ferais-tu si cela arrivait ?</li>
+          <li>3. Pourrais-tu y survivre et grandir ?</li>
+        </ul></div>
+      </div>
+    </div>
+    <div class="exercice-panel" id="panel-askesis">
+      <div class="exercice-item">
+        <h4>Askesis — Inconfort Volontaire</h4>
+        <p class="duree">⏱ 1× PAR SEMAINE</p>
+        <p>Choisis chaque semaine une épreuve volontaire pour renforcer ta discipline :</p>
+        <ul>
+          <li>• Jeûne de 24h</li>
+          <li>• Douche froide 3 minutes</li>
+          <li>• Marche 1h sans téléphone</li>
+          <li>• Silence total une journée</li>
+          <li>• Nuit sans confort particulier</li>
+        </ul>
+      </div>
+      <div class="exercice-item">
+        <h4>Maîtrise de la Colère</h4>
+        <p class="duree">⏱ À CHAQUE DÉCLENCHEUR</p>
+        <p>Quand tu sens la colère monter, applique la règle des 3 secondes :</p>
+        <div class="questions"><ul>
+          <li>1. Est-ce que cela dépend de moi ?</li>
+          <li>2. Ma réaction va-t-elle améliorer la situation ?</li>
+          <li>3. Qu'aurait fait Marc Aurèle ?</li>
+        </ul></div>
+      </div>
+    </div>
+    <div class="exercice-panel" id="panel-journal">
+      <div class="exercice-item">
+        <h4>Journal Stoïcien Quotidien</h4>
+        <p class="duree">⏱ 10 MIN · MARC AURÈLE ÉCRIVAIT SES MÉDITATIONS POUR LUI-MÊME. TOI AUSSI.</p>
+        <p>Chaque jour, écris :</p>
+        <ul>
+          <li>• 1 pensée sur la vertu</li>
+          <li>• 1 obstacle rencontré et comment tu l'as géré</li>
+          <li>• 1 gratitude profonde (pas superficielle)</li>
+        </ul>
+      </div>
+      <div class="exercice-item">
+        <h4>Vue de Haut (Cosmique) — Hebdomadaire</h4>
+        <p class="duree">⏱ 10 MIN</p>
+        <p>Marc Aurèle s'imaginait regarder la Terre depuis les étoiles. Prends 10 minutes pour visualiser ta vie de très loin :</p>
+        <div class="questions"><ul>
+          <li>Tes problèmes actuels — dans 10 ans ?</li>
+          <li>Dans 100 ans ?</li>
+          <li>Dans 1000 ans ?</li>
+        </ul></div>
+        <p style="margin-top:10px;font-style:italic;color:var(--gold)">Recalibre ta perspective.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ 05 GLOSSAIRE ══ -->
+  <section class="section" id="glossaire">
+    <div class="section-title"><span class="num">05</span> Glossaire Stoïcien</div>
+    <p class="section-subtitle">Les termes essentiels du stoïcisme expliqués clairement 🗝</p>
+    <div class="gold-line"></div>
+    <input class="glossaire-search" type="text" placeholder="Rechercher un terme..." oninput="filtreGlossaire(this.value)" />
+    <div class="glossaire-grid" id="glossaire-grid">
+      <div class="terme-card">
+        <h4>LOGOS</h4>
+        <p class="grec">λόγος — Raison universelle</p>
+        <p>La raison divine qui ordonne et anime le cosmos. Chaque être humain possède une parcelle de ce logos. Vivre selon le logos signifie vivre en accord avec la raison et la nature.</p>
+        <p class="exemple">« Agis toujours en accord avec le logos — c'est-à-dire avec la raison. »</p>
+      </div>
+      <div class="terme-card">
+        <h4>PROHAIRESIS</h4>
+        <p class="grec">προαίρεσις — Faculté de choix</p>
+        <p>La faculté de choix moral propre à l'être humain. C'est ce qui "dépend de nous" selon Épictète. Notre liberté fondamentale réside entièrement dans notre prohairesis.</p>
+        <p class="exemple">« La prohairesis est notre seul vrai domaine de liberté. »</p>
+      </div>
+      <div class="terme-card">
+        <h4>EUDAIMONIA</h4>
+        <p class="grec">εὐδαιμονία — Bonheur véritable</p>
+        <p>Le bonheur stoïcien — ni plaisir ni richesse, mais l'épanouissement qui naît de la vertu. C'est l'état de celui qui vit en accord avec sa nature rationnelle.</p>
+        <p class="exemple">« L'eudaimonia ne dépend que de toi. »</p>
+      </div>
+      <div class="terme-card">
+        <h4>ARETE</h4>
+        <p class="grec">ἀρετή — Vertu / Excellence</p>
+        <p>L'excellence morale. Pour les stoïciens, la vertu est le seul bien véritable. Elle se décline en 4 vertus cardinales : sagesse, justice, courage, tempérance.</p>
+        <p class="exemple">« La vertu suffit au bonheur. »</p>
+      </div>
+      <div class="terme-card">
+        <h4>APATHEIA</h4>
+        <p class="grec">ἀπάθεια — Absence de passions destructrices</p>
+        <p>Non pas l'absence d'émotion, mais la liberté des passions qui perturbent la raison. Le sage stoïcien ressent des émotions rationnelles (joie, prudence, bienveillance) mais pas des passions irrationnelles.</p>
+        <p class="exemple">« L'apatheia n'est pas l'indifférence — c'est la maîtrise. »</p>
+      </div>
+      <div class="terme-card">
+        <h4>ATARAXIA</h4>
+        <p class="grec">ἀταραξία — Tranquillité de l'âme</p>
+        <p>La sérénité imperturbable. L'état de celui dont l'âme n'est pas troublée par les événements extérieurs. Résultat naturel de la pratique stoïcienne.</p>
+        <p class="exemple">« L'ataraxia est le fruit de la discipline quotidienne. »</p>
+      </div>
+      <div class="terme-card">
+        <h4>OIKEIÔSIS</h4>
+        <p class="grec">οἰκείωσις — Appartenance naturelle</p>
+        <p>Le sentiment naturel d'appartenance qui nous relie d'abord à nous-mêmes, puis à notre famille, puis à toute l'humanité. Fondement de la cosmopolitique stoïcienne.</p>
+        <p class="exemple">« Nous sommes tous citoyens du monde. »</p>
+      </div>
+      <div class="terme-card">
+        <h4>HÊGEMONIKON</h4>
+        <p class="grec">ἡγεμονικόν — Partie directrice de l'âme</p>
+        <p>Le centre rationnel de l'âme stoïcienne. C'est là que se forment les jugements de valeur. Gouverner son hêgemonikon, c'est gouverner sa vie.</p>
+        <p class="exemple">« Protège la partie directrice de ton âme. »</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ 06 ALGORITHME ══ -->
+  <section class="section" id="algorithme">
+    <div class="section-title"><span class="num">06</span> L'Algorithme de Vie d'AURELIUS SECUNDUS</div>
+    <p class="section-subtitle">Le protocole stoïcien adapté à la vie moderne 🔄</p>
+    <div class="gold-line"></div>
+    <div class="algo-step">
+      <div class="step-num">1</div>
+      <div class="step-content">
+        <h4>ÉVALUATION — Est-ce que cela dépend de moi ?</h4>
+        <p>Face à chaque situation, applique la dichotomie fondamentale. Sépare ce qui est en ton pouvoir (tes pensées, tes actions, tes réactions) de ce qui ne l'est pas (les opinions des autres, les événements extérieurs).</p>
+        <p class="mantra">Mantra : « Ce qui ne dépend pas de moi ne me concerne pas. »</p>
+      </div>
+    </div>
+    <div class="algo-step">
+      <div class="step-num">2</div>
+      <div class="step-content">
+        <h4>ACCEPTATION — Amor Fati</h4>
+        <p>Ce qui est hors de ton contrôle, accepte-le. Non dans la résignation passive, mais dans l'acceptation active. Ce qui arrive fait partie du destin universel. Ta résistance est vaine et épuisante.</p>
+        <p class="mantra">Mantra : « Cela devait arriver. Qu'est-ce que cela m'apprend ? »</p>
+      </div>
+    </div>
+    <div class="algo-step">
+      <div class="step-num">3</div>
+      <div class="step-content">
+        <h4>JUGEMENT — Quelle est la vraie nature de cet événement ?</h4>
+        <p>Ce ne sont pas les choses qui troublent, mais les jugements qu'on porte sur elles. Examine ton jugement de valeur. Est-il rationnel ? Exagères-tu ? Minimises-tu ? Quel est le fait brut, sans interprétation ?</p>
+        <p class="mantra">Mantra : « Je vois les choses telles qu'elles sont, pas telles que je les crains. »</p>
+      </div>
+    </div>
+    <div class="algo-step">
+      <div class="step-num">4</div>
+      <div class="step-content">
+        <h4>ACTION — Agis selon la vertu</h4>
+        <p>Dans ce qui dépend de toi, agis. Avec courage, sagesse, justice et tempérance. Agis comme un soldat bien entraîné — avec méthode, sans passion, sans hésitation excessive.</p>
+        <p class="mantra">Mantra : « Quelle est la chose la plus vertueuse que je puisse faire maintenant ? »</p>
+      </div>
+    </div>
+    <div class="algo-step">
+      <div class="step-num">5</div>
+      <div class="step-content">
+        <h4>RÉFLEXION — Examen du soir</h4>
+        <p>Chaque soir, examine ta journée. Pas avec culpabilité, mais avec curiosité philosophique. Qu'as-tu bien fait ? Où as-tu manqué de vertu ? Que peux-tu améliorer demain ?</p>
+        <p class="mantra">Mantra : « Je ne me juge pas — je m'observe pour m'améliorer. »</p>
+      </div>
+    </div>
+    <div class="algo-step">
+      <div class="step-num">6</div>
+      <div class="step-content">
+        <h4>RECALIBRAGE — La vue de haut</h4>
+        <p>Hebdomadairement, prends de la hauteur. Imagine ta vie vue depuis les étoiles. Tes problèmes actuels dans 10 ans, 100 ans, 1000 ans. Recalibre ce qui compte vraiment. Recentre sur l'essentiel.</p>
+        <p class="mantra">Mantra : « Dans l'immensité du cosmos, qu'est-ce qui mérite vraiment mon énergie ? »</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ 07 PHILOSOPHES ══ -->
+  <section class="section" id="philosophes">
+    <div class="section-title"><span class="num">07</span> Les Philosophes</div>
+    <p class="section-subtitle">Les grandes figures du stoïcisme — leurs vies, leurs œuvres, leur héritage 🦅</p>
+    <div class="gold-line"></div>
+
+    <div class="philosophe-card">
+      <div class="philosophe-header">
+        <div class="philosophe-avatar">⚖</div>
+        <div>
+          <h3>MARC AURÈLE</h3>
+          <p class="dates">121 — 180 ap. J.-C. · Empereur-Philosophe</p>
+        </div>
+      </div>
+      <p>Né le 26 avril 121, Marcus Aurelius Antoninus devint l'un des empereurs les plus puissants du monde romain tout en restant un philosophe stoïcien dévoué. Il gouverna Rome de 161 à 180, période marquée par des guerres permanentes, des épidémies dévastatrices, et des défis constants.</p>
+      <p>Ce qu'il y a de fascinant chez Marc Aurèle : ses Méditations n'étaient pas destinées à être publiées. C'était son journal intime philosophique — ses combats personnels avec ses propres faiblesses, ses rappels à lui-même de rester vertueux, ses méditations sur la mort et le sens. Un homme qui avait tous les pouvoirs du monde, et qui s'imposait la plus stricte discipline intérieure.</p>
+      <p class="oeuvres"><span>Œuvres principales :</span> Méditations (Ta eis Heauton) — 12 livres de journal philosophique intime</p>
+      <p class="citation-philo">« Vous avez du pouvoir sur votre esprit, pas sur les événements extérieurs. Réalisez cela, et vous trouverez la force. »</p>
+    </div>
+
+    <div class="philosophe-card">
+      <div class="philosophe-header">
+        <div class="philosophe-avatar">⚡</div>
+        <div>
+          <h3>ÉPICTÈTE</h3>
+          <p class="dates">50 — 135 ap. J.-C. · Esclave devenu Maître</p>
+        </div>
+      </div>
+      <p>Né esclave en Phrygie (Turquie actuelle), Épictète vécut sous la domination d'un maître brutal — Epaphrodite — qui lui brisa délibérément la jambe pour tester sa résistance à la douleur. La leçon d'Épictète : "Tu casses quelque chose qui n'était pas en bon état de toute façon."</p>
+      <p>Après avoir obtenu sa liberté, il devint le philosophe stoïcien le plus influent de son époque. Son enseignement était oral — ce sont ses élèves, notamment Arrien de Nicomédie, qui transcrivirent ses leçons sous forme de Discours et du Manuel (Enchiridion).</p>
+      <p>Son message central : la liberté n'est pas l'absence de contraintes extérieures. C'est la maîtrise de son monde intérieur. Un esclave maître de lui-même est plus libre qu'un roi esclave de ses passions.</p>
+      <p class="oeuvres"><span>Œuvres principales :</span> Entretiens (Diatribes) · Manuel (Enchiridion)</p>
+      <p class="citation-philo">« Ce n'est pas ce qui t'arrive qui te perturbe, mais l'idée que tu t'en fais. Et cela, ça dépend de toi. »</p>
+    </div>
+
+    <div class="philosophe-card">
+      <div class="philosophe-header">
+        <div class="philosophe-avatar">✉</div>
+        <div>
+          <h3>SÉNÈQUE</h3>
+          <p class="dates">4 av. J.-C. — 65 ap. J.-C. · Conseiller & Écrivain</p>
+        </div>
+      </div>
+      <p>Lucius Annaeus Seneca fut à la fois philosophe, dramaturge, homme d'État et l'un des hommes les plus riches de Rome. Conseiller de l'empereur Néron, il navigua constamment entre ses convictions stoïciennes et les compromis du pouvoir politique.</p>
+      <p>Ses Lettres à Lucilius constituent l'une des œuvres de philosophie pratique les plus accessibles de l'Antiquité. Écrites dans les dernières années de sa vie, elles sont d'une modernité frappante — on y parle de gestion du temps, de procrastination, de la mort, des faux amis, de la richesse mal utilisée.</p>
+      <p>En 65 ap. J.-C., Néron l'accusa de complot et lui ordonna de se suicider. Sénèque mourut en stoïcien, calmement, après avoir dicté ses dernières pensées à ses secrétaires.</p>
+      <p class="oeuvres"><span>Œuvres principales :</span> Lettres à Lucilius · De Brevitate Vitae · De Tranquillitate Animi · Tragédies</p>
+      <p class="citation-philo">« Tout est étranger à nous, le temps seul est nôtre. »</p>
+    </div>
+
+    <div class="philosophe-card">
+      <div class="philosophe-header">
+        <div class="philosophe-avatar">🏛</div>
+        <div>
+          <h3>ZÉNON DE KITION</h3>
+          <p class="dates">334 — 262 av. J.-C. · Fondateur du Stoïcisme</p>
+        </div>
+      </div>
+      <p>Marchand phénicien de Kition (Chypre), Zénon perdit toute sa marchandise dans un naufrage en se rendant à Athènes. Ruiné, il entra dans une librairie et tomba sur les Mémorables de Xénophon — les conversations de Socrate. Il demanda au libraire où trouver de tels hommes. Le libraire lui désigna Cratès de Thèbes, philosophe cynique qui passait dans la rue.</p>
+      <p>Zénon suivit Cratès pendant des années, puis fonda sa propre école. Il enseignait sous le Portique Peint (Stoa Poikilê) d'Athènes — d'où le nom "stoïcisme". Son accident était, selon lui, "le meilleur voyage de sa vie".</p>
+      <p class="oeuvres"><span>Œuvres principales :</span> La République · Sur la Nature · fragments conservés par Diogène Laërce</p>
+      <p class="citation-philo">« Nous avons deux oreilles et une seule bouche — pour écouter deux fois plus que nous ne parlons. »</p>
+    </div>
+<div class="card">
+<p class="quote">« Tu as du pouvoir sur ton esprit, pas sur les événements extérieurs. Réalise cela, et tu trouveras la force. »</p>
+<p class="author">Marc Aurèle</p>
+<p class="source">Méditations</p>
+</div>
+<div class="card">
+<p class="quote">« Si ce n'est pas juste, ne le fais pas. Si ce n'est pas vrai, ne le dis pas. »</p>
+<p class="author">Marc Aurèle</p>
+<p class="source">Méditations</p>
+</div>
+<div class="card">
+<p class="quote">« Ce qui bloque le chemin devient le chemin. »</p>
+<p class="author">Marc Aurèle</p>
+<p class="source">Méditations</p>
+</div>
+<div class="card">
+<p class="quote">« La meilleure vengeance est de ne pas leur ressembler. »</p>
+<p class="author">Marc Aurèle</p>
+<p class="source">Méditations</p>
+</div>
+<div class="card">
+<p class="quote">« Fais chaque acte de ta vie comme si c'était le dernier. »</p>
+<p class="author">Marc Aurèle</p>
+<p class="source">Méditations</p>
+</div>
+<div class="card">
+<p class="quote">« Le bonheur de ta vie dépend de la qualité de tes pensées. »</p>
+<p class="author">Marc Aurèle</p>
+<p class="source">Méditations</p>
+</div>
+<div class="card">
+<p class="quote">« Ne gaspille pas ce qui te reste de vie à penser aux autres — regarde en toi. »</p>
+<p class="author">Marc Aurèle</p>
+<p class="source">Méditations</p>
+</div>
+<div class="card">
+<p class="quote">« La résistance aux tentations est la mesure du caractère. »</p>
+<p class="author">Marc Aurèle</p>
+<p class="source">Méditations</p>
+</div>
+<div class="card">
+<p class="quote">« Accepte les choses auxquelles le destin te lie et aime les gens parmi lesquels le destin t'a placé. »</p>
+<p class="author">Marc Aurèle</p>
+<p class="source">Méditations</p>
+</div>
+<div class="card">
+<p class="quote">« La liberté n'est pas quelque chose qui t'est accordée. C'est quelque chose que tu prends. »</p>
+<p class="author">Épictète</p>
+<p class="source">Entretiens</p>
+</div>
+<div class="card">
+<p class="quote">« Il n'est pas de honte plus grande que d'avoir honte de la vérité. »</p>
+<p class="author">Épictète</p>
+<p class="source">Entretiens</p>
+</div>
+<div class="card">
+<p class="quote">« C'est l'acte d'un ignorant de blâmer les autres pour ses propres malheurs. »</p>
+<p class="author">Épictète</p>
+<p class="source">Manuel</p>
+</div>
+<div class="card">
+<p class="quote">« Tu n'es pas ce que tu ressens. Tu es celui qui observe ce qu'il ressent. »</p>
+<p class="author">Épictète</p>
+<p class="source">Entretiens</p>
+</div>
+<div class="card">
+<p class="quote">« Si tu veux progresser, renonce aux impressions du dehors. »</p>
+<p class="author">Épictète</p>
+<p class="source">Manuel</p>
+</div>
+<div class="card">
+<p class="quote">« Fais d'abord les choses nécessaires — et soudain tu feras l'impossible. »</p>
+<p class="author">Épictète</p>
+<p class="source">Entretiens</p>
+</div>
+<div class="card">
+<p class="quote">« Ce n'est pas que nous ayons peu de temps à vivre — c'est que nous en perdons beaucoup. »</p>
+<p class="author">Sénèque</p>
+<p class="source">De Brevitate Vitae</p>
+</div>
+<div class="card">
+<p class="quote">« Commence à être maintenant ce que tu veux être à l'avenir. »</p>
+<p class="author">Sénèque</p>
+<p class="source">Lettres à Lucilius</p>
+</div>
+<div class="card">
+<p class="quote">« Quand tu cesseras d'espérer, tu cesseras de craindre. »</p>
+<p class="author">Sénèque</p>
+<p class="source">Lettres à Lucilius</p>
+</div>
+<div class="card">
+<p class="quote">« La fortune n'a pas de prise sur celui qui a mis son bien dans la vertu. »</p>
+<p class="author">Sénèque</p>
+<p class="source">Lettres à Lucilius</p>
+</div>
+<div class="card">
+<p class="quote">« Pendant que tu remets à demain, la vie passe. »</p>
+<p class="author">Sénèque</p>
+<p class="source">De Brevitate Vitae</p>
+</div>
+<div class="card">
+<p class="quote">« Celui qui est partout n'est nulle part. »</p>
+<p class="author">Sénèque</p>
+<p class="source">Lettres à Lucilius</p>
+</div>
+<div class="card">
+<p class="quote">« Tout est étranger à nous — le temps seul est nôtre. »</p>
+<p class="author">Sénèque</p>
+<p class="source">Lettres à Lucilius</p>
+</div>
+<div class="card">
+<p class="quote">« Vis avec les hommes comme si Dieu te voyait. »</p>
+<p class="author">Sénèque</p>
+<p class="source">Lettres à Lucilius</p>
+</div>
+
+  </section>
+
+
+<!-- SECTION 08 — MORALE DE GHOST -->
+<section id="morale-ghost" style="padding:100px 20px;background:linear-gradient(180deg,#050810 0%,#0d1530 50%,#050810 100%);position:relative;overflow:hidden;">
+  <div style="text-align:center;margin-bottom:70px;">
+    <span style="font-family:Montserrat,sans-serif;font-size:11px;font-weight:700;letter-spacing:0.4em;color:#c9a84c;text-transform:uppercase;display:block;margin-bottom:16px;">08</span>
+    <h2 style="font-family:'Playfair Display',serif;font-size:clamp(2rem,5vw,3.5rem);font-weight:900;color:#f5f7ff;line-height:1.1;margin-bottom:20px;">La <em style="color:#c9a84c;">Morale de Ghost</em></h2>
+    <div style="width:60px;height:2px;background:linear-gradient(90deg,transparent,#c9a84c,transparent);margin:0 auto 24px;"></div>
+    <p style="font-size:14px;font-weight:300;color:#a8b4c8;letter-spacing:0.08em;max-width:600px;margin:0 auto;font-style:italic;">Une philosophie forgée dans l'adversité — trois piliers pour celui qui refuse de plier</p>
+  </div>
+  <div style="max-width:800px;margin:0 auto 80px;text-align:center;">
+    <p style="font-family:'Playfair Display',serif;font-size:clamp(1.1rem,2vw,1.4rem);color:#e8ecf4;line-height:1.8;margin-bottom:20px;">La Morale de Ghost n'est pas une théorie. C'est une architecture intérieure — construite non pas dans les bibliothèques, mais dans les silences difficiles, les défaites digérées, les nuits sans victoire apparente.</p>
+    <p style="font-family:'Playfair Display',serif;font-size:clamp(1.1rem,2vw,1.4rem);color:#e8ecf4;line-height:1.8;margin-bottom:20px;">Elle naît du stoïcisme ancien, mais elle porte la cicatrice du monde moderne. C'est la philosophie de celui qui voit haut, qui porte lourd, et qui avance quand même.</p>
+    <div style="display:inline-block;margin-top:20px;padding:20px 36px;border-left:3px solid #c9a84c;text-align:left;font-family:'Playfair Display',serif;font-style:italic;font-size:1.1rem;color:#e8c96a;background:rgba(201,168,76,0.05);">« Le Ghost ne fuit pas. Il s'élève. Il observe. Il agit.<br>Non par peur d'être vu — mais parce que la vraie puissance<br>ne cherche pas le bruit. »<br><br>— Aurelius Secundus</div>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:30px;max-width:1100px;margin:0 auto 80px;">
+    <div style="background:linear-gradient(135deg,rgba(26,37,69,0.6),rgba(13,21,48,0.8));border:1px solid rgba(201,168,76,0.2);padding:48px 36px;transition:all 0.4s ease;">
+      <span style="font-size:2.8rem;display:block;margin-bottom:20px;">🦅</span>
+      <span style="font-size:10px;font-weight:700;letter-spacing:0.35em;color:#c9a84c;text-transform:uppercase;margin-bottom:10px;display:block;">Pilier I</span>
+      <h3 style="font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:900;color:#f5f7ff;margin-bottom:6px;">L'Aigle</h3>
+      <span style="font-size:11px;font-weight:600;letter-spacing:0.25em;color:#c9a84c;text-transform:uppercase;margin-bottom:20px;display:block;">La Perspective Élevée</span>
+      <p style="font-size:14px;line-height:1.8;color:#a8b4c8;margin-bottom:16px;">L'aigle ne voit pas le sol comme une menace. Il le voit comme une information. Prendre de la hauteur, ce n'est pas fuir le réel — c'est le lire avec clarté, depuis une altitude que la plupart refusent d'atteindre.</p>
+      <p style="font-size:14px;line-height:1.8;color:#a8b4c8;margin-bottom:24px;">Chaque problème vu d'en bas paraît insurmontable. Vu depuis les hauteurs, il révèle ses angles morts, ses issues cachées, ses véritables dimensions.</p>
+      <div style="font-family:'Playfair Display',serif;font-style:italic;font-size:13px;color:#e8c96a;border-top:1px solid rgba(201,168,76,0.2);padding-top:16px;">« Élève-toi. Ce que tu cherches est visible depuis là-haut. »</div>
+    </div>
+    <div style="background:linear-gradient(135deg,rgba(26,37,69,0.6),rgba(13,21,48,0.8));border:1px solid rgba(201,168,76,0.2);padding:48px 36px;">
+      <span style="font-size:2.8rem;display:block;margin-bottom:20px;">⚔</span>
+      <span style="font-size:10px;font-weight:700;letter-spacing:0.35em;color:#c9a84c;text-transform:uppercase;margin-bottom:10px;display:block;">Pilier II</span>
+      <h3 style="font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:900;color:#f5f7ff;margin-bottom:6px;">Macdubh</h3>
+      <span style="font-size:11px;font-weight:600;letter-spacing:0.25em;color:#c9a84c;text-transform:uppercase;margin-bottom:20px;display:block;">La Force Forgée par l'Adversité</span>
+      <p style="font-size:14px;line-height:1.8;color:#a8b4c8;margin-bottom:16px;">Macdubh — "le fils du noir" — n'est pas un nom de fatalité. C'est un nom de transformation. Ce qui t'a brisé t'a aussi révélé. L'adversité n'est pas l'ennemie de la force — elle en est la forge.</p>
+      <p style="font-size:14px;line-height:1.8;color:#a8b4c8;margin-bottom:24px;">La vraie force intérieure ne naît pas dans le confort. Elle émerge des passages sombres traversés avec lucidité, sans effondrement.</p>
+      <div style="font-family:'Playfair Display',serif;font-style:italic;font-size:13px;color:#e8c96a;border-top:1px solid rgba(201,168,76,0.2);padding-top:16px;">« Ce qui t'a traversé ne t'a pas détruit. Il t'a défini. »</div>
+    </div>
+    <div style="background:linear-gradient(135deg,rgba(26,37,69,0.6),rgba(13,21,48,0.8));border:1px solid rgba(201,168,76,0.2);padding:48px 36px;">
+      <span style="font-size:2.8rem;display:block;margin-bottom:20px;">⚖</span>
+      <span style="font-size:10px;font-weight:700;letter-spacing:0.35em;color:#c9a84c;text-transform:uppercase;margin-bottom:10px;display:block;">Pilier III</span>
+      <h3 style="font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:900;color:#f5f7ff;margin-bottom:6px;">Stoïcisme</h3>
+      <span style="font-size:11px;font-weight:600;letter-spacing:0.25em;color:#c9a84c;text-transform:uppercase;margin-bottom:20px;display:block;">La Discipline de la Raison</span>
+      <p style="font-size:14px;line-height:1.8;color:#a8b4c8;margin-bottom:16px;">Le stoïcisme n'est pas une armure contre la vie. C'est une méthode pour l'habiter pleinement — sans être emporté par ce qu'on ne contrôle pas, sans abdiquer ce qu'on peut maîtriser.</p>
+      <p style="font-size:14px;line-height:1.8;color:#a8b4c8;margin-bottom:24px;">Marc Aurèle gouvernait un empire tout en se soumettant à la discipline la plus rigoureuse. C'est ça, la liberté stoïcienne : être le seul maître de ton monde intérieur.</p>
+      <div style="font-family:'Playfair Display',serif;font-style:italic;font-size:13px;color:#e8c96a;border-top:1px solid rgba(201,168,76,0.2);padding-top:16px;">« Ce qui ne dépend pas de moi ne mérite pas mon énergie. »</div>
+    </div>
+  </div>
+  <div style="max-width:800px;margin:0 auto;text-align:center;">
+    <p style="font-size:10px;font-weight:700;letter-spacing:0.5em;color:#c9a84c;text-transform:uppercase;margin-bottom:30px;">Les Lois Fondamentales</p>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:2px;margin-bottom:40px;">
+      <div style="background:rgba(26,37,69,0.4);padding:20px 24px;text-align:left;border:1px solid rgba(192,200,216,0.08);"><span style="font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:900;color:rgba(201,168,76,0.2);display:block;line-height:1;margin-bottom:6px;">01</span><span style="font-family:'Playfair Display',serif;font-size:0.95rem;color:#e8ecf4;font-style:italic;">Le Ghost agit, il n'annonce pas.</span></div>
+      <div style="background:rgba(26,37,69,0.4);padding:20px 24px;text-align:left;border:1px solid rgba(192,200,216,0.08);"><span style="font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:900;color:rgba(201,168,76,0.2);display:block;line-height:1;margin-bottom:6px;">02</span><span style="font-family:'Playfair Display',serif;font-size:0.95rem;color:#e8ecf4;font-style:italic;">Il ne cherche pas l'approbation. Il cherche la justesse.</span></div>
+      <div style="background:rgba(26,37,69,0.4);padding:20px 24px;text-align:left;border:1px solid rgba(192,200,216,0.08);"><span style="font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:900;color:rgba(201,168,76,0.2);display:block;line-height:1;margin-bottom:6px;">03</span><span style="font-family:'Playfair Display',serif;font-size:0.95rem;color:#e8ecf4;font-style:italic;">L'adversité est sa matière première.</span></div>
+      <div style="background:rgba(26,37,69,0.4);padding:20px 24px;text-align:left;border:1px solid rgba(192,200,216,0.08);"><span style="font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:900;color:rgba(201,168,76,0.2);display:block;line-height:1;margin-bottom:6px;">04</span><span style="font-family:'Playfair Display',serif;font-size:0.95rem;color:#e8ecf4;font-style:italic;">Il maîtrise son monde intérieur. Tout le reste suit.</span></div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<script>
+  // Navigation active
+  const sections = document.querySelectorAll('.section[id], #hero[id]');
+  const navLinks = document.querySelectorAll('nav a');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(s => {
+      if (window.scrollY >= s.offsetTop - 100) current = s.id;
+    });
+    navLinks.forEach(a => {
+      a.classList.remove('active');
+      if (a.getAttribute('href') === '#'+current) a.classList.add('active');
+    });
+  });
+
+  // Textes accordéon
+  function toggleTexte(header) {
+    const body = header.nextElementSibling;
+    const toggle = header.querySelector('.toggle');
+    body.classList.toggle('open');
+    toggle.style.transform = body.classList.contains('open') ? 'rotate(180deg)' : '';
+  }
+
+  // Exercices tabs
+  function switchTab(id) {
+    document.querySelectorAll('.exercice-panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById('panel-'+id).classList.add('active');
+    event.target.classList.add('active');
+  }
+
+  // Glossaire search
+  function filtreGlossaire(val) {
+    const v = val.toLowerCase();
+    document.querySelectorAll('.terme-card').forEach(c => {
+      c.style.display = c.innerText.toLowerCase().includes(v) ? '' : 'none';
+    });
+  }
+
+  // Smooth scroll
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      e.preventDefault();
+      document.querySelector(a.getAttribute('href')).scrollIntoView({behavior:'smooth'});
+    });
+  });
+</script>
+</body>
+</html>
