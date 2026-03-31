@@ -198,6 +198,32 @@
       #hero{ padding:40px 20px 30px; }
       #hero h2{ font-size:1.5rem; }
     }
+  /* ── Citation GHOST-2 sidebar ── */
+  .sidebar-citation {
+    border-top: 1px solid var(--dark-border, #2A2A2A);
+      padding: 12px 16px;
+        margin: 8px 0;
+        }
+        .sidebar-citation__icon {
+          color: var(--gold);
+            font-size: 0.85rem;
+              opacity: 0.6;
+                display: block;
+                  margin-bottom: 4px;
+                  }
+                  .sidebar-citation__text {
+                    font-style: italic;
+                      font-size: 0.78rem;
+                        color: var(--text-muted);
+                          line-height: 1.4;
+                            margin-bottom: 5px;
+                            }
+                            .sidebar-citation__author {
+                              font-size: 0.72rem;
+                                color: var(--gold);
+                                  font-weight: 600;
+                                    display: block;
+                                    }
   </style>
   <script src="https://macdubh28.github.io/dashboard/config-loader.js"></script>
 </head>
@@ -219,6 +245,12 @@
     <a href="#philosophes"><span class="icon">🦅</span> Les Philosophes</a>
     <a href="#morale-ghost"><span class="icon">🦅</span> Morale de Ghost</a>
   </nav>
+      <!-- Citation GHOST-2 dynamique -->
+          <div class="sidebar-citation" id="citation-strip">
+                <span class="sidebar-citation__icon">❝</span>
+                      <p class="sidebar-citation__text" id="citation-text">Chargement…</p>
+                            <span class="sidebar-citation__author" id="citation-author"></span>
+                                </div>-->
   <div id="sidebar-footer">
     <p>LA PHILOSOPHIE STOÏCIENNE<br>AU SERVICE DE LA VIE MODERNE</p>
   </div>
@@ -900,5 +932,26 @@
     });
   });
 </script>
+<script>
+  /* GHOST-2 — Citation dynamique sidebar */
+  (async function loadCitation() {
+    const CONFIG_URL = 'https://macdubh28.github.io/dashboard/config.json';
+      const txtEl    = document.getElementById('citation-text');
+        const authorEl = document.getElementById('citation-author');
+          if (!txtEl || !authorEl) return;
+            try {
+                const res    = await fetch(CONFIG_URL, { cache: 'no-store' });
+                    const config = await res.json();
+                        const cit = config?.citation;
+                            if (cit?.text) {
+                                  txtEl.textContent    = cit.text;
+                                        authorEl.textContent = cit.author || '';
+                                            }
+                                              } catch (e) {
+                                                  txtEl.textContent = '';
+                                                      console.warn('[GHOST-2] Citation non chargée:', e);
+                                                        }
+                                                        })();
+                                                        </script>
 </body>
 </html>
