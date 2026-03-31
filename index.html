@@ -16,7 +16,7 @@
       --text-muted: #9A8F80;
       --blue-acc: #2B4A7A;
     }
-    * { margin:0; padding:0; box-sizing:border-box; }
+    * { margin:0; padding:0; boxsizing:border-box; }
     body { background:var(--dark); color:var(--text); font-family:'Georgia',serif; display:flex; min-height:100vh; }
 
     /* ── SIDEBAR ── */
@@ -82,7 +82,11 @@
     .card .quote { font-size:1rem; font-style:italic; color:var(--text); line-height:1.7; margin-bottom:14px; }
     .card .author { font-size:0.75rem; letter-spacing:2px; color:var(--gold); text-transform:uppercase; }
     .card .source { font-size:0.7rem; color:var(--text-muted); margin-top:4px; }
-
+.citation-card { background:var(--dark-card); border:1px solid #2E2E2E; border-radius:4px; padding:26px; transition:border-color .2s; }
+.citation-card:hover { border-color:var(--gold); }
+.citation-card blockquote { font-style:italic; color:var(--text); font-size:1rem; margin-bottom:10px; line-height:1.6; border:none; padding:0; }
+.citation-card .citation-author { font-size:0.75rem; letter-spacing:2px; color:var(--gold); font-weight:700; margin-bottom:4px; }
+.citation-card .citation-source { font-size:0.7rem; color:var(--text-muted); font-style:italic; }
     /* FONDEMENTS */
     .fondements-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:18px; }
     .fondement-card {
