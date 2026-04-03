@@ -195,8 +195,11 @@
     .citation-philo { font-style:italic; color:var(--text); font-size:0.9rem; line-height:1.7; border-left:2px solid var(--gold); padding-left:14px; margin-top:14px; }
 
     /* Responsive */
-    @media(max-width:768px){
-      #sidebar{ width:100%; min-height:auto; position:relative; }
+    .menu-toggle { display:none; position:fixed; top:15px; left:15px; z-index:1001; background:var(--dark-mid); border:1px solid var(--dark-border); color:var(--gold); font-size:1.2rem; width:40px; height:40px; border-radius:4px; cursor:pointer; align-items:center; justify-content:center; }
+@media(max-width:768px){
+      .menu-toggle { display:flex; }
+      #sidebar { transform:translateX(-100%); position:fixed; width:260px; z-index:1000; transition:transform .3s; }
+      #sidebar.open { transform:translateX(0); }
       #main{ margin-left:0; }
       .section{ padding:40px 20px 30px; }
       #hero{ padding:40px 20px 30px; }
@@ -235,6 +238,7 @@
 
 <!-- ══ SIDEBAR ══ -->
 <aside id="sidebar">
+  <button class="menu-toggle" id="menuToggle" aria-label="Menu">&#9776;</button>
   <div id="sidebar-logo">
     <h1>⚖ AURELIUS SECUNDUS</h1>
     <p>@AigleRoyal28</p>
@@ -957,5 +961,14 @@
                                                         }
                                                         })();
                                                         </script>
+<script>
+const t=document.getElementById('menuToggle'),s=document.getElementById('sidebar');
+if(t&&s){t.addEventListener('click',()=>s.classList.toggle('open'));document.addEventListener('click',e=>{if(!s.contains(e.target)&&!t.contains(e.target))s.classList.remove('open');});}
+</script>
 </body>
 </html>
+
+ Claude is active in this tab group  
+Open chat
+ 
+Dismiss
