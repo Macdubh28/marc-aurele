@@ -195,6 +195,16 @@
     /* Responsive */
     .menu-toggle { display:none; position:fixed; top:15px; left:15px; z-index:1001; background:var(--dark-mid); border:1px solid var(--dark-border); color:var(--gold); font-size:1.2rem; width:40px; height:40px; border-radius:4px; cursor:pointer; align-items:center; justify-content:center; }
 @media(max-width:768px){
+      .cards-grid { grid-template-columns:1fr; gap:14px; }
+      .fondements-grid { grid-template-columns:1fr; gap:12px; }
+      .glossaire-grid { grid-template-columns:1fr; gap:12px; }
+      .philosophe-card { padding:20px 16px; }
+      .philosophe-header { flex-direction:column; gap:10px; }
+      .philosophe-avatar { font-size:1.8rem; }
+      .section { padding:30px 16px 24px; }
+      .section-title { font-size:1.1rem; }
+      .citation-card { padding:16px; }
+      .gold-line { margin:16px 0 24px; }
       .menu-toggle { display:flex; }
       #sidebar { transform:translateX(-100%); position:fixed; width:260px; z-index:1000; transition:transform .3s; }
       #sidebar.open { transform:translateX(0); }
