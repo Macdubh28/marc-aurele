@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mode Lecture — Aurelius Secundus</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Georgia', 'Times New Roman', serif;
+            background: #0d0d0d;
+            color: #e0e0e0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 20px;
+        }
+        .heure {
+            color: #444;
+            font-size: 0.85em;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            margin-bottom: 60px;
+        }
+        .citation-container {
+            max-width: 680px;
+            width: 100%;
+            text-align: center;
+            animation: fadeIn 1.2s ease;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .guillemet { color: #2a2a2a; font-size: 6em; line-height: 0.5; display: block; margin-bottom: 20px; font-family: Georgia, serif; }
+        .texte {
+            font-size: 1.45em;
+            line-height: 1.9;
+            color: #d4d4d4;
+            font-style: italic;
+            margin-bottom: 40px;
+        }
+        .auteur {
+            color: #d4af37;
+            font-size: 0.8em;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 6px;
+        }
+        .source {
+            color: #444;
+            font-size: 0.78em;
+            font-style: italic;
+        }
+        .controls {
+            margin-top: 70px;
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+        .btn {
+            background: transparent;
+            border: 1px solid #2a2a2a;
+            color: #555;
+            padding: 10px 24px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-family: inherit;
+            font-size: 0.85em;
+            letter-spacing: 1px;
+            transition: all 0.3s;
+            text-decoration: none;
+        }
+        .btn:hover { border-color: #d4af37; color: #d4af37; }
+        .btn-primary { border-color: #333; color: #888; }
+        .progress {
+            color: #2a2a2a;
+            font-size: 0.75em;
+            letter-spacing: 2px;
+        }
+        .retour {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            color: #2a2a2a;
+            text-decoration: none;
+            font-size: 0.8em;
+            letter-spacing: 1px;
+            transition: color 0.3s;
+        }
+        .retour:hover { color: #d4af37; }
+    </style>
+</head>
+<body>
+    <a href="index.html" class="retour">← Accueil</a>
+    <div class="heure" id="heure"></div>
+    <div class="citation-container" id="container">
+        <span class="guillemet">"</span>
+        <div class="texte" id="texte"></div>
+        <div class="auteur" id="auteur"></div>
+        <div class="source" id="source"></div>
+    </div>
+    <div class="controls">
+        <button class="btn btn-primary" onclick="precedente()">←</button>
+        <span class="progress" id="progress"></span>
+        <button class="btn btn-primary" onclick="suivante()">→</button>
+        <button class="btn" onclick="aleatoire()">Aléatoire</button>
+        <a href="recherche.html" class="btn">Chercher</a>
+    </div>
+
+<script>
+const citations = [
+    { texte: "Au matin, dis-toi d'avance : je rencontrerai aujourd'hui des gens indiscrets, ingrats, arrogants, déloyaux, jaloux et asociaux. Ils sont ainsi par ignorance du bien et du mal.", auteur: "Marc Aurèle", source: "Méditations, II.1" },
+    { texte: "Nulle part on ne trouve de retraite plus tranquille que dans son âme.", auteur: "Marc Aurèle", source: "Méditations, IV.3" },
+    { texte: "L'obstacle dans l'action fait progresser l'action. Ce qui se dresse sur le chemin devient le chemin.", auteur: "Marc Aurèle", source: "Méditations, V.20" },
+    { texte: "Si ce n'est pas juste, ne le fais pas. Si ce n'est pas vrai, ne le dis pas.", auteur: "Marc Aurèle", source: "Méditations, XII.17" },
+    { texte: "Nul ne peut perdre une vie autre que celle qu'il vit. Le présent est le seul moment dont tu aies jamais la possession.", auteur: "Marc Aurèle", source: "Méditations, II.14" },
+    { texte: "Fais ce que la nature exige de toi maintenant. Accomplis-le sans hésitation, si tu en as la force.", auteur: "Marc Aurèle", source: "Méditations, VIII.7" },
+    { texte: "Tout ce que tu vois sera bientôt transformé. Ces choses seront de la fumée, puis de la cendre.", auteur: "Marc Aurèle", source: "Méditations, VI.2" },
+    { texte: "Le bonheur de ta vie dépend de la qualité de tes pensées.", auteur: "Marc Aurèle", source: "Méditations, V.16" },
+    { texte: "Ce n'est pas ce qui t'arrive qui te perturbe, mais l'idée que tu t'en fais. Et cela, ça dépend de toi.", auteur: "Épictète", source: "Manuel" },
+    { texte: "Parmi les choses qui existent, certaines dépendent de nous, d'autres non.", auteur: "Épictète", source: "Manuel, I" },
+    { texte: "Cherche à ne pas exiger que ce qui arrive arrive comme tu le veux, mais désire que ce qui arrive soit comme il arrive — et tu seras en paix.", auteur: "Épictète", source: "Manuel, VIII" },
+    { texte: "On ne peut enchaîner un homme libre. On ne peut libérer un esclave qui porte ses chaînes à l'intérieur.", auteur: "Épictète", source: "Entretiens" },
+    { texte: "Ne dis jamais d'une chose : je l'ai perdue. Dis : je l'ai rendue.", auteur: "Épictète", source: "Manuel, XI" },
+    { texte: "Tout est étranger à nous — le temps seul est nôtre.", auteur: "Sénèque", source: "Lettres à Lucilius, I.3" },
+    { texte: "La vie n'est pas courte — nous la gaspillons. La vie est longue si tu sais t'en servir.", auteur: "Sénèque", source: "De Brevitate Vitae" },
+    { texte: "Il n'y a pas de chemin facile de la terre aux étoiles.", auteur: "Sénèque", source: "Hercule furieux" },
+    { texte: "Le feu éprouve l'or — l'adversité éprouve les hommes forts.", auteur: "Sénèque", source: "De Providentia" },
+    { texte: "Pendant que tu remets, la vie passe.", auteur: "Sénèque", source: "De Brevitate Vitae" },
+    { texte: "Rentre en toi-même autant que tu peux — et fréquente ceux qui sont susceptibles de te rendre meilleur.", auteur: "Sénèque", source: "Lettres à Lucilius, VII" },
+    { texte: "Le bonheur est une bonne circulation de la vie.", auteur: "Zénon", source: "Fragments" },
+    { texte: "Seul le sage est libre. L'ignorant, même sur un trône, est esclave de ses passions.", auteur: "Zénon", source: "Fragments" },
+    { texte: "Nous avons deux oreilles et une seule bouche — pour écouter deux fois plus que nous ne parlons.", auteur: "Zénon", source: "Diogène Laërce" },
+    { texte: "Les passions ne sont pas des forces qui nous envahissent — elles sont des jugements erronés.", auteur: "Chrysippe", source: "Doctrine stoïcienne" },
+    { texte: "On ne se baigne jamais deux fois dans le même fleuve.", auteur: "Héraclite", source: "Fragments" },
+    { texte: "Le caractère d'un homme est son destin.", auteur: "Héraclite", source: "Fragments, DK B119" },
+    { texte: "Ce n'est pas en écoutant les philosophes qu'on devient vertueux, mais en pratiquant la vertu.", auteur: "Musonius Rufus", source: "Entretiens" },
+];
+
+let index = Math.floor(Math.random() * citations.length);
+
+function afficher() {
+    const c = citations[index];
+    const container = document.getElementById('container');
+    container.style.animation = 'none';
+    container.offsetHeight;
+    container.style.animation = 'fadeIn 0.8s ease';
+    document.getElementById('texte').textContent = c.texte;
+    document.getElementById('auteur').textContent = '— ' + c.auteur;
+    document.getElementById('source').textContent = c.source;
+    document.getElementById('progress').textContent = (index+1) + ' / ' + citations.length;
+}
+
+function suivante() { index = (index + 1) % citations.length; afficher(); }
+function precedente() { index = (index - 1 + citations.length) % citations.length; afficher(); }
+function aleatoire() { index = Math.floor(Math.random() * citations.length); afficher(); }
+
+function updateHeure() {
+    const now = new Date();
+    const h = String(now.getHours()).padStart(2,'0');
+    const m = String(now.getMinutes()).padStart(2,'0');
+    document.getElementById('heure').textContent = h + ' : ' + m;
+}
+
+updateHeure();
+setInterval(updateHeure, 60000);
+afficher();
+</script>
+</body>
+</html>

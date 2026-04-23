@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recherche de Citations — Aurelius Secundus</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Georgia', 'Times New Roman', serif; background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%); color: #e0e0e0; line-height: 1.8; min-height: 100vh; }
+        header { background-color: rgba(0,0,0,0.3); padding: 20px 0; text-align: center; border-bottom: 2px solid #8b7355; }
+        header h1 { color: #d4af37; font-size: 2.5em; margin-bottom: 10px; text-shadow: 2px 2px 4px rgba(0,0,0,0.5); }
+        header p { color: #c0c0c0; font-style: italic; font-size: 1.1em; }
+        nav { background-color: rgba(0,0,0,0.5); padding: 15px 0; text-align: center; border-bottom: 1px solid #8b7355; flex-wrap: wrap; }
+        nav a { color: #d4af37; text-decoration: none; margin: 0 15px; font-size: 1em; transition: color 0.3s; }
+        nav a:hover { color: #ffd700; border-bottom: 2px solid #ffd700; }
+        .container { max-width: 900px; margin: 40px auto; padding: 0 20px; }
+        .search-box { background: rgba(0,0,0,0.3); border: 1px solid #8b7355; border-radius: 8px; padding: 30px; margin-bottom: 30px; }
+        .search-box h2 { color: #d4af37; margin-bottom: 20px; font-size: 1.4em; letter-spacing: 1px; }
+        .search-input { width: 100%; padding: 14px 20px; background: rgba(0,0,0,0.4); border: 1px solid #8b7355; border-radius: 6px; color: #e0e0e0; font-size: 1.1em; font-family: inherit; outline: none; transition: border-color 0.3s; }
+        .search-input:focus { border-color: #d4af37; }
+        .search-input::placeholder { color: #666; font-style: italic; }
+        .filters { display: flex; gap: 10px; margin-top: 16px; flex-wrap: wrap; }
+        .filter-btn { padding: 6px 16px; background: transparent; border: 1px solid #555; border-radius: 20px; color: #aaa; cursor: pointer; font-size: 0.85em; font-family: inherit; transition: all 0.3s; }
+        .filter-btn:hover, .filter-btn.active { border-color: #d4af37; color: #d4af37; background: rgba(212,175,55,0.08); }
+        .results-count { color: #8b7355; font-size: 0.9em; margin-bottom: 20px; letter-spacing: 1px; }
+        .result-card { background: rgba(0,0,0,0.2); border: 1px solid #333; border-radius: 8px; padding: 24px; margin-bottom: 16px; transition: border-color 0.3s; }
+        .result-card:hover { border-color: #8b7355; }
+        .result-text { color: #e0e0e0; font-style: italic; font-size: 1.05em; line-height: 1.9; margin-bottom: 14px; }
+        .result-text mark { background: rgba(212,175,55,0.25); color: #d4af37; border-radius: 2px; padding: 0 2px; }
+        .result-meta { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; }
+        .result-author { color: #d4af37; font-size: 0.85em; letter-spacing: 2px; text-transform: uppercase; font-weight: bold; }
+        .result-source { color: #666; font-size: 0.8em; font-style: italic; }
+        .result-tag { padding: 3px 10px; border: 1px solid #333; border-radius: 10px; font-size: 0.75em; color: #888; }
+        .no-results { text-align: center; padding: 60px 20px; color: #555; font-style: italic; font-size: 1.1em; }
+        .lire-btn { display: inline-block; margin-top: 10px; color: #8b7355; text-decoration: none; font-size: 0.8em; border-bottom: 1px solid transparent; transition: all 0.3s; }
+        .lire-btn:hover { color: #d4af37; border-bottom-color: #d4af37; }
+        footer { text-align: center; padding: 30px; border-top: 1px solid #8b7355; color: #8b7355; margin-top: 60px; }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>🔍 Recherche de Citations</h1>
+        <p>Explore le corpus stoïcien — cherche par mot-clé, thème ou auteur</p>
+    </header>
+    <nav>
+        <a href="index.html">Accueil</a>
+        <a href="marc-aurele.html">Marc Aurèle</a>
+        <a href="meditations.html">Méditations</a>
+        <a href="seneque.html">Sénèque</a>
+        <a href="epictete.html">Épictète</a>
+        <a href="zenon.html">Zénon</a>
+    </nav>
+    <div class="container">
+        <div class="search-box">
+            <h2>CHERCHER DANS LE CORPUS</h2>
+            <input type="text" class="search-input" id="searchInput" placeholder="mort, vertu, temps, colère, liberté..." autocomplete="off" />
+            <div class="filters">
+                <button class="filter-btn active" data-filter="tous">Tous</button>
+                <button class="filter-btn" data-filter="Marc Aurèle">Marc Aurèle</button>
+                <button class="filter-btn" data-filter="Épictète">Épictète</button>
+                <button class="filter-btn" data-filter="Sénèque">Sénèque</button>
+                <button class="filter-btn" data-filter="Zénon">Zénon</button>
+                <button class="filter-btn" data-filter="Chrysippe">Chrysippe</button>
+                <button class="filter-btn" data-filter="Héraclite">Héraclite</button>
+            </div>
+        </div>
+        <div class="results-count" id="resultsCount">42 citations dans le corpus</div>
+        <div id="results"></div>
+    </div>
+    <footer>
+        <p>Plateforme dédiée à Marc Aurèle et à la philosophie stoïcienne</p>
+        <p style="margin-top:10px;font-size:0.9em;">Créée pour Aurelius Secundus</p>
+    </footer>
+
+<script>
+const citations = [
+    { texte: "Vous avez du pouvoir sur votre esprit, pas sur les événements extérieurs. Réalisez cela, et vous trouverez la force.", auteur: "Marc Aurèle", source: "Méditations", lien: "marc-aurele.html" },
+    { texte: "Le bonheur de ta vie dépend de la qualité de tes pensées.", auteur: "Marc Aurèle", source: "Méditations, V.16", lien: "meditations.html" },
+    { texte: "Perds le temps à te plaindre et tu n'auras plus le temps de vivre.", auteur: "Marc Aurèle", source: "Méditations", lien: "marc-aurele.html" },
+    { texte: "Si ce n'est pas juste, ne le fais pas. Si ce n'est pas vrai, ne le dis pas.", auteur: "Marc Aurèle", source: "Méditations, XII.17", lien: "meditations.html" },
+    { texte: "Au matin, dis-toi d'avance : je rencontrerai aujourd'hui des gens indiscrets, ingrats, arrogants, déloyaux, jaloux et asociaux.", auteur: "Marc Aurèle", source: "Méditations, II.1", lien: "meditations.html" },
+    { texte: "L'obstacle dans l'action fait progresser l'action. Ce qui se dresse sur le chemin devient le chemin.", auteur: "Marc Aurèle", source: "Méditations, V.20", lien: "marc-aurele.html" },
+    { texte: "Nul ne peut perdre une vie autre que celle qu'il vit. Le présent est le seul moment dont tu aies jamais la possession.", auteur: "Marc Aurèle", source: "Méditations, II.14", lien: "meditations.html" },
+    { texte: "Alexandre le Grand et son palefrenier sont morts en même temps et ont été ramenés à la même chose.", auteur: "Marc Aurèle", source: "Méditations, VI.24", lien: "meditations.html" },
+    { texte: "Fais ce que la nature exige de toi maintenant. Accomplis-le sans hésitation, si tu en as la force.", auteur: "Marc Aurèle", source: "Méditations, VIII.7", lien: "meditations.html" },
+    { texte: "Nulle part on ne trouve de retraite plus tranquille que dans son âme.", auteur: "Marc Aurèle", source: "Méditations, IV.3", lien: "meditations.html" },
+    { texte: "Tout ce que tu vois sera bientôt transformé. Ces choses seront de la fumée, puis de la cendre.", auteur: "Marc Aurèle", source: "Méditations, VI.2", lien: "meditations.html" },
+    { texte: "Ce n'est pas ce qui t'arrive qui te perturbe, mais l'idée que tu t'en fais. Et cela, ça dépend de toi.", auteur: "Épictète", source: "Manuel", lien: "epictete.html" },
+    { texte: "Cherche à ne pas exiger que ce qui arrive arrive comme tu le veux, mais désire que ce qui arrive soit comme il arrive — et tu seras en paix.", auteur: "Épictète", source: "Manuel, VIII", lien: "epictete.html" },
+    { texte: "Parmi les choses qui existent, certaines dépendent de nous, d'autres non.", auteur: "Épictète", source: "Manuel, I", lien: "epictete.html" },
+    { texte: "On ne peut enchaîner un homme libre. On ne peut libérer un esclave qui porte ses chaînes à l'intérieur.", auteur: "Épictète", source: "Entretiens", lien: "epictete.html" },
+    { texte: "Ne dis jamais d'une chose : je l'ai perdue. Dis : je l'ai rendue.", auteur: "Épictète", source: "Manuel, XI", lien: "epictete.html" },
+    { texte: "Si quelqu'un te remet le corps, tu t'en offenses. Mais toi, tu remets ton esprit au premier venu.", auteur: "Épictète", source: "Entretiens", lien: "epictete.html" },
+    { texte: "La mort n'est pas quelque chose de terrible. Si c'était le cas, elle aurait paru terrible à Socrate.", auteur: "Épictète", source: "Entretiens", lien: "epictete.html" },
+    { texte: "Tout est étranger à nous — le temps seul est nôtre.", auteur: "Sénèque", source: "Lettres à Lucilius, I.3", lien: "seneque.html" },
+    { texte: "La vie n'est pas courte — nous la gaspillons. La vie est longue si tu sais t'en servir.", auteur: "Sénèque", source: "De Brevitate Vitae", lien: "seneque.html" },
+    { texte: "Il n'y a pas de chemin facile de la terre aux étoiles.", auteur: "Sénèque", source: "Hercule furieux", lien: "seneque.html" },
+    { texte: "Rentre en toi-même autant que tu peux — et fréquente ceux qui sont susceptibles de te rendre meilleur.", auteur: "Sénèque", source: "Lettres à Lucilius, VII", lien: "seneque.html" },
+    { texte: "Le feu éprouve l'or — l'adversité éprouve les hommes forts.", auteur: "Sénèque", source: "De Providentia", lien: "seneque.html" },
+    { texte: "Celui qui cherche un ami pour en tirer profit n'a pas d'ami.", auteur: "Sénèque", source: "Lettres à Lucilius", lien: "seneque.html" },
+    { texte: "Pendant que tu remets, la vie passe.", auteur: "Sénèque", source: "De Brevitate Vitae", lien: "seneque.html" },
+    { texte: "Songe au temps déjà consommé. Ce que l'âge t'enlève, compte-le comme gagné.", auteur: "Sénèque", source: "Lettres à Lucilius", lien: "seneque.html" },
+    { texte: "Le bonheur est une bonne circulation de la vie.", auteur: "Zénon", source: "Fragments", lien: "zenon.html" },
+    { texte: "Nous avons deux oreilles et une seule bouche — pour écouter deux fois plus que nous ne parlons.", auteur: "Zénon", source: "Diogène Laërce", lien: "zenon.html" },
+    { texte: "La vertu est le seul bien. Les choses extérieures sont des indifférentes.", auteur: "Zénon", source: "Doctrine stoïcienne", lien: "zenon.html" },
+    { texte: "Seul le sage est libre. L'ignorant, même sur un trône, est esclave de ses passions.", auteur: "Zénon", source: "Fragments", lien: "zenon.html" },
+    { texte: "Si je dois délibérer, je dois délibérer maintenant.", auteur: "Chrysippe", source: "Fragments", lien: "chrysippe.html" },
+    { texte: "Les passions ne sont pas des forces qui nous envahissent — elles sont des jugements erronés.", auteur: "Chrysippe", source: "Doctrine stoïcienne", lien: "chrysippe.html" },
+    { texte: "Le destin gouverne tout, mais notre assentiment intérieur reste libre.", auteur: "Chrysippe", source: "Fragments", lien: "chrysippe.html" },
+    { texte: "On ne se baigne jamais deux fois dans le même fleuve.", auteur: "Héraclite", source: "Fragments", lien: "heraclite.html" },
+    { texte: "Le caractère d'un homme est son destin.", auteur: "Héraclite", source: "Fragments, DK B119", lien: "heraclite.html" },
+    { texte: "La guerre est la mère de toutes choses et de toutes choses la reine.", auteur: "Héraclite", source: "Fragments, DK B53", lien: "heraclite.html" },
+    { texte: "Le soleil est nouveau chaque jour.", auteur: "Héraclite", source: "Fragments", lien: "heraclite.html" },
+    { texte: "Ce n'est pas en écoutant les philosophes qu'on devient vertueux, mais en pratiquant la vertu.", auteur: "Musonius Rufus", source: "Entretiens", lien: "musonius-rufus.html" },
+    { texte: "L'endurance de la douleur et du labeur est la marque de l'excellence.", auteur: "Musonius Rufus", source: "Entretiens", lien: "musonius-rufus.html" },
+    { texte: "La philosophie n'est pas une théorie — c'est une pratique quotidienne.", auteur: "Musonius Rufus", source: "Entretiens", lien: "musonius-rufus.html" },
+    { texte: "Hymne à Zeus : Salut, Zeus, toi qui conduis la nature entière selon la loi.", auteur: "Cléanthe", source: "Hymne à Zeus", lien: "cleanthe.html" },
+    { texte: "Mène-moi, Zeus, et toi aussi Destin, vers le lieu que vous m'avez assigné.", auteur: "Cléanthe", source: "Hymne au Destin", lien: "cleanthe.html" },
+];
+
+let activeFilter = 'tous';
+let searchTerm = '';
+
+function highlight(text, term) {
+    if (!term) return text;
+    const re = new RegExp('(' + term.replace(/[.*+?^${}()|[\]\\]/g,'\\$&') + ')', 'gi');
+    return text.replace(re, '<mark>$1</mark>');
+}
+
+function render() {
+    const results = document.getElementById('results');
+    const count = document.getElementById('resultsCount');
+    const filtered = citations.filter(c => {
+        const matchFilter = activeFilter === 'tous' || c.auteur.includes(activeFilter);
+        const matchSearch = !searchTerm ||
+            c.texte.toLowerCase().includes(searchTerm) ||
+            c.auteur.toLowerCase().includes(searchTerm) ||
+            c.source.toLowerCase().includes(searchTerm);
+        return matchFilter && matchSearch;
+    });
+
+    count.textContent = filtered.length + ' citation' + (filtered.length > 1 ? 's' : '') + ' trouvée' + (filtered.length > 1 ? 's' : '');
+
+    if (filtered.length === 0) {
+        results.innerHTML = '<div class="no-results">Aucune citation trouvée pour « ' + searchTerm + ' »</div>';
+        return;
+    }
+
+    results.innerHTML = filtered.map(c => `
+        <div class="result-card">
+            <div class="result-text">« ${highlight(c.texte, searchTerm)} »</div>
+            <div class="result-meta">
+                <span class="result-author">${c.auteur}</span>
+                <span class="result-source">${c.source}</span>
+            </div>
+            <a href="${c.lien}" class="lire-btn">Lire la page dédiée →</a>
+        </div>
+    `).join('');
+}
+
+document.getElementById('searchInput').addEventListener('input', e => {
+    searchTerm = e.target.value.toLowerCase().trim();
+    render();
+});
+
+document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        activeFilter = btn.dataset.filter;
+        render();
+    });
+});
+
+render();
+</script>
+</body>
+</html>
