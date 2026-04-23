@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timeline Stoïcienne — Aurelius Secundus</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Georgia', 'Times New Roman', serif; background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%); color: #e0e0e0; min-height: 100vh; }
+        header { background: rgba(0,0,0,0.3); padding: 20px 0; text-align: center; border-bottom: 2px solid #8b7355; }
+        header h1 { color: #d4af37; font-size: 2.2em; margin-bottom: 8px; text-shadow: 2px 2px 4px rgba(0,0,0,0.5); }
+        header p { color: #c0c0c0; font-style: italic; }
+        nav { background: rgba(0,0,0,0.5); padding: 12px 0; text-align: center; border-bottom: 1px solid #8b7355; }
+        nav a { color: #d4af37; text-decoration: none; margin: 0 15px; font-size: 0.95em; transition: color 0.3s; }
+        nav a:hover { color: #ffd700; }
+        .container { max-width: 1100px; margin: 40px auto; padding: 0 20px; }
+        .legend { display: flex; gap: 20px; flex-wrap: wrap; margin-bottom: 40px; padding: 20px; background: rgba(0,0,0,0.2); border-radius: 8px; border: 1px solid #2a2a2a; }
+        .legend-item { display: flex; align-items: center; gap: 8px; font-size: 0.85em; color: #aaa; }
+        .legend-dot { width: 14px; height: 14px; border-radius: 50%; flex-shrink: 0; }
+        .timeline-wrapper { position: relative; padding: 20px 0 60px; }
+        .axis { position: relative; height: 4px; background: linear-gradient(90deg, #1a1a1a, #8b7355 10%, #8b7355 90%, #1a1a1a); border-radius: 2px; margin: 120px 0; }
+        .axis-label { position: absolute; bottom: -28px; font-size: 0.75em; color: #555; transform: translateX(-50%); white-space: nowrap; }
+        .axis-tick { position: absolute; width: 1px; height: 12px; background: #444; bottom: -8px; transform: translateX(-50%); }
+        .philosopher { position: absolute; transform: translateX(-50%); cursor: pointer; transition: all 0.3s; }
+        .philosopher.above { bottom: calc(100% + 8px); }
+        .philosopher.below { top: calc(100% + 8px); }
+        .phil-dot { width: 16px; height: 16px; border-radius: 50%; border: 2px solid rgba(255,255,255,0.1); margin: 0 auto; transition: all 0.3s; position: relative; z-index: 2; }
+        .philosopher:hover .phil-dot, .philosopher.active .phil-dot { transform: scale(1.4); box-shadow: 0 0 12px currentColor; }
+        .phil-name { font-size: 0.75em; text-align: center; margin-top: 6px; color: #ccc; white-space: nowrap; letter-spacing: 0.5px; }
+        .phil-dates { font-size: 0.65em; text-align: center; color: #666; margin-top: 2px; }
+        .connector { position: absolute; height: 1px; background: linear-gradient(90deg, transparent, #333, transparent); top: 50%; transform: translateY(-50%); pointer-events: none; }
+        .info-panel { background: rgba(0,0,0,0.3); border: 1px solid #8b7355; border-radius: 8px; padding: 30px; margin-top: 40px; min-height: 160px; transition: all 0.3s; }
+        .info-panel h2 { color: #d4af37; font-size: 1.4em; margin-bottom: 6px; letter-spacing: 1px; }
+        .info-panel .dates { color: #8b7355; font-size: 0.85em; margin-bottom: 14px; letter-spacing: 1px; }
+        .info-panel .bio { color: #c0c0c0; font-size: 0.95em; line-height: 1.8; margin-bottom: 14px; }
+        .info-panel .ecole { display: inline-block; padding: 3px 12px; border-radius: 10px; font-size: 0.78em; letter-spacing: 1px; margin-bottom: 14px; }
+        .info-panel .lien { display: inline-block; color: #d4af37; text-decoration: none; border: 1px solid #d4af37; padding: 6px 18px; border-radius: 4px; font-size: 0.82em; transition: all 0.3s; }
+        .info-panel .lien:hover { background: #d4af37; color: #1a1a1a; }
+        .info-default { text-align: center; color: #444; font-style: italic; padding: 40px 0; font-size: 1.1em; }
+        footer { text-align: center; padding: 30px; border-top: 1px solid #8b7355; color: #8b7355; margin-top: 60px; }
+    </style>
+</head>
+<body>
+<header>
+    <h1>🦅 Timeline Stoïcienne</h1>
+    <p>De Héraclite à Marc Aurèle — sept siècles de sagesse</p>
+</header>
+<nav>
+    <a href="index.html">Accueil</a>
+    <a href="marc-aurele.html">Marc Aurèle</a>
+    <a href="meditations.html">Méditations</a>
+    <a href="recherche.html">Recherche</a>
+    <a href="lecture.html">Mode Lecture</a>
+</nav>
+<div class="container">
+    <div class="legend">
+        <div class="legend-item"><div class="legend-dot" style="background:#e8a838"></div> Précurseurs</div>
+        <div class="legend-item"><div class="legend-dot" style="background:#d4af37"></div> Stoïcisme ancien</div>
+        <div class="legend-item"><div class="legend-dot" style="background:#7eb8d4"></div> Stoïcisme moyen</div>
+        <div class="legend-item"><div class="legend-dot" style="background:#a8d4a8"></div> Stoïcisme impérial</div>
+    </div>
+    <div class="timeline-wrapper">
+        <div class="axis" id="axis"></div>
+    </div>
+    <div class="info-panel" id="infoPanel">
+        <div class="info-default">Clique sur un philosophe pour découvrir sa vie et sa pensée 🦅</div>
+    </div>
+</div>
+<footer>
+    <p>Plateforme dédiée à Marc Aurèle et à la philosophie stoïcienne</p>
+    <p style="margin-top:10px;font-size:0.9em;">Créée pour Aurelius Secundus</p>
+</footer>
+<script>
+const philosophes = [
+    { nom: "Héraclite", dates: "~535 — ~475 av. J.-C.", annee: -535, duree: 60, couleur: "#e8a838", position: "above", ecole: "Précurseurs", ecoleColor: "#e8a83830",
+      bio: "Philosophe d'Éphèse, père du concept de Logos universel. Sa doctrine du flux perpétuel — 'on ne se baigne jamais deux fois dans le même fleuve' — et de l'unité des opposés forma le socle cosmologique du stoïcisme. Zénon et Chrysippe s'appuieront explicitement sur lui.", lien: "heraclite.html" },
+    { nom: "Socrate", dates: "~470 — 399 av. J.-C.", annee: -470, duree: 71, couleur: "#e8a838", position: "below", ecole: "Précurseurs", ecoleColor: "#e8a83830",
+      bio: "Père de la philosophie morale occidentale. Son influence sur le stoïcisme est indirecte mais fondatrice : la primauté de la vertu, l'examen de soi, la mort de Socrate comme modèle de sagesse face à la mort. Zénon le découvrit dans les Mémorables de Xénophon.", lien: null },
+    { nom: "Zénon", dates: "334 — 262 av. J.-C.", annee: -334, duree: 72, couleur: "#d4af37", position: "above", ecole: "Stoïcisme ancien", ecoleColor: "#d4af3730",
+      bio: "Fondateur de l'école stoïcienne à Athènes vers 300 av. J.-C. Né à Kition (Chypre), ruiné par un naufrage, il se tourna vers la philosophie. Il enseigna quarante ans sous le Portique Peint — la Stoa Poikilè — donnant son nom à toute une tradition.", lien: "zenon.html" },
+    { nom: "Cléanthe", dates: "330 — 230 av. J.-C.", annee: -330, duree: 100, couleur: "#d4af37", position: "below", ecole: "Stoïcisme ancien", ecoleColor: "#d4af3730",
+      bio: "Successeur de Zénon comme scholarque du Portique. Ancien boxeur devenu philosophe, il travaillait la nuit pour financer ses études. Son Hymne à Zeus est le seul texte stoïcien ancien conservé presque intégralement — une prière cosmique d'une beauté rare.", lien: "cleanthe.html" },
+    { nom: "Chrysippe", dates: "279 — 206 av. J.-C.", annee: -279, duree: 73, couleur: "#d4af37", position: "above", ecole: "Stoïcisme ancien", ecoleColor: "#d4af3730",
+      bio: "Troisième scholarque et véritable architecte du système stoïcien. Auteur de plus de 700 ouvrages — tous perdus. Il construisit la logique, la physique et l'éthique stoïciennes en un système cohérent. 'Sans Chrysippe, il n'y aurait pas de Portique.'", lien: "chrysippe.html" },
+    { nom: "Panétius", dates: "185 — 110 av. J.-C.", annee: -185, duree: 75, couleur: "#7eb8d4", position: "below", ecole: "Stoïcisme moyen", ecoleColor: "#7eb8d430",
+      bio: "Fondateur du stoïcisme moyen, il adapta la philosophie stoïcienne à l'aristocratie romaine. Proche de Scipion l'Africain, il introduisit le stoïcisme à Rome. Ses écrits influencèrent directement Cicéron et, à travers lui, toute la tradition philosophique latine.", lien: null },
+    { nom: "Posidonius", dates: "135 — 51 av. J.-C.", annee: -135, duree: 84, couleur: "#7eb8d4", position: "above", ecole: "Stoïcisme moyen", ecoleColor: "#7eb8d430",
+      bio: "Philosophe, géographe et historien grec. Élève de Panétius à Rhodes, il forma un système encyclopédique unissant philosophie, sciences naturelles et histoire. Cicéron et Pompée furent parmi ses élèves. Son influence sur Sénèque fut considérable.", lien: null },
+    { nom: "Musonius Rufus", dates: "~30 — ~100 ap. J.-C.", annee: 30, duree: 70, couleur: "#a8d4a8", position: "below", ecole: "Stoïcisme impérial", ecoleColor: "#a8d4a830",
+      bio: "Le 'Socrate romain'. Deux fois exilé par Néron puis Vespasien, il continua à enseigner jusqu'au bout. Son stoïcisme est pratique, ancré dans le quotidien : comment manger, comment vivre en famille, comment travailler. Maître direct d'Épictète.", lien: "musonius-rufus.html" },
+    { nom: "Épictète", dates: "50 — 135 ap. J.-C.", annee: 50, duree: 85, couleur: "#a8d4a8", position: "above", ecole: "Stoïcisme impérial", ecoleColor: "#a8d4a830",
+      bio: "Né esclave, devenu le philosophe le plus influent de son époque. Affranchi après la mort de Néron, il enseigna à Nicopolis. Sa doctrine de la dichotomie — ce qui dépend de nous / ce qui n'en dépend pas — est la clé de voûte du stoïcisme pratique. Maître indirect de Marc Aurèle.", lien: "epictete.html" },
+    { nom: "Sénèque", dates: "4 av. — 65 ap. J.-C.", annee: -4, duree: 69, couleur: "#a8d4a8", position: "below", ecole: "Stoïcisme impérial", ecoleColor: "#a8d4a830",
+      bio: "Philosophe, dramaturge, homme d'État. Conseiller de Néron, il navigua entre conviction stoïcienne et compromis politique. Ses Lettres à Lucilius et ses traités constituent l'œuvre stoïcienne la plus accessible de l'Antiquité. Mourut stoïcien, condamné par Néron.", lien: "seneque.html" },
+    { nom: "Marc Aurèle", dates: "121 — 180 ap. J.-C.", annee: 121, duree: 59, couleur: "#d4af37", position: "above", ecole: "Stoïcisme impérial", ecoleColor: "#d4af3730",
+      bio: "Empereur-philosophe, dernier des Cinq Bons Empereurs. Gouverna Rome 20 ans sous guerres, épidémies et trahisons. Ses Méditations — journal intime jamais destiné à être publié — sont le document le plus honnête jamais écrit sur la pratique stoïcienne au quotidien.", lien: "marc-aurele.html" },
+];
+
+const MIN_YEAR = -560;
+const MAX_YEAR = 200;
+const RANGE = MAX_YEAR - MIN_YEAR;
+
+function yearToPercent(y) {
+    return ((y - MIN_YEAR) / RANGE) * 100;
+}
+
+const axis = document.getElementById('axis');
+
+// Ticks
+const ticks = [-500, -400, -300, -200, -100, 0, 100, 200];
+ticks.forEach(y => {
+    const pct = yearToPercent(y);
+    const tick = document.createElement('div');
+    tick.className = 'axis-tick';
+    tick.style.left = pct + '%';
+    const label = document.createElement('div');
+    label.className = 'axis-label';
+    label.style.left = pct + '%';
+    label.textContent = y === 0 ? 'J.-C.' : (y < 0 ? Math.abs(y) + ' av.' : y + ' ap.');
+    axis.appendChild(tick);
+    axis.appendChild(label);
+});
+
+// Philosophes
+philosophes.forEach((p, i) => {
+    const pct = yearToPercent(p.annee);
+    const el = document.createElement('div');
+    el.className = 'philosopher ' + p.position;
+    el.style.left = pct + '%';
+
+    const dot = document.createElement('div');
+    dot.className = 'phil-dot';
+    dot.style.background = p.couleur;
+    dot.style.boxShadow = '0 0 6px ' + p.couleur + '66';
+
+    const name = document.createElement('div');
+    name.className = 'phil-name';
+    name.textContent = p.nom;
+    name.style.color = p.couleur;
+
+    const dates = document.createElement('div');
+    dates.className = 'phil-dates';
+    dates.textContent = p.dates;
+
+    if (p.position === 'above') {
+        el.appendChild(dates);
+        el.appendChild(name);
+        el.appendChild(dot);
+    } else {
+        el.appendChild(dot);
+        el.appendChild(name);
+        el.appendChild(dates);
+    }
+
+    el.addEventListener('click', () => {
+        document.querySelectorAll('.philosopher').forEach(e => e.classList.remove('active'));
+        el.classList.add('active');
+        showInfo(p);
+    });
+
+    axis.appendChild(el);
+});
+
+function showInfo(p) {
+    const panel = document.getElementById('infoPanel');
+    panel.innerHTML = `
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:10px;margin-bottom:12px;">
+            <div>
+                <h2>${p.nom}</h2>
+                <div class="dates">${p.dates}</div>
+            </div>
+            <span class="ecole" style="background:${p.ecoleColor};border:1px solid ${p.couleur};color:${p.couleur};">${p.ecole}</span>
+        </div>
+        <div class="bio">${p.bio}</div>
+        ${p.lien ? `<a href="${p.lien}" class="lien">Lire la page dédiée →</a>` : '<span style="color:#444;font-size:0.85em;font-style:italic;">Page dédiée à venir</span>'}
+    `;
+}
+</script>
+</body>
+</html>
