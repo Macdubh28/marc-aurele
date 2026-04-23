@@ -3,390 +3,154 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sénèque - Lettres à Lucilius</title>
+    <title>Sénèque - Aurelius Secundus</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Garamond', 'Georgia', serif;
-            line-height: 1.8;
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-            color: #e0e0e0;
-            padding: 20px;
-        }
-
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            padding: 40px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-        }
-
-        header {
-            text-align: center;
-            margin-bottom: 50px;
-            border-bottom: 2px solid #d4af37;
-            padding-bottom: 30px;
-        }
-
-        h1 {
-            font-size: 2.8em;
-            color: #d4af37;
-            margin-bottom: 15px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-        }
-
-        .subtitle {
-            font-size: 1.3em;
-            color: #b8860b;
-            font-style: italic;
-            margin-bottom: 10px;
-        }
-
-        .intro {
-            background: rgba(212, 175, 55, 0.1);
-            border-left: 4px solid #d4af37;
-            padding: 20px;
-            margin: 30px 0;
-            border-radius: 8px;
-        }
-
-        .intro p {
-            margin-bottom: 15px;
-            text-align: justify;
-        }
-
-        .section {
-            margin: 40px 0;
-        }
-
-        .section-title {
-            font-size: 2em;
-            color: #d4af37;
-            margin-bottom: 20px;
-            border-bottom: 2px solid #d4af37;
-            padding-bottom: 10px;
-        }
-
-        .letter {
-            margin: 30px 0;
-            padding: 25px;
-            background: rgba(255, 255, 255, 0.03);
-            border-radius: 12px;
-            border-left: 4px solid #d4af37;
-        }
-
-        .letter-number {
-            display: inline-block;
-            background: #d4af37;
-            color: #1a1a2e;
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-weight: bold;
-            margin-bottom: 15px;
-        }
-
-        .letter-title {
-            font-size: 1.4em;
-            color: #d4af37;
-            margin-bottom: 15px;
-            font-weight: bold;
-        }
-
-        .letter-text {
-            text-align: justify;
-            line-height: 1.9;
-            color: #e0e0e0;
-        }
-
-        .quote {
-            font-style: italic;
-            color: #b8860b;
-            border-left: 3px solid #d4af37;
-            padding-left: 20px;
-            margin: 20px 0;
-            font-size: 1.1em;
-        }
-
-        .highlight {
-            background: rgba(212, 175, 55, 0.2);
-            padding: 2px 6px;
-            border-radius: 3px;
-        }
-
-        .nav-buttons {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 40px;
-            padding-top: 30px;
-            border-top: 2px solid #d4af37;
-        }
-
-        .btn {
-            background: #d4af37;
-            color: #1a1a2e;
-            padding: 12px 30px;
-            text-decoration: none;
-            border-radius: 25px;
-            font-weight: bold;
-            transition: all 0.3s;
-        }
-
-        .btn:hover {
-            background: #b8860b;
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.4);
-        }
-
-        footer {
-            text-align: center;
-            margin-top: 50px;
-            padding-top: 30px;
-            border-top: 1px solid rgba(212, 175, 55, 0.3);
-            color: #888;
-            font-size: 0.9em;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Georgia', 'Times New Roman', serif; background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%); color: #e0e0e0; line-height: 1.8; }
+        header { background-color: rgba(0,0,0,0.3); padding: 20px 0; text-align: center; border-bottom: 2px solid #8b7355; }
+        header h1 { color: #d4af37; font-size: 2.5em; margin-bottom: 10px; text-shadow: 2px 2px 4px rgba(0,0,0,0.5); }
+        header p { color: #c0c0c0; font-style: italic; font-size: 1.1em; }
+        nav { background-color: rgba(0,0,0,0.5); padding: 15px 0; text-align: center; border-bottom: 1px solid #8b7355; }
+        nav a { color: #d4af37; text-decoration: none; margin: 0 20px; font-size: 1.1em; transition: color 0.3s; }
+        nav a:hover { color: #ffd700; border-bottom: 2px solid #ffd700; }
+        .container { max-width: 1200px; margin: 40px auto; padding: 0 20px; }
+        .intro { background-color: rgba(139,115,85,0.1); border-left: 4px solid #d4af37; padding: 30px; margin-bottom: 40px; border-radius: 5px; }
+        .intro h2 { color: #d4af37; margin-bottom: 15px; font-size: 2em; }
+        .intro p { font-size: 1.1em; color: #c0c0c0; margin-bottom: 10px; }
+        .section { background-color: rgba(0,0,0,0.2); border: 1px solid #8b7355; border-radius: 8px; padding: 30px; margin-bottom: 30px; }
+        .section h3 { color: #d4af37; font-size: 1.5em; margin-bottom: 20px; border-bottom: 1px solid #8b7355; padding-bottom: 10px; }
+        .passage { background-color: rgba(139,115,85,0.05); border-left: 3px solid #8b7355; padding: 15px 20px; margin-bottom: 15px; border-radius: 3px; }
+        .passage-number { color: #d4af37; font-weight: bold; font-size: 0.9em; display: block; margin-bottom: 5px; }
+        .passage-text { color: #e0e0e0; font-style: italic; }
+        .quote-highlight { background: linear-gradient(135deg, rgba(212,175,55,0.1), rgba(139,115,85,0.1)); border: 1px solid #d4af37; border-radius: 8px; padding: 25px; margin: 20px 0; text-align: center; color: #d4af37; font-style: italic; font-size: 1.1em; line-height: 1.9; }
+        .back-button { display: inline-block; color: #d4af37; text-decoration: none; border: 1px solid #d4af37; padding: 10px 25px; border-radius: 5px; transition: all 0.3s; }
+        .back-button:hover { background-color: #d4af37; color: #1a1a1a; }
+        footer { text-align: center; padding: 30px; border-top: 1px solid #8b7355; color: #8b7355; margin-top: 60px; }
     </style>
-  <script src="https://macdubh28.github.io/dashboard/config-loader.js"></script>
 </head>
-<body data-platform="marc-aurele">
+<body>
+    <header>
+        <h1>Sénèque</h1>
+        <p>4 av. J.-C. — 65 ap. J.-C. · Conseiller, Écrivain, Stoïcien malgré lui</p>
+    </header>
+    <nav>
+        <a href="index.html">Accueil</a>
+        <a href="marc-aurele.html">Marc Aurèle</a>
+        <a href="meditations.html">Méditations</a>
+        <a href="seneque.html">Sénèque</a>
+        <a href="epictete.html">Épictète</a>
+        <a href="zenon.html">Zénon</a>
+        <a href="chrysippe.html">Chrysippe</a>
+        <a href="cleanthe.html">Cléanthe</a>
+        <a href="musonius-rufus.html">Musonius Rufus</a>
+        <a href="heraclite.html">Héraclite</a>
+    </nav>
     <div class="container">
-        <header>
-            <h1>SÉNÈQUE</h1>
-            <p class="subtitle">Lucius Annaeus Seneca • 4 av. J.-C. - 65 ap. J.-C.</p>
-            <p style="color: #888; font-size: 0.95em; margin-top: 15px;">
-                Philosophe stoïcien, conseiller de Néron, dramaturge
-            </p>
-        </header>
 
         <div class="intro">
-            <h2 style="color: #d4af37; margin-bottom: 15px;">À propos de Sénèque</h2>
-            <p>Sénèque fut l'un des plus grands philosophes stoïciens de Rome. Né à Cordoue en Hispanie, il devint le précepteur puis le conseiller de l'empereur Néron. Homme politique, dramaturge et philosophe, il a laissé une œuvre considérable qui influence encore notre pensée aujourd'hui.</p>
-            
-            <p>Accusé de complot contre Néron en 65 ap. J.-C., il fut contraint au suicide. Selon Tacite, il mourut avec courage, incarnant jusqu'au bout les principes stoïciens qu'il avait enseignés toute sa vie.</p>
-            
-            <p><strong>Ses œuvres majeures :</strong> Les 124 Lettres à Lucilius constituent son chef-d'œuvre philosophique, un guide pratique de vie stoïcienne. Ses traités moraux (De la Brièveté de la vie, De la Tranquillité de l'âme, De la Colère) restent d'une actualité troublante.</p>
+            <h2>Le stoïcien qui vivait dans la contradiction</h2>
+            <p>Lucius Annaeus Seneca naquit à Cordoue (Hispanie) vers 4 av. J.-C. dans une famille équestre cultivée. Son père, Sénèque le Rhéteur, l'envoya très jeune à Rome pour y recevoir la meilleure éducation. Il y étudia la philosophie stoïcienne, notamment auprès de Sotion d'Alexandrie et d'Attale le stoïcien.</p>
+            <p>Il fut à la fois l'homme le plus riche de Rome et celui qui écrivit le plus profondément sur la vanité des richesses. Conseiller de l'emperor Néron et philosophe de la retraite intérieure. Complice du pouvoir et critique du pouvoir. Cette contradiction n'est pas une faiblesse — c'est ce qui rend Sénèque humain, et ses écrits intemporels.</p>
+            <p>Il mourut le 19 avril 65 ap. J.-C., condamné par Néron, les veines ouvertes dans son bain — dictant ses dernières pensées à ses secrétaires jusqu'au bout.</p>
         </div>
 
-        <!-- LETTRES À LUCILIUS -->
         <div class="section">
-            <h2 class="section-title">📜 Lettres à Lucilius</h2>
-            
-            <div class="intro">
-                <p>Entre 63 et 65 ap. J.-C., Sénèque écrivit 124 lettres à son ami Lucilius, gouverneur de Sicile. Ces lettres ne sont pas de simples correspondances : ce sont des leçons de sagesse, des exercices spirituels, un manuel de vie stoïcienne.</p>
-                <p><strong>Le principe :</strong> Chaque lettre aborde un thème pratique de la vie quotidienne et se termine par une maxime à méditer.</p>
+            <h3>La vie — entre pouvoir et philosophie</h3>
+            <div class="quote-highlight">
+                « Omnia aliena sunt, tempus tantum nostrum est. »<br>
+                Tout est étranger à nous — le temps seul est nôtre.<br>
+                <small>— Lettres à Lucilius, I.3</small>
             </div>
-
-            <div class="letter">
-                <span class="letter-number">Lettre I</span>
-                <h3 class="letter-title">Sur l'emploi du temps</h3>
-                <div class="letter-text">
-                    <p>Suis ton plan, cher Lucilius ; reprends possession de toi-même : le temps qui jusqu'ici t'était ravi, ou dérobé, ou que tu laissais perdre, recueille et ménage-le.</p>
-                    
-                    <p>Persuade-toi que la chose a lieu comme je te l'écris : <span class="highlight">il est des heures qu'on nous enlève par force, d'autres par surprise, d'autres coulent de nos mains.</span> Or la plus honteuse perte est celle qui vient de négligence ; et, si tu y prends garde, la plus grande part de la vie se passe à mal faire, une grande à ne rien faire, le tout à faire autre chose que ce qu'on devrait.</p>
-                    
-                    <p>Car c'est notre erreur de ne voir la mort que devant nous : en grande partie déjà on l'a laissée derrière ; tout l'espace franchi est à elle.</p>
-                    
-                    <div class="quote">
-                        "Cher Lucilius, tout le reste est d'emprunt, le temps seul est notre bien. C'est la seule chose, fugitive et glissante, dont la nature nous livre la propriété."
-                    </div>
-                </div>
+            <div class="passage">
+                <span class="passage-number">L'exil en Corse (41–49)</span>
+                <p class="passage-text">Accusé d'adultère avec Julia Livilla, nièce de Claude, Sénèque fut exilé en Corse pendant huit ans. C'est dans cet isolement forcé qu'il approfondit sa philosophie. La Consolation à Helvia, écrite à sa mère depuis l'exil, est l'un des textes les plus dignes de la littérature stoïcienne.</p>
             </div>
-
-            <div class="letter">
-                <span class="letter-number">Lettre II</span>
-                <h3 class="letter-title">Des voyages et de la lecture</h3>
-                <div class="letter-text">
-                    <p>Ce que tu m'écris me fait bien espérer de toi. Tu ne cours pas çà et là, et ne te jettes pas dans l'agitation des déplacements. Cette mobilité est d'un esprit malade.</p>
-                    
-                    <p><span class="highlight">Fais un choix d'écrivains pour t'y arrêter et te nourrir de leur génie, si tu veux y puiser des souvenirs qui te soient fidèles.</span> C'est n'être nulle part que d'être partout. Ceux dont la vie se passe à voyager finissent par avoir des milliers d'hôtes et pas un ami.</p>
-                    
-                    <p>La multitude des livres dissipe l'esprit. Ainsi, ne pouvant lire tous ceux que tu aurais, c'est assez d'avoir ceux que tu peux lire.</p>
-                    
-                    <div class="quote">
-                        "Fais chaque jour provision de quelque arme contre la pauvreté, contre la mort, contre tous les autres fléaux."
-                    </div>
-                </div>
+            <div class="passage">
+                <span class="passage-number">Le précepteur de Néron (49–62)</span>
+                <p class="passage-text">Rappelé par Agrippine pour éduquer le jeune Néron, Sénèque devint l'homme le plus influent de Rome pendant les premières années du règne. Avec Burrus, il tenta de modérer les excès du prince. Ces années furent son dilemme permanent : participer au pouvoir pour l'humaniser, ou se retirer pour rester pur.</p>
             </div>
-
-            <div class="letter">
-                <span class="letter-number">Lettre VII</span>
-                <h3 class="letter-title">Fuir la foule - Cruauté des spectacles</h3>
-                <div class="letter-text">
-                    <p>Tu me demandes ce que tu dois principalement éviter ? — La foule. Tu ne peux encore t'y livrer impunément. Moi, pour mon compte, j'avouerai ma faiblesse. Jamais je ne rentre chez moi tel que j'en suis sorti.</p>
-                    
-                    <p>Il n'est pas bon de se répandre dans une nombreuse société. Là tout nous prêche le vice, ou nous l'imprime, ou à notre insu nous entache. Et plus nos liaisons s'étendent, plus le danger se multiplie.</p>
-                    
-                    <div class="quote">
-                        "Recueille-toi en toi-même, autant que possible ; fréquente ceux qui te rendront meilleur, reçois ceux que tu peux rendre tels."
-                    </div>
-                </div>
+            <div class="passage">
+                <span class="passage-number">La retraite et les Lettres (62–65)</span>
+                <p class="passage-text">Après la mort de Burrus et la montée en puissance de Tigellin, Sénèque se retira progressivement. Ces trois dernières années furent les plus productives : il écrivit les 124 Lettres à Lucilius, les Questions Naturelles, et plusieurs traités philosophiques. Une course contre la mort qu'il sentait venir.</p>
             </div>
-
-            <div class="letter">
-                <span class="letter-number">Lettre XII</span>
-                <h3 class="letter-title">Avantages de la vieillesse - Sur la mort volontaire</h3>
-                <div class="letter-text">
-                    <p>Qu'il est doux d'avoir lassé les passions, de les avoir laissées en route ! « Mais il est triste d'avoir la mort devant les yeux ! » D'abord elle doit être autant devant les yeux du jeune homme que du vieillard : car elle ne nous appelle point par rang d'âge.</p>
-                    
-                    <p>Disposons donc chacune de nos journées comme si elle fermait la marche, comme si elle achevait et complétait notre vie.</p>
-                    
-                    <div class="quote">
-                        "Qui dit le soir : 'J'ai vécu', peut dire le matin : 'Je gagne une journée.'"
-                    </div>
-                    
-                    <p>Rendons grâce à Dieu : on ne peut retenir personne dans la vie : point de nécessités que l'homme ne puisse fouler aux pieds. <span class="highlight">De toutes parts s'ouvrent à la liberté des voies nombreuses, courtes, faciles.</span></p>
-                </div>
-            </div>
-
-            <div class="letter">
-                <span class="letter-number">Lettre XLVII</span>
-                <h3 class="letter-title">Qu'il faut traiter humainement ses esclaves</h3>
-                <div class="letter-text">
-                    <p>J'apprends avec plaisir de ceux qui viennent de chez toi que tu vis familièrement avec tes esclaves : c'est bien là la sagesse, c'est bien ton bon cœur. « Ce sont des esclaves ! » Non, des hommes. « Ce sont des esclaves ! » Non, des camarades. « Ce sont des esclaves ! » Non, d'humbles amis.</p>
-                    
-                    <p>Songe donc que celui que tu nommes ton esclave est né de la même semence que toi, jouit du même ciel, respire, vit, meurt comme toi. Tu peux le voir libre aussi bien qu'il peut te voir esclave.</p>
-                    
-                    <div class="quote">
-                        "Traite ton inférieur comme tu voudrais être traité par ton supérieur."
-                    </div>
-                </div>
-            </div>
-
-            <div class="letter">
-                <span class="letter-number">Lettre LXX</span>
-                <h3 class="letter-title">Du suicide - Quand peut-on y recourir?</h3>
-                <div class="letter-text">
-                    <p>Il est des hommes qui passent toute leur vie à préparer les choses dont ils doivent vivre, sans s'apercevoir que l'instrument qui nous permet de vivre fut d'abord mis en notre main au moment de notre naissance : le temps.</p>
-                    
-                    <p>La seule chose qui pourrait me faire aimer la vieillesse, c'est qu'elle ne laisse plus la vie très désirable. <span class="highlight">Le plus beau de tous les spectacles, c'est celui d'un grand homme aux prises avec l'adversité.</span></p>
-                    
-                    <div class="quote">
-                        "La vie n'est pas toujours à conserver : le bien n'est pas de vivre, mais de bien vivre. Aussi le sage vit-il autant qu'il doit, non autant qu'il peut."
-                    </div>
-                </div>
-            </div>
-
-            <div class="letter">
-                <span class="letter-number">Lettre XCIV</span>
-                <h3 class="letter-title">De l'utilité des préceptes - De l'ambition</h3>
-                <div class="letter-text">
-                    <p>Tu me demandes si les préceptes de la philosophie suffisent pour former l'homme de bien. Je te répondrai qu'ils ne le peuvent sans les principes généraux de la sagesse.</p>
-                    
-                    <p>L'homme livré à l'ambition ne connaît jamais de bornes. Il a dépassé son but : or le but n'a point de limites. <span class="highlight">Qui aspire aux honneurs recherche non ce qui convient, mais ce qui surpasse.</span></p>
-                    
-                    <div class="quote">
-                        "Aucun vent n'est favorable à celui qui ne sait où il va."
-                    </div>
-                </div>
+            <div class="passage">
+                <span class="passage-number">La mort stoïcienne (65)</span>
+                <p class="passage-text">Impliqué dans la conjuration de Pison — vraiment ou faussement, peu importe — Néron lui ordonna de mourir. Sénèque s'ouvrit les veines, dit adieu à ses amis avec calme, dicta des pensées à ses secrétaires. Le sang coulait lentement ; il se fit porter dans un bain chaud. Sa mort prit des heures. Il ne se plaignit pas.</p>
             </div>
         </div>
 
-        <!-- DE LA BRIÈVETÉ DE LA VIE -->
         <div class="section">
-            <h2 class="section-title">⏳ De la Brièveté de la vie</h2>
-            
-            <div class="intro">
-                <p>Écrit vers 49 ap. J.-C. et adressé à Paulinus, ce traité est l'un des textes les plus célèbres de Sénèque. Il y développe une thèse révolutionnaire : <strong>la vie n'est pas trop courte, c'est nous qui la gaspillons.</strong></p>
-                <p>Ce texte est d'une actualité troublante. Chaque phrase résonne dans notre époque d'hyperactivité, de distractions constantes et de perte de sens.</p>
+            <h3>Les œuvres — un legs philosophique universel</h3>
+            <div class="passage">
+                <span class="passage-number">Lettres à Lucilius (Epistulae Morales)</span>
+                <p class="passage-text">124 lettres à son ami Lucilius, procurateur de Sicile. Écrites dans les trois dernières années de sa vie, elles constituent la plus accessible introduction au stoïcisme jamais écrite. Chaque lettre part d'un détail quotidien — un voyage, une foule, un vieillard — pour s'élever vers une leçon universelle.</p>
             </div>
-
-            <div class="letter">
-                <h3 class="letter-title">La thèse centrale</h3>
-                <div class="letter-text">
-                    <p>La plupart des mortels se plaignent de l'injuste rigueur de la nature, de ce que nous naissons pour une vie si courte, de ce que la mesure de temps qui nous est donnée fuit avec tant de vitesse.</p>
-                    
-                    <p><span class="highlight">Mais ce n'est pas que nous ayons si peu de temps, c'est que nous en perdons beaucoup.</span> La vie est assez longue ; elle suffirait, et au-delà, à l'accomplissement des plus grandes entreprises, si tous les moments en étaient bien employés.</p>
-                    
-                    <div class="quote">
-                        "Ce n'est pas que la vie soit courte, c'est nous qui la rendons telle ; ce n'est pas qu'elle soit pauvre, c'est nous qui la dépensons sottement."
-                    </div>
-                </div>
+            <div class="passage">
+                <span class="passage-number">De Brevitate Vitae — Sur la brièveté de la vie</span>
+                <p class="passage-text">Le traité le plus lu de Sénèque. Sa thèse : la vie n'est pas courte — nous la gaspillons. Ceux qui se plaignent de manquer de temps sont ceux qui le donnent à autrui, le perdent dans les distractions, le dilapident dans l'ambition. « La vie est longue si tu sais t'en servir. »</p>
             </div>
-
-            <div class="letter">
-                <h3 class="letter-title">Comment nous perdons notre temps</h3>
-                <div class="letter-text">
-                    <p>Examinez la vie de la plupart des hommes : vous verrez qu'elle s'en va par mille fissures. Les uns, emportés par l'ambition, courent après les dignités ; d'autres, enivrés par la cupidité, s'épuisent à grossir leur fortune.</p>
-                    
-                    <p><span class="highlight">On ne trouve personne qui veuille partager son argent, mais chacun distribue sa vie à tout venant.</span> On est avare de son bien et prodigue de son temps, la seule chose en laquelle il serait beau d'être avare.</p>
-                    
-                    <p>Les uns gaspillent leur vie dans l'ivresse et l'inaction ; d'autres s'épuisent dans de vaines études ; d'autres encore vivent dans l'angoisse perpétuelle, attendant toujours que leur vie commence.</p>
-                    
-                    <div class="quote">
-                        "La vie se divise en trois temps : le présent, le passé, l'avenir. De ces trois temps, celui que nous vivons est court, celui que nous devons vivre est incertain ; celui que nous avons vécu est certain."
-                    </div>
-                </div>
+            <div class="passage">
+                <span class="passage-number">De Tranquillitate Animi — De la tranquillité de l'âme</span>
+                <p class="passage-text">Un dialogue avec Serenus, ami de Sénèque qui se plaint d'une instabilité intérieure. Sénèque diagnostique : l'insatisfaction chronique vient de ne pas savoir ce qu'on veut vraiment. La tranquillité n'est pas l'absence d'activité — c'est l'harmonie entre ses actes et ses valeurs.</p>
             </div>
-
-            <div class="letter">
-                <h3 class="letter-title">Les "occupés" - Critique féroce</h3>
-                <div class="letter-text">
-                    <p>Vous voyez ces hommes dont on recherche l'entretien, dont la maison est assiégée par une foule de visiteurs : <span class="highlight">ce ne sont pas des hommes vivants, mais des hommes occupés.</span></p>
-                    
-                    <p>Ils ne savent jamais s'ils ont faim, tant ils sont occupés. Ils ne savent pas s'ils ont sommeil. On doit les avertir qu'il est temps de se baigner, de dîner, de se reposer.</p>
-                    
-                    <p>Leur vie n'est pas à eux ; elle appartient à leurs affaires, à leurs clients, à leur fortune. Et quand vient la mort, ils s'écrient : « J'allais enfin commencer à vivre ! »</p>
-                    
-                    <div class="quote">
-                        "Personne ne te restituera tes années, personne ne te rendra à toi-même. La vie s'en ira par où elle a commencé et ne fera pas demi-tour."
-                    </div>
-                </div>
-            </div>
-
-            <div class="letter">
-                <h3 class="letter-title">La solution : Vivre pour soi</h3>
-                <div class="letter-text">
-                    <p>Seuls sont hommes de loisir ceux qui se consacrent à la sagesse. Seuls ils vivent ; car non seulement ils protègent bien la durée qui leur appartient, mais ils ajoutent la totalité du temps au leur.</p>
-                    
-                    <p><span class="highlight">Tous les siècles leur appartiennent.</span> Ils peuvent converser avec Socrate, débattre avec Platon, méditer avec Marc Aurèle. Aucun temps ne leur est interdit, aucune époque ne leur est fermée.</p>
-                    
-                    <p>Celui-là seul vit vraiment qui, ayant appris à se posséder lui-même, n'attend rien du dehors et sait que sa vie est à lui.</p>
-                    
-                    <div class="quote">
-                        "C'est vivre vraiment que d'être maître de soi. Celui-là possède la vie qui ne dépend de personne."
-                    </div>
-                </div>
-            </div>
-
-            <div class="letter">
-                <h3 class="letter-title">Maximes essentielles</h3>
-                <div class="letter-text">
-                    <ul style="list-style: none; padding: 0;">
-                        <li style="margin: 15px 0; padding-left: 20px; border-left: 3px solid #d4af37;">
-                            💎 "Il vaut mieux tenir les comptes de sa vie que ceux des blés de l'État."
-                        </li>
-                        <li style="margin: 15px 0; padding-left: 20px; border-left: 3px solid #d4af37;">
-                            💎 "Apprendre à bien vivre demande toute une vie, et plus encore, apprendre à bien mourir."
-                        </li>
-                        <li style="margin: 15px 0; padding-left: 20px; border-left: 3px solid #d4af37;">
-                            💎 "Chacun se hâte de vivre et souffre du désir de l'avenir et du dégoût du présent."
-                        </li>
-                        <li style="margin: 15px 0; padding-left: 20px; border-left: 3px solid #d4af37;">
-                            💎 "La vie est longue si on sait en user."
-                        </li>
-                    </ul>
-                </div>
+            <div class="passage">
+                <span class="passage-number">De Ira — Sur la colère</span>
+                <p class="passage-text">Trois livres entiers consacrés à la passion la plus destructrice. Sénèque analyse ses mécanismes avec une précision clinique : la colère naît d'un jugement erroné sur ce qu'on mérite. Le remède : retarder la réaction, questionner le jugement, se rappeler sa propre faillibilité.</p>
             </div>
         </div>
 
-        <div class="nav-buttons">
-            <a href="index.html" class="btn">← Retour à l'accueil</a>
-            <a href="manuel-epictete.html" class="btn">Manuel d'Épictète →</a>
+        <div class="section">
+            <h3>La pensée — le stoïcisme de l'intérieur</h3>
+            <div class="passage">
+                <span class="passage-number">Sur le temps — le seul bien véritable</span>
+                <p class="passage-text">Sénèque est obsédé par le temps d'une façon que peu de philosophes atteignent. Il ne parle pas du temps abstraitement — il en ressent l'urgence physiquement. « Dum differtur vita transcurrit » : pendant que tu remets, la vie passe. Chaque lettre à Lucilius commence comme si c'était la dernière.</p>
+            </div>
+            <div class="passage">
+                <span class="passage-number">Sur la retraite intérieure</span>
+                <p class="passage-text">Sénèque distingue la retraite physique — fuir la ville, fuir les hommes — de la retraite intérieure. La vraie solitude n'est pas géographique. On peut être seul dans une foule si l'on garde son centre. On peut être esclave de soi-même dans le désert le plus vide.</p>
+            </div>
+            <div class="passage">
+                <span class="passage-number">Sur l'amitié véritable</span>
+                <p class="passage-text">« Celui qui cherche un ami pour en tirer profit n'a pas d'ami. » Sénèque distingue les compagnons utiles, les compagnons agréables, et les amis véritables — ceux à qui on peut tout dire, ceux dont on partage les valeurs. Ces derniers sont rares. Préserve-les comme un trésor.</p>
+            </div>
+            <div class="passage">
+                <span class="passage-number">La contradiction assumée</span>
+                <p class="passage-text">Sénèque savait qu'il ne vivait pas toujours ce qu'il prêchait. Il le dit explicitement : « Je ne prétends pas être sage, ni le serai jamais. » Cette honnêteté le rend crédible là où d'autres philosophes paraissent distants. Il écrit depuis la bataille, pas depuis la victoire.</p>
+            </div>
         </div>
 
-        <footer>
-            <p>Sénèque (4 av. J.-C. - 65 ap. J.-C.)</p>
-            <p>Philosophe stoïcien, dramaturge, conseiller de Néron</p>
-            <p style="margin-top: 10px; font-style: italic;">"La vie n'est pas courte, c'est nous qui la rendons telle."</p>
-        </footer>
+        <div class="section">
+            <h3>Citations essentielles</h3>
+            <div class="quote-highlight">
+                « Non est ad astra mollis e terris via. »<br>
+                Il n'y a pas de chemin facile de la terre aux étoiles.<br>
+                <small>— Hercule furieux</small>
+            </div>
+            <div class="passage">
+                <span class="passage-number">Sur le présent</span>
+                <p class="passage-text">« Omnia, Lucili, aliena sunt, tempus tantum nostrum est. » Tout nous est étranger, Lucilius — le temps seul nous appartient.</p>
+            </div>
+            <div class="passage">
+                <span class="passage-number">Sur la mort</span>
+                <p class="passage-text">« Cogita quantum temporis absumpserit : quantum aetas tua aufert. » Songe au temps déjà consommé. Ce que l'âge t'enlève, compte-le comme gagné.</p>
+            </div>
+            <div class="passage">
+                <span class="passage-number">Sur la force intérieure</span>
+                <p class="passage-text">« Recede in te ipse quantum potes. » Rentre en toi-même autant que tu peux — et fréquente ceux qui sont susceptibles de te rendre meilleur.</p>
+            </div>
+            <div class="passage">
+                <span class="passage-number">Sur l'adversité</span>
+                <p class="passage-text">« Ignis aurum probat, miseria fortes viros. » Le feu éprouve l'or — l'adversité éprouve les hommes forts.</p>
+            </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 60px;">
+            <a href="index.html" class="back-button">← Retour à l'Accueil</a>
+        </div>
     </div>
+    <footer>
+        <p>Plateforme dédiée à Marc Aurèle et à la philosophie stoïcienne</p>
+        <p style="margin-top: 10px; font-size: 0.9em;">Créée pour Aurelius Secundus</p>
+    </footer>
 </body>
 </html>
