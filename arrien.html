@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arrien de Nicomédie - Aurelius Secundus</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Georgia', 'Times New Roman', serif; background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%); color: #e0e0e0; line-height: 1.8; }
+        header { background-color: rgba(0,0,0,0.3); padding: 20px 0; text-align: center; border-bottom: 2px solid #8b7355; }
+        header h1 { color: #d4af37; font-size: 2.5em; margin-bottom: 10px; text-shadow: 2px 2px 4px rgba(0,0,0,0.5); }
+        header p { color: #c0c0c0; font-style: italic; font-size: 1.1em; }
+        nav { background-color: rgba(0,0,0,0.5); padding: 15px 0; text-align: center; border-bottom: 1px solid #8b7355; }
+        nav a { color: #d4af37; text-decoration: none; margin: 0 20px; font-size: 1.1em; transition: color 0.3s; }
+        nav a:hover { color: #ffd700; border-bottom: 2px solid #ffd700; }
+        .container { max-width: 1200px; margin: 40px auto; padding: 0 20px; }
+        .intro { background-color: rgba(139,115,85,0.1); border-left: 4px solid #d4af37; padding: 30px; margin-bottom: 40px; border-radius: 5px; }
+        .intro h2 { color: #d4af37; margin-bottom: 15px; font-size: 2em; }
+        .intro p { font-size: 1.1em; color: #c0c0c0; margin-bottom: 10px; }
+        .section { background-color: rgba(0,0,0,0.2); border: 1px solid #8b7355; border-radius: 8px; padding: 30px; margin-bottom: 30px; }
+        .section h3 { color: #d4af37; font-size: 1.5em; margin-bottom: 20px; border-bottom: 1px solid #8b7355; padding-bottom: 10px; }
+        .passage { background-color: rgba(139,115,85,0.05); border-left: 3px solid #8b7355; padding: 15px 20px; margin-bottom: 15px; border-radius: 3px; }
+        .passage-number { color: #d4af37; font-weight: bold; font-size: 0.9em; display: block; margin-bottom: 5px; }
+        .passage-text { color: #e0e0e0; font-style: italic; }
+        .quote-highlight { background: linear-gradient(135deg, rgba(212,175,55,0.1), rgba(139,115,85,0.1)); border: 1px solid #d4af37; border-radius: 8px; padding: 25px; margin: 20px 0; text-align: center; color: #d4af37; font-style: italic; font-size: 1.1em; line-height: 1.9; }
+        .chaine { display: flex; align-items: center; justify-content: center; gap: 0; margin: 30px 0; flex-wrap: wrap; }
+        .chaine-node { background: rgba(212,175,55,0.08); border: 1px solid #d4af37; border-radius: 6px; padding: 16px 24px; text-align: center; min-width: 160px; }
+        .chaine-node .nom { color: #d4af37; font-size: 1em; font-weight: bold; margin-bottom: 4px; }
+        .chaine-node .dates { color: #c0c0c0; font-size: 0.8em; font-style: italic; }
+        .chaine-node .role { color: #8b7355; font-size: 0.75em; margin-top: 4px; }
+        .chaine-arrow { color: #d4af37; font-size: 1.8em; padding: 0 12px; opacity: 0.6; }
+        .chaine-node.arrien { background: rgba(212,175,55,0.18); border-color: #ffd700; }
+        .chaine-node.arrien .nom { color: #ffd700; }
+        .back-button { display: inline-block; color: #d4af37; text-decoration: none; border: 1px solid #d4af37; padding: 10px 25px; border-radius: 5px; transition: all 0.3s; }
+        .back-button:hover { background-color: #d4af37; color: #1a1a1a; }
+        footer { text-align: center; padding: 30px; border-top: 1px solid #8b7355; color: #8b7355; margin-top: 60px; }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Arrien de Nicomédie</h1>
+        <p>v. 86–160 ap. J.-C. — Le disciple qui sauva Épictète</p>
+    </header>
+    <nav>
+        <a href="index.html">Accueil</a>
+        <a href="marc-aurele.html">Marc Aurèle</a>
+        <a href="meditations.html">Méditations</a>
+        <a href="seneque.html">Sénèque</a>
+        <a href="epictete.html">Épictète</a>
+        <a href="zenon.html">Zénon</a>
+        <a href="chrysippe.html">Chrysippe</a>
+        <a href="cleanthe.html">Cléanthe</a>
+        <a href="musonius-rufus.html">Musonius Rufus</a>
+        <a href="heraclite.html">Héraclite</a>
+        <a href="arrien.html">Arrien</a>
+    </nav>
+    <div class="container">
+
+        <div class="intro">
+            <h2>L'homme sans qui Épictète n'existerait pas</h2>
+            <p>Épictète n'a jamais rien écrit. Ancien esclave devenu philosophe, il enseignait à Nicopolis — et ses paroles auraient disparu avec lui si un jeune aristocrate de Nicomédie n'avait pris la plume.</p>
+            <p>Arrien assista aux cours d'Épictète vers 108–110 ap. J.-C. Il en transcrivit fidèlement les leçons dans les <em>Entretiens</em> (Διατριβαί) et en distilla l'essentiel dans le <em>Manuel</em> (Encheiridion). Sans lui, toute la branche épictétienne du stoïcisme — celle qui inspira directement Marc Aurèle — serait perdue.</p>
+            <p>Mais Arrien n'était pas qu'un scribe. Officier, gouverneur, historien et philosophe, il incarna lui-même l'idéal stoïcien : l'homme d'action guidé par la raison.</p>
+        </div>
+
+        <!-- CHAINE DE TRANSMISSION -->
+        <div class="section">
+            <h3>La chaîne de transmission du Stoïcisme</h3>
+            <p style="color:#c0c0c0; margin-bottom:24px; font-style:italic;">Arrien est le maillon central entre Épictète et Marc Aurèle. Sans lui, la chaîne est brisée.</p>
+            <div class="chaine">
+                <div class="chaine-node">
+                    <div class="nom">Épictète</div>
+                    <div class="dates">v. 50–135 ap. J.-C.</div>
+                    <div class="role">L'enseignant oral</div>
+                </div>
+                <div class="chaine-arrow">→</div>
+                <div class="chaine-node arrien">
+                    <div class="nom">Arrien</div>
+                    <div class="dates">v. 86–160 ap. J.-C.</div>
+                    <div class="role">Le transcripteur</div>
+                </div>
+                <div class="chaine-arrow">→</div>
+                <div class="chaine-node">
+                    <div class="nom">Marc Aurèle</div>
+                    <div class="dates">121–180 ap. J.-C.</div>
+                    <div class="role">Le philosophe-empereur</div>
+                </div>
+            </div>
+            <div class="passage">
+                <span class="passage-number">La dette de Marc Aurèle</span>
+                <p class="passage-text">Dans les <em>Pensées</em>, Marc Aurèle cite Épictète à plusieurs reprises et mentionne avoir reçu un recueil de ses notes. Ce recueil, c'est le travail d'Arrien. L'empereur le plus philosophe de Rome construisit sa sagesse sur des notes prises par un officier grec dans une école de province.</p>
+            </div>
+        </div>
+
+        <!-- BIOGRAPHIE -->
+        <div class="section">
+            <h3>Une vie entre l'épée et la plume</h3>
+            <div class="passage">
+                <span class="passage-number">Origines et formation</span>
+                <p class="passage-text">Flavius Arrianus naquit vers 86 ap. J.-C. à Nicomédie (aujourd'hui Izmit, Turquie), dans une famille grecque de rang équestre. Citoyen romain, il reçut une éducation aristocratique avant de rejoindre l'école d'Épictète à Nicopolis, en Épire, vers l'âge de vingt ans.</p>
+            </div>
+            <div class="passage">
+                <span class="passage-number">La carrière militaire et politique</span>
+                <p class="passage-text">Arrien ne resta pas philosophe de cabinet. Sous Hadrien, il fut nommé consul suffect (v. 129–130), puis gouverneur de Cappadoce (131–137), où il commanda les légions romaines contre une invasion alaine. Il rédigea un ordre de bataille tactique — la <em>Ektaxis</em> — qui témoigne d'une maîtrise opérationnelle rare.</p>
+            </div>
+            <div class="passage">
+                <span class="passage-number">Le retrait et l'écriture</span>
+                <p class="passage-text">Après sa carrière publique, Arrien se retira à Athènes où il fut nommé archonte. Il y consacra ses dernières décennies à l'écriture : histoire d'Alexandre le Grand (<em>Anabase</em>), traité de chasse, tactique navale, et bien sûr les textes stoïciens qui l'immortalisèrent.</p>
+            </div>
+            <div class="quote-highlight">
+                « Je n'ai pas honte de transmettre les paroles d'Épictète comme il les prononçait, en les préservant aussi fidèlement que possible. »<br>
+                <small>— Arrien, Préface aux Entretiens</small>
+            </div>
+        </div>
+
+        <!-- OEUVRES STOÏCIENNES -->
+        <div class="section">
+            <h3>Les oeuvres qui ont sauvé Épictète</h3>
+            <div class="passage">
+                <span class="passage-number">Les Entretiens — Διατριβαί</span>
+                <p class="passage-text">Arrien transcrivit huit livres de leçons d'Épictète — quatre nous sont parvenus. Ce ne sont pas des dialogues arrangés mais des notes de cours vivantes : interruptions, questions des élèves, digressions. La voix d'Épictète y résonne avec une immédiateté unique dans toute la littérature antique.</p>
+            </div>
+            <div class="passage">
+                <span class="passage-number">Le Manuel — Encheiridion</span>
+                <p class="passage-text">Arrien distilla les Entretiens en un bréviaire de 53 chapitres courts — l'Encheiridion, le "livre qu'on tient dans la main". Ce manuel pratique de philosophie stoïcienne devint l'un des textes les plus lus de l'Antiquité tardive, du Moyen Âge byzantin, et de la Renaissance. Il est encore imprimé aujourd'hui.</p>
+            </div>
+            <div class="passage">
+                <span class="passage-number">La méthode de transcription</span>
+                <p class="passage-text">Arrien refusa d'embellir. Il transcrivit le grec populaire d'Épictète, ses répétitions, ses apostrophes directes. Ce choix — fidélité brute plutôt que polish littéraire — est ce qui rend le texte si puissant. Arrien comprit que la forme était inséparable du fond : la rudesse du style portait la radicalité du message.</p>
+            </div>
+        </div>
+
+        <!-- SA PHILOSOPHIE -->
+        <div class="section">
+            <h3>Arrien philosophe — au-delà du scribe</h3>
+            <div class="passage">
+                <span class="passage-number">L'élève qui dépasse la transcription</span>
+                <p class="passage-text">Arrien ne se contentait pas de noter. Dans sa préface aux Entretiens, il explique son projet : non pas produire un texte littéraire, mais préserver la puissance vivante de la parole d'Épictète. Ce choix éditorial est lui-même un acte philosophique — la subordination de l'ego au service de la vérité.</p>
+            </div>
+            <div class="passage">
+                <span class="passage-number">La cohérence de la vie et de la pensée</span>
+                <p class="passage-text">Épictète enseignait que la philosophie se prouve dans l'action, pas dans les discours. Arrien en fit la démonstration : gouverneur équitable, commandant efficace, citoyen engagé. Sa vie est la preuve que le stoïcisme n'est pas une philosophie de l'abstention mais de l'engagement lucide.</p>
+            </div>
+            <div class="quote-highlight">
+                « Ce n'est pas ce qui arrive qui trouble les hommes, mais les jugements qu'ils portent sur ce qui arrive. »<br>
+                <small>— Épictète, transcrit par Arrien — Manuel, V</small>
+            </div>
+            <div class="passage">
+                <span class="passage-number">Le nouveau Xénophon</span>
+                <p class="passage-text">Hadrien surnomma Arrien "le nouveau Xénophon" — l'historien-soldat qui avait suivi Socrate comme Arrien avait suivi Épictète. La comparaison est juste : deux hommes d'action qui choisirent de préserver la parole d'un maître sans écrits, comprenant que cette transmission valait plus que leur propre gloire littéraire.</p>
+            </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 60px;">
+            <a href="index.html" class="back-button">← Retour à l'Accueil</a>
+        </div>
+    </div>
+    <footer>
+        <p>Plateforme dédiée à Marc Aurèle et à la philosophie stoïcienne</p>
+        <p style="margin-top: 10px; font-size: 0.9em;">Créée pour Aurelius Secundus</p>
+    </footer>
+</body>
+</html>
